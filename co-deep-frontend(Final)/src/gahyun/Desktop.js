@@ -1,41 +1,29 @@
-// src/gahyun/Desktop.js
 import React from "react";
 import "./style.css";
 import "./styleguide.css";
 
-// 이미지 import
 import frame2 from "../assets/frame-2.svg";
 import frame from "../assets/frame.svg";
 import group from "../assets/group.png";
 import tokyoBrowserWindowWithEmoticonLikesAndStarsAround2 from "../assets/tokyo-browser-window-with-emoticon-likes-and-stars-around-2.png";
 import tokyoMagnifierWebSearchWithElements2 from "../assets/tokyo-magnifier-web-search-with-elements-2.png";
-import image from "../assets/Button.png"; // 기존의 "image.svg"가 아닌 "Button.png" 사용
+import image from "../assets/Button.png"; 
 import arrow1 from "../assets/arrow-1.svg";
 import arrow2 from "../assets/arrow-1-2.svg";
+import logo from "../assets/polilogo.png"; // 로고 이미지 import
 
 const Desktop = () => {
   return (
     <div className="desktop">
-      <div className="heading-subheading">
-        <div className="heading">
-          <div className="label">
-            <div className="text-wrapper">서비스</div>
-          </div>
-        </div>
-        <p className="div">
-          정치가 어렵게 느껴지시나요?
-          <br />
-          폴리트래커로 중요한 사안과 정보를 한눈에, 쉽게 확인하세요!
-        </p>
-      </div>
       <div className="landing-page">
         <div className="navigation-bar">
           <div className="POLITRACK-er">
-            <br />
-            <br />
-            POLITRACKER
+            <img
+              src={logo}
+              alt="POLITRACKER 로고"
+              style={{ width: "500px", height: "auto" }}
+            />
           </div>
-          
         </div>
         <header className="header">
           <p className="p">
@@ -62,6 +50,18 @@ const Desktop = () => {
           </div>
         </header>
       </div>
+      <div className="heading-subheading">
+        <div className="heading">
+          <div className="label">
+            <div className="text-wrapper">서비스</div>
+          </div>
+        </div>
+        <p className="div">
+          정치가 어렵게 느껴지시나요?
+          <br />
+          폴리트래커로 중요한 사안과 정보를 한눈에, 쉽게 확인하세요!
+        </p>
+      </div>
       <div className="overlap-2">
         <div className="card">
           <div className="heading-and-link">
@@ -75,7 +75,7 @@ const Desktop = () => {
             </div>
             <div className="link">
               <div className="icon">
-                <img className="arrow" src={image} alt="Arrow" />
+                <img className="arrow" src={arrow1} alt="Arrow" />
               </div>
               <div className="label-4">Learn more</div>
             </div>
@@ -84,6 +84,7 @@ const Desktop = () => {
             <img
               className="tokyo-browser-window"
               src={tokyoBrowserWindowWithEmoticonLikesAndStarsAround2}
+              style={{ width: "100px", height: "auto" }}
               alt="Browser Window"
             />
           </div>
@@ -111,6 +112,7 @@ const Desktop = () => {
                 className="tokyo-magnifier-web"
                 src={tokyoMagnifierWebSearchWithElements2}
                 alt="Magnifier Web"
+                style={{ width: "100px", height: "auto" }}
               />
             </div>
           </div>

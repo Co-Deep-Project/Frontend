@@ -1,505 +1,144 @@
+/* 전체 배경 */
 .desktop {
   position: relative;
-  width: 2099px;
-  height: 1647px;
+  width: 100vw;
+  height: 100vh;
   background-color: #ffffff;
-}
-
-.desktop .heading-subheading {
-  display: flex;
-  width: 1440px;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 0px 100px;
-  position: absolute;
-  top: 892px;
-  left: 0;
-}
-
-.desktop .heading {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.desktop .label {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 0px 7px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: var(--green);
-  border-radius: 7px;
-}
-
-.desktop .text-wrapper {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: var(--h-2-font-family);
-  font-weight: var(--h-2-font-weight);
-  color: #000000;
-  font-size: var(--h-2-font-size);
-  letter-spacing: var(--h-2-letter-spacing);
-  line-height: var(--h-2-line-height);
-  font-style: var(--h-2-font-style);
-}
-
-.desktop .div {
-  width: 580px;
-  font-size: var(--p-font-size);
-  position: relative;
-  margin-top: -1.00px;
-  font-family: var(--p-font-family);
-  font-weight: var(--p-font-weight);
-  color: #000000;
-  letter-spacing: var(--p-letter-spacing);
-  line-height: var(--p-line-height);
-  font-style: var(--p-font-style);
-}
-
-.desktop .landing-page {
   display: flex;
   flex-direction: column;
-  width: 2099px;
-  align-items: flex-start;
-  gap: 70px;
-  position: absolute;
-  top: 60px;
-  left: 0;
-}
-
-.desktop .navigation-bar {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0px 100px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
+  overflow-x: hidden;
 }
 
-.desktop .POLITRACK-er {
-  position: relative;
-  width: 391px;
-  height: 156px;
-  margin-top: -1.00px;
-  font-family: "Hanalei Fill-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 64px;
-  letter-spacing: 0;
-  line-height: 28px;
+/* 로고 위치 조정 */
+.navigation-bar .POLITRACK-er {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 60px;
+  top: 20px;
+  left: 20px;
+  width: 150px;
 }
 
-.desktop .navbar {
-  display: inline-flex;
+/* "객관적 정보, 주체적 판단" 슬로건 */
+.header {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.desktop .text-wrapper-2 {
-  position: relative;
-  width: fit-content;
-  font-family: "Space Grotesk-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 28px;
-  white-space: nowrap;
-}
-
-.desktop .button {
-  all: unset;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 20px 35px;
-  position: relative;
-  flex: 0 0 auto;
-  border-radius: 14px;
-  border: 1px solid;
-  border-color: var(--dark);
-}
-
-.desktop .label-2 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: "Space Grotesk-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  font-size: 20px;
   text-align: center;
-  letter-spacing: 0;
-  line-height: 28px;
-  white-space: nowrap;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 
-.desktop .header {
+.header .p {
+  font-size: 2vw;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* 배경 일러스트 */
+.header .illustration {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+/* "서비스" 섹션 */
+.heading-subheading {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 0px 200px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  background-color: transparent;
-}
-
-.desktop .p {
-  width: 622px;
-  height: 515px;
-  font-size: 60px;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  position: relative;
-  margin-top: -1.00px;
-  font-family: "Space Grotesk-Regular", Helvetica;
-  font-weight: 400;
-  color: #000000;
-  letter-spacing: 0;
-  line-height: normal;
+  margin-bottom: 30px;
+  font-size: 2vw;
 }
 
-.desktop .illustration {
-  position: relative;
-  width: 600.46px;
-  height: 515px;
-}
-
-.desktop .overlap {
-  position: relative;
-  width: 600px;
-  height: 515px;
-}
-
-.desktop .frame {
-  position: absolute;
-  width: 36px;
-  height: 36px;
-  top: 427px;
-  left: 293px;
-}
-
-.desktop .overlap-group {
-  position: absolute;
-  width: 600px;
-  height: 515px;
-  top: 0;
-  left: 0;
-}
-
-.desktop .img {
-  position: absolute;
-  width: 99px;
-  height: 99px;
-  top: 313px;
-  left: 58px;
-}
-
-.desktop .ellipse {
-  position: absolute;
-  width: 566px;
-  height: 119px;
-  top: 193px;
-  left: 34px;
-  border-radius: 283.13px / 59.47px;
-  border: 1px solid;
-  border-color: #000000;
-  transform: rotate(28.88deg);
-}
-
-.desktop .ellipse-2 {
-  position: absolute;
-  width: 566px;
-  height: 119px;
-  top: 230px;
-  left: 14px;
-  border-radius: 283.13px / 59.47px;
-  border: 1px solid;
-  border-color: #000000;
-  transform: rotate(28.88deg);
-}
-
-.desktop .ellipse-3 {
-  position: absolute;
-  width: 566px;
-  height: 119px;
-  top: 267px;
-  left: -6px;
-  border-radius: 283.13px / 59.47px;
-  border: 1px solid;
-  border-color: #000000;
-  transform: rotate(28.88deg);
-}
-
-.desktop .group {
-  position: absolute;
-  width: 446px;
-  height: 385px;
-  top: 0;
-  left: 154px;
-}
-
-.desktop .ellipse-4 {
-  position: absolute;
-  width: 31px;
-  height: 31px;
-  top: 89px;
-  left: 116px;
-  background-color: #b9ff66;
-  border-radius: 15.5px;
-}
-
-.desktop .ellipse-5 {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 425px;
-  left: 411px;
-  background-color: #b9ff66;
-  border-radius: 10px;
-}
-
-.desktop .ellipse-6 {
-  position: absolute;
-  width: 47px;
-  height: 47px;
-  top: 41px;
-  left: 58px;
-  background-color: #000000;
-  border-radius: 23.5px;
-}
-
-.desktop .overlap-2 {
-  position: absolute;
-  width: 1875px;
-  height: 310px;
-  top: 1032px;
-  left: 124px;
-}
-
-.desktop .card {
-  height: 310px;
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: var(--dark);
-  display: flex;
-  width: 600px;
-  align-items: center;
-  padding: 50px;
-  border-radius: 45px;
-  overflow: hidden;
-  border: 1px solid;
-  box-shadow: 0px 5px 0px #191a23;
-  border-color: var(--dark);
-}
-
-.desktop .heading-and-link {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 93px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.desktop .label-wrapper {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 0px 7px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #ffffff;
-  border-radius: 7px;
-}
-
-.desktop .label-3 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1.00px;
-  font-family: var(--h-3-font-family);
-  font-weight: var(--h-3-font-weight);
-  color: #000000;
-  font-size: var(--h-3-font-size);
-  letter-spacing: var(--h-3-letter-spacing);
-  line-height: var(--h-3-line-height);
-  font-style: var(--h-3-font-style);
-}
-
-.desktop .link {
-  display: inline-flex;
-  align-items: center;
-  gap: 15px;
-  position: relative;
-  flex: 0 0 auto;
-}
-
-.desktop .icon {
-  background-color: #ffffff;
-  position: relative;
-  width: 41px;
-  height: 41px;
-  border-radius: 20.5px;
-}
-
-.desktop .arrow {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  top: 11px;
-  left: 10px;
-}
-
-.desktop .label-4 {
-  position: relative;
-  width: fit-content;
-  font-family: "Space Grotesk-Regular", Helvetica;
-  font-weight: 400;
+.heading-subheading .label {
+  background-color: #7a6bca;
   color: #ffffff;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 28px;
-  white-space: nowrap;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.desktop .tokyo-browser-window-wrapper {
-  position: relative;
-  width: 210px;
-  height: 210px;
+.heading-subheading .div {
+  font-size: 1vw;
+  color: #333;
 }
 
-.desktop .tokyo-browser-window {
-  position: absolute;
-  width: 209px;
-  height: 210px;
-  top: 0;
-  left: 1px;
-}
-
-.desktop .cards-section {
+/* 카드 섹션 */
+.overlap-2 {
   display: flex;
-  width: 1011px;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 0px 100px;
-  position: absolute;
-  top: 0;
-  left: 537px;
-}
-
-.desktop .card-2 {
-  height: 310px;
-  gap: 77px;
-  position: relative;
-  background-color: var(--grey);
-  border-color: var(--dark);
-  display: flex;
-  width: 600px;
-  align-items: center;
-  padding: 50px;
-  border-radius: 45px;
-  overflow: hidden;
-  border: 1px solid;
-  box-shadow: 0px 5px 0px #191a23;
-}
-
-.desktop .heading-and-link-2 {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  gap: 80px;
   justify-content: center;
-  gap: 93px;
-  position: relative;
-  flex: 0 0 auto;
+  width: 100%;
+  padding: 0 5vw;
+  margin-top: 20px;
 }
 
-.desktop .arrow-wrapper {
-  background-color: var(--dark);
-  position: relative;
-  width: 41px;
-  height: 41px;
-  border-radius: 20.5px;
-}
-
-.desktop .label-5 {
-  position: relative;
-  width: fit-content;
-  font-family: "Space Grotesk-Regular", Helvetica;
-  font-weight: 400;
-  color: var(--black);
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 28px;
-  white-space: nowrap;
-}
-
-.desktop .tokyo-magnifier-web-wrapper {
-  position: relative;
-  width: 210px;
-  height: 170px;
-  margin-right: -10.00px;
-}
-
-.desktop .tokyo-magnifier-web {
-  position: absolute;
-  width: 210px;
-  height: 166px;
-  top: 4px;
-  left: -30px;
-}
-
-.desktop .card-3 {
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-  left: 1275px;
-  background-color: var(--green);
-  border-color: var(--dark);
+.card, .card-2, .card-3 {
+  width: 25vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
+  height: 20vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
+  border-radius: 20px;
   display: flex;
-  width: 600px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2vh 2vw; /* 카드 내부 패딩도 상대적인 단위로 설정 */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card {
+  background-color: #1a1a1a;
+  color: #1a1a1a;
+}
+
+.card-2 {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.card-3 {
+  background-color: #cfc2e9;
+  color: #333;
+}
+
+/* 카드 내부 텍스트 및 링크 */
+.label-3 {
+  background-color: #ffffff;
+  padding: 1vh 1.5vw; /* 상대적인 단위로 조정 */
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2vw;
+}
+
+.label-4{
+  font-size: 1vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.label-5 {
+  font-size: 1vw;
+  font-weight: bold;
+}
+
+.icon, .arrow-wrapper {
+  width: 4vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  height: 4vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  display: flex;
   align-items: center;
-  padding: 50px;
-  border-radius: 45px;
-  overflow: hidden;
-  border: 1px solid;
-  box-shadow: 0px 5px 0px #191a23;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
 }
 
-.desktop .illustration-2 {
-  position: relative;
-  width: 210px;
-  height: 147.62px;
-  background-image: url(../assets/tokyo-selecting-a-value-in-the-browser-window-1.png);
-  background-size: 100% 100%;
-}
-
-.desktop .element-trackerskku-g {
-  position: absolute;
-  height: 69px;
-  top: 1500px;
-  left: 907px;
-  font-family: var(--p-font-family);
-  font-weight: var(--p-font-weight);
-  color: #000000;
-  font-size: var(--p-font-size);
+/* 하단 정보 */
+.element-trackerskku-g {
   text-align: center;
-  letter-spacing: var(--p-letter-spacing);
-  line-height: var(--p-line-height);
-  font-style: var(--p-font-style);
+  font-size: 0.8vw;
+  color: #333;
+  margin-top: 50px;
 }

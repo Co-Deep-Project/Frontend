@@ -10,10 +10,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
   },
-  {
+  /* {
     path: "gahyun",
     element: <Gahyun />,
-  },
+  } */,
   {
     path: "yunji",
     element: <Yunji />,
