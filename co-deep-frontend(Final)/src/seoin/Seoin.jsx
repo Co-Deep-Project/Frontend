@@ -6,17 +6,22 @@ const Seoin = () => {
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
   const [expanded, setExpanded] = useState({});
+  const [page, setPage] = useState(1); // 현재 페이지 번호 (페이지네이션에 사용)
+  const ITEMS_PER_PAGE = 3; // 한 번에 로드할 항목 수
 
-  // 초기 데이터 설정
+  // 초기 데이터 가져오기
   useEffect(() => {
-    const initialData = [
-      { id: 105, title: "검사(강백신) 탄핵소추안", result: "찬성", details: { number: "2201277", date: "2024-11-01", committee: "법제사법위원회" } },
-      { id: 104, title: "검사(김영철) 탄핵소추안", result: "반대", details: { number: "2201276", date: "2024-10-28", committee: "법제사법위원회" } },
-      { id: 103, title: "검사(박상용) 탄핵소추안", result: "기권", details: { number: "2201275", date: "2024-10-25", committee: "법제사법위원회" } },
-    ];
-    setVotes(initialData);
+    const fetchVotes = async () => {
+      const response = await fetch("/곽상언.json");
+      const data = await response.json();
+      // 날짜를 기준으로 내림차순 정렬 후 첫 페이지 데이터만 로드
+      const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setVotes(sortedData.slice(0, ITEMS_PER_PAGE));
+    };
+    fetchVotes();
   }, []);
 
+  // 투표 항목 확장/축소 기능
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
       ...prev,
@@ -24,14 +29,14 @@ const Seoin = () => {
     }));
   };
 
-  const loadMore = () => {
-    // 추가 데이터
-    const moreData = [
-      { id: 102, title: "순직 해병 수사 방해 및 사건 은폐 등의 진상규명을 위한 특별검사의 임명 등에 관한 법률안", result: "찬성", details: { number: "2201274", date: "2024-10-20", committee: "국방위원회" } }
-    ];
-
-    // 상태 업데이트로 데이터 추가
-    setVotes((prevVotes) => [...prevVotes, ...moreData]);
+  // 추가 데이터를 불러오는 함수 (더보기 버튼 클릭 시)
+  const loadMore = async () => {
+    const response = await fetch("/곽상언.json");
+    const data = await response.json();
+    const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+    const nextPageData = sortedData.slice(0, (page + 1) * ITEMS_PER_PAGE);
+    setVotes(nextPageData);
+    setPage(page + 1);
   };
 
   return (
@@ -54,7 +59,7 @@ const Seoin = () => {
             <div
               key={vote.id}
               className={`vote-card ${
-                vote.result === "찬성" ? "approve" : vote.result === "반대" ? "against" : "abstain"
+                vote.decision === "찬성" ? "approve" : vote.decision === "반대" ? "against" : "abstain"
               }`}
             >
               <div className="vote-header">
@@ -64,11 +69,10 @@ const Seoin = () => {
                   {expanded[vote.id] ? "-" : "+"}
                 </button>
               </div>
-              {expanded[vote.id] && vote.details && (
+              {expanded[vote.id] && (
                 <div className="vote-details">
-                  <p>의안번호: {vote.details.number}</p>
-                  <p>의결일자: {vote.details.date}</p>
-                  <p>소관위원회: {vote.details.committee}</p>
+                  <p>의결일자: {vote.date}</p>
+                  <p>소관위원회: {vote.committee}</p>
                 </div>
               )}
             </div>
