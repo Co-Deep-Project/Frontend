@@ -6,22 +6,19 @@ const Seoin = () => {
   const navigate = useNavigate();
   const [votes, setVotes] = useState([]);
   const [expanded, setExpanded] = useState({});
-  const [page, setPage] = useState(1); // 현재 페이지 번호 (페이지네이션에 사용)
-  const ITEMS_PER_PAGE = 3; // 한 번에 로드할 항목 수
+  const [page, setPage] = useState(1); 
+  const ITEMS_PER_PAGE = 3; 
 
-  // 초기 데이터 가져오기
   useEffect(() => {
     const fetchVotes = async () => {
       const response = await fetch("/곽상언.json");
       const data = await response.json();
-      // 날짜를 기준으로 내림차순 정렬 후 첫 페이지 데이터만 로드
       const sortedData = data.sort((a, b) => new Date(b.date) - new Date(a.date));
       setVotes(sortedData.slice(0, ITEMS_PER_PAGE));
     };
     fetchVotes();
   }, []);
 
-  // 투표 항목 확장/축소 기능
   const toggleExpand = (id) => {
     setExpanded((prev) => ({
       ...prev,
