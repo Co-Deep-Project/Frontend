@@ -16,16 +16,15 @@ const RightPanel = () => {
     notStarted: ['정책7', '정책8', '정책9']
   };
 
-  // 각 정책별 고유 날짜와 동적으로 "이행 완료" 이벤트를 생성하도록 설정
   const policyDates = {
     정책1: [
       { date: "2022년 9월 3일", event: "당선" },
-      { date: "2022년 9월 17일" }, // "이행 완료"는 동적으로 생성됨
+      { date: "2022년 9월 17일" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책2: [
       { date: "2022년 2월 5일", event: "당선" },
-      { date: "2022년 2월 10일" }, // "이행 완료"는 동적으로 생성됨
+      { date: "2022년 2월 10일" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책3: [
@@ -35,32 +34,29 @@ const RightPanel = () => {
     ],
     정책4: [
       { date: "2022년 5월 3일", event: "당선" },
-      { date: "2022년 5월 15일" },
+      { date: "2022년 5월 15일", event: "이행 시작" }, // 변경된 부분
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책5: [
       { date: "2019년 6월 7일", event: "당선" },
-      { date: "2019년 6월 21일" },
+      { date: "2019년 6월 21일", event: "이행 시작" }, // 변경된 부분
       { date: "2019년 12월 31일", event: "임기 종료" }
     ],
     정책6: [
       { date: "2010년 2월 20일", event: "당선" },
-      { date: "2010년 3월 5일" },
+      { date: "2010년 3월 5일", event: "이행 시작" }, // 변경된 부분
       { date: "2010년 12월 31일", event: "임기 종료" }
     ],
     정책7: [
       { date: "2021년 8월 2일", event: "당선" },
-      { date: "2021년 8월 16일" },
       { date: "2021년 12월 31일", event: "임기 종료" }
     ],
     정책8: [
       { date: "2022년 9월 3일", event: "당선" },
-      { date: "2022년 9월 17일" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책9: [
       { date: "2022년 9월 10일", event: "당선" },
-      { date: "2022년 9월 25일" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ]
   };
@@ -84,28 +80,24 @@ const RightPanel = () => {
       <div className="category">
         <h3 className="category-title">정책 일관성 평가</h3>
         <div className="category-items">
-          
           <div className="circle-container">
             <div className="grey-circle">
               <div className="green-circle"></div>
             </div>
             <span className="circle-text">경제</span>
           </div>
-          
           <div className="circle-container">
             <div className="grey-circle">
               <div className="green-circle"></div>
             </div>
             <span className="circle-text">환경</span>
           </div>
-          
           <div className="circle-container">
             <div className="grey-circle">
               <div className="green-circle"></div>
             </div>
             <span className="circle-text">문화</span>
           </div>
-          
           <div className="circle-container">
             <div className="grey-circle">
               <div className="green-circle"></div>
@@ -113,7 +105,7 @@ const RightPanel = () => {
             <span className="circle-text">모두</span>
           </div>
         </div>
-        </div>
+      </div>
       <div className="action-cards">
         {Object.entries(policies).map(([key, values]) => (
           <div key={key} className="action-card">
@@ -144,7 +136,7 @@ const RightPanel = () => {
                               <div className="timeline-marker"></div>
                               <p className="timeline-date">{item.date}</p>
                               <p className="timeline-text">
-                                {item.event || `${policy} 이행 완료`}
+                                {item.event === "이행 시작" ? `${policy} 이행 시작` : item.event}
                               </p>
                             </div>
                           ))}
@@ -163,4 +155,3 @@ const RightPanel = () => {
 };
 
 export default RightPanel;
-
