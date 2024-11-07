@@ -37,6 +37,9 @@ const RightPanel = () => {
           <div key={key} className="action-card">
             <button className={`btn ${key}`} onClick={() => toggleGroup(key)}>
               {key === 'complete' ? '완료' : key === 'inProgress' ? '이행중' : '이행하지 않은 것'}
+              <span className="toggle-button" onClick={(e) => { e.stopPropagation(); toggleGroup(key); }}>
+                {activeGroups[key] ? '-' : '+'}
+              </span>
             </button>
             {activeGroups[key] && (
               <div className="policy-list">
@@ -45,7 +48,7 @@ const RightPanel = () => {
                     <span onClick={() => togglePolicy(policy)}>
                       {policy}
                       <span className="toggle-button" onClick={(e) => { e.stopPropagation(); togglePolicy(policy); }}>
-                        {activePolicies[policy] ? '▼' : '▶'}
+                        {activePolicies[policy] ? '-' : '+'}
                       </span>
                     </span>
                     {activePolicies[policy] && (
@@ -61,7 +64,7 @@ const RightPanel = () => {
                           <div className="timeline-item">
                             <div className="timeline-marker"></div>
                             <p className="timeline-date">20xx.xx.xx</p>
-                            <p className="timeline-text">{`${policy} 공약 이행 완료`}</p>
+                            <p className="timeline-text">{`${policy}번 공약 이행 완료`}</p>
                           </div>
                           <div className="timeline-item">
                             <div className="timeline-marker"></div>
@@ -83,3 +86,4 @@ const RightPanel = () => {
 };
 
 export default RightPanel;
+
