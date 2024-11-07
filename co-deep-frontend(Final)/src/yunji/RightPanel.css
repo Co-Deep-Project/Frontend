@@ -1,4 +1,4 @@
-/*정책들 닮겨있는 회색 박스 */
+/* 정책들 담겨있는 회색 박스 */
 .action-cards {
     display: flex;
     flex-direction: column;
@@ -21,8 +21,6 @@
     cursor: pointer;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
     display: flex;
-    text-align: left; /* 텍스트를 왼쪽으로 정렬 */
-    font-weight: bold;
     justify-content: space-between;
     align-items: center;
     position: relative;
@@ -41,16 +39,6 @@
     background-color: #FF0000; /* Red color for '이행하지 못한 것' */
 }
 
-.toggle-button {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
 .policy-list {
     padding: 10px 20px;
     background-color: #f0f0f0;
@@ -60,8 +48,4 @@
 .policy-item {
     padding: 5px 0;
     border-bottom: 1px solid #ccc;
-}
-
-.active .policy-list {
-    display: flex;
 }
