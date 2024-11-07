@@ -16,6 +16,55 @@ const RightPanel = () => {
     notStarted: ['정책7', '정책8', '정책9']
   };
 
+  // 각 정책별 고유 날짜와 동적으로 "이행 완료" 이벤트를 생성하도록 설정
+  const policyDates = {
+    정책1: [
+      { date: "2022년 9월 3일", event: "당선" },
+      { date: "2022년 9월 17일" }, // "이행 완료"는 동적으로 생성됨
+      { date: "2022년 12월 31일", event: "임기 종료" }
+    ],
+    정책2: [
+      { date: "2022년 2월 5일", event: "당선" },
+      { date: "2022년 2월 10일" }, // "이행 완료"는 동적으로 생성됨
+      { date: "2022년 12월 31일", event: "임기 종료" }
+    ],
+    정책3: [
+      { date: "2023년 3월 7일", event: "당선" },
+      { date: "2023년 3월 12일" },
+      { date: "2023년 12월 31일", event: "임기 종료" }
+    ],
+    정책4: [
+      { date: "2022년 5월 3일", event: "당선" },
+      { date: "2022년 5월 15일" },
+      { date: "2022년 12월 31일", event: "임기 종료" }
+    ],
+    정책5: [
+      { date: "2019년 6월 7일", event: "당선" },
+      { date: "2019년 6월 21일" },
+      { date: "2019년 12월 31일", event: "임기 종료" }
+    ],
+    정책6: [
+      { date: "2010년 2월 20일", event: "당선" },
+      { date: "2010년 3월 5일" },
+      { date: "2010년 12월 31일", event: "임기 종료" }
+    ],
+    정책7: [
+      { date: "2021년 8월 2일", event: "당선" },
+      { date: "2021년 8월 16일" },
+      { date: "2021년 12월 31일", event: "임기 종료" }
+    ],
+    정책8: [
+      { date: "2022년 9월 3일", event: "당선" },
+      { date: "2022년 9월 17일" },
+      { date: "2022년 12월 31일", event: "임기 종료" }
+    ],
+    정책9: [
+      { date: "2022년 9월 10일", event: "당선" },
+      { date: "2022년 9월 25일" },
+      { date: "2022년 12월 31일", event: "임기 종료" }
+    ]
+  };
+
   const toggleGroup = (group) => {
     setActiveGroups(prev => ({
       ...prev,
@@ -48,7 +97,7 @@ const RightPanel = () => {
                     <span onClick={() => togglePolicy(policy)}>
                       {policy}
                       <span className="toggle-button" onClick={(e) => { e.stopPropagation(); togglePolicy(policy); }}>
-                        {activePolicies[policy] ? '-' : '+'}
+                        {activePolicies[policy] ? '▼' : '▶'}
                       </span>
                     </span>
                     {activePolicies[policy] && (
@@ -56,21 +105,16 @@ const RightPanel = () => {
                         <h3>{`${policy} 공약 이행 타임라인`}</h3>
                         <div className="timeline-container">
                           <div className="timeline-line"></div>
-                          <div className="timeline-item">
-                            <div className="timeline-marker"></div>
-                            <p className="timeline-date">20xx.xx.xx</p>
-                            <p className="timeline-text">당선</p>
-                          </div>
-                          <div className="timeline-item">
-                            <div className="timeline-marker"></div>
-                            <p className="timeline-date">20xx.xx.xx</p>
-                            <p className="timeline-text">{`${policy}번 공약 이행 완료`}</p>
-                          </div>
-                          <div className="timeline-item">
-                            <div className="timeline-marker"></div>
-                            <p className="timeline-date">20xx.xx.xx</p>
-                            <p className="timeline-text">임기 종료</p>
-                          </div>
+                          {/* 정책 타임라인 이벤트 */}
+                          {policyDates[policy].map((item, index) => (
+                            <div key={index} className="timeline-item">
+                              <div className="timeline-marker"></div>
+                              <p className="timeline-date">{item.date}</p>
+                              <p className="timeline-text">
+                                {item.event || `${policy} 이행 완료`}
+                              </p>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     )}
