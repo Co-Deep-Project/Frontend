@@ -81,6 +81,39 @@ const RightPanel = () => {
 
   return (
     <div className="right-panel">
+      <div className="category">
+        <h3 className="category-title">정책 일관성 평가</h3>
+        <div className="category-items">
+          
+          <div className="circle-container">
+            <div className="grey-circle">
+              <div className="green-circle"></div>
+            </div>
+            <span className="circle-text">경제</span>
+          </div>
+          
+          <div className="circle-container">
+            <div className="grey-circle">
+              <div className="green-circle"></div>
+            </div>
+            <span className="circle-text">환경</span>
+          </div>
+          
+          <div className="circle-container">
+            <div className="grey-circle">
+              <div className="green-circle"></div>
+            </div>
+            <span className="circle-text">문화</span>
+          </div>
+          
+          <div className="circle-container">
+            <div className="grey-circle">
+              <div className="green-circle"></div>
+            </div>
+            <span className="circle-text">모두</span>
+          </div>
+        </div>
+        </div>
       <div className="action-cards">
         {Object.entries(policies).map(([key, values]) => (
           <div key={key} className="action-card">

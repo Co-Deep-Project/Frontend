@@ -258,6 +258,73 @@
   cursor: pointer;
 }
 
+ /* Ellipse34 */
+  
+ p {
+  margin: 0;
+}
+
+.circle-container {
+  display: flex;
+  align-items: center; /* 원과 텍스트 수직 중앙 정렬 */
+  gap: 8px; /* 원과 텍스트 사이의 간격 */
+}
+
+.grey-circle {
+  width: 31px;
+  height: 30px;
+  border-radius: 50%; /* 원형 모양 */
+  background-color: rgba(217, 217, 217, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.green-circle {
+  width: 18px;
+  height: 18px; /* 높이와 너비를 동일하게 설정 */
+  border-radius: 50%; /* 완전한 원 모양 */
+  background-color: rgba(185, 255, 102, 1);
+}
+
+.circle-text {
+  font-size: 1em;
+  color: #333; /* 텍스트 색상 */
+  font-weight: bold;
+}
+.category {
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.category-title {
+  font-size: 1.5em; /* 글자 크기 확대 */
+  font-weight: bold;
+  color: #000; /* 텍스트 색상 검정 */
+  background-color: #b9ff66; /* 밝은 녹색 배경 */
+  padding: 10px 20px; /* 상하좌우 여백 */
+  border-radius: 10px; /* 둥근 테두리 */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  text-align: center; /* 텍스트 가운데 정렬 */
+  display: inline-block; /* 요소 크기를 텍스트에 맞춤 */
+  border: 2px solid #000; /* 검정색 테두리 추가 */
+}
+
+.category-items {
+  display: flex;
+  gap: 10px;
+}
+
+.category .item {
+  background: #e0ffe0;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1em;
+  color: #4a4a4a;
+  text-align: center;
+}
+
 /* 반응형 설정 */
 @media (max-width: 767px) {
   .main-content {
