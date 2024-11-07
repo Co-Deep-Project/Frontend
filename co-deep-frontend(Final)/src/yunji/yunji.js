@@ -3,10 +3,12 @@ import './yunji.css';
 import logo from './assets/polilogo.png';
 import LeftPanel from './LeftPanel';
 import RightPanel from './RightPanel';
+import { useNavigate } from 'react-router-dom';
 
 const Yunji = () => {
   const [message, setMessage] = useState(''); // 메시지 상태
   const [isMobileView, setIsMobileView] = useState(window.innerWidth < 767);
+  const navigate = useNavigate();
 
   const handleButtonClick = (text) => {
     setMessage(text); // 선택된 텍스트 상태 업데이트
@@ -14,6 +16,10 @@ const Yunji = () => {
 
   const handleResize = () => {
     setIsMobileView(window.innerWidth < 767);
+  };
+
+  const handleHomeClick = () => {
+    navigate('/'); // "/" 경로로 이동
   };
 
   useEffect(() => {
@@ -30,7 +36,7 @@ const Yunji = () => {
         <div className="menu">
           <span>구</span>
           <span>정치인</span>
-          <button>Home</button>
+          <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
         </div>
       </div>
       

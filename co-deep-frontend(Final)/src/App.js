@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <Gahyun />,
   } */,
   {
-    path: "yunji",
+    path: "/yunji",
     element: <Yunji />,
   },
   {
