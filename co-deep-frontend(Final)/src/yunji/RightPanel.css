@@ -1,0 +1,59 @@
+.action-cards {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.action-card {
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 100%;
+    padding: 20px;
+    font-size: 1.5em;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border-radius: 5px;
+}
+
+.complete {
+    background-color: #00D355; /* Blue color for '완료' */
+}
+
+.inProgress {
+    background-color: #ECFF21; /* Orange color for '이행중' */
+}
+
+.notStarted {
+    background-color: #FF0000; /* Red color for '이행하지 못한 것' */
+}
+
+.toggle-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.policy-list {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    flex-direction: column;
+}
+
+.policy-item {
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.active .policy-list {
+    display: flex;
+}

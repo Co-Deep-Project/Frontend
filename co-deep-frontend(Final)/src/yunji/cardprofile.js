@@ -1,46 +1,25 @@
 import React from 'react';
-import './yunji.css';
+import './cardprofile.css';
 
-const CardProfile = ({ handleButtonClick }) => (
-  <div className="card-profile">
-    <div className="overall-container">
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/4j2ycj53e2f-8%3A896?alt=media&token=0c9160b6-b079-4606-a2b3-2df90a9fe7ca"
-        alt="Background"
-        className="background-image rectangle-45"
-      />
-      <p className="profile-name anindita-rahmawati">종로구 곽상언</p>
-      <div className="country">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/4j2ycj53e2f-8%3A899?alt=media&token=2ef1843b-3089-43c7-87ce-8f11d1e15692"
-          alt="Flag"
-          className="country-flag secondary-flag"
-        />
-        <p className="country-name">Indonesia</p>
+const CardProfile = () => (
+    <div className="card-profile">
+      <div className="profile-container">
+        <div>
+        <h1 className = "profile-name">홍길동</h1>
+        <div className = "left">
+        <p className = "profile-details">출생: 1971. 11. 18 서울특별시</p>
+        <p className = "profile-details">학력: 서울대학교 법과대학 법학 사사</p>
+        <p className = "profile-details">소속: 대한민국 국회의원</p>
+        <p className = "profile-details">경력: 2024.05~ 제22대 국회의원 (서울 종로구/더불어민주당)<br />2024.05~ 대법원민주당 원내부대표</p>
       </div>
-      
-      <div className="biography-section">
-        <p className="biography">Biography</p>
-        
-        <div className="personal-picture">
-          <img
-            src="https://i.namu.wiki/i/Hyb68EgZmqFYUUWoXpnydnLQPwnWLa2wguT_yXdW_NGRljf4r_vWv1cz3ZJjRn1U-g_A-xA4XR214drxxJ4habkbu-_bV0-ak8xz1nE0zGhki8dg3s59xJgcc7_uNcJHQXd8D5vd5x3WsZVTNCslYw.webp"
-            alt="Profile"
-            className="profile-image group-106"
-          />
-          <div className="personal-info frame-96">
-            <p className="info-text">Age : 52</p>
-            <p className="info-text">Birth : 18 - 11 - 1971</p>
-            <p className="info-text">Sex : Male</p>
-          </div>
-        </div>
-
-        <p className="social-media">Social Media</p>
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/unify-v3-copy.appspot.com/o/4j2ycj53e2f-8%3A917?alt=media&token=e1db576a-a338-496d-b037-4fd4beeee3d2"
-          alt="Social Icons"
-          className="social-icons group-95"
-        />
+      </div>
+      <div className = "right">
+      <img src="https://search.pstatic.net/common?type=b&size=3000&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F3676da74-ffdf-481d-b7ca-a0853d27685b.png" 
+      alt="Profile Image" className="profile-image"/>
+    <div className="button-container">
+    <a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&x_csa=%7B%22fromUi%22%3A%22kb%22%7D&pkid=1&os=168175&qvt=0&query=%EA%B3%BD%EC%83%81%EC%96%B8%20%EC%84%A0%EA%B1%B0%EC%9D%B4%EB%A0%A5" target="_blank" className="button">선거이력</a>
+    <a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&x_csa=%7B%22fromUi%22%3A%22kb%22%7D&pkid=1&os=168175&qvt=0&query=%EA%B3%BD%EC%83%81%EC%96%B8%20%EC%84%A0%EA%B1%B0%EC%9D%B4%EB%A0%A5" target="_blank" className="button">최근활동</a>
+      </div>
       </div>
     </div>
   </div>
