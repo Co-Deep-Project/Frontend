@@ -16,35 +16,36 @@ const RightPanel = () => {
     notStarted: ['정책7', '정책8', '정책9']
   };
 
+  // Updated policyDates to include only "당선", "이행 완료", and "임기 종료" for completed policies
   const policyDates = {
     정책1: [
       { date: "2022년 9월 3일", event: "당선" },
-      { date: "2022년 9월 17일" },
+      { date: "2022년 9월 17일", event: "이행 완료" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책2: [
       { date: "2022년 2월 5일", event: "당선" },
-      { date: "2022년 2월 10일" },
+      { date: "2022년 2월 10일", event: "이행 완료" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책3: [
       { date: "2023년 3월 7일", event: "당선" },
-      { date: "2023년 3월 12일" },
+      { date: "2023년 3월 12일", event: "이행 완료" },
       { date: "2023년 12월 31일", event: "임기 종료" }
     ],
     정책4: [
       { date: "2022년 5월 3일", event: "당선" },
-      { date: "2022년 5월 15일", event: "이행 시작" }, // 변경된 부분
+      { date: "2022년 5월 15일", event: "이행 시작" },
       { date: "2022년 12월 31일", event: "임기 종료" }
     ],
     정책5: [
       { date: "2019년 6월 7일", event: "당선" },
-      { date: "2019년 6월 21일", event: "이행 시작" }, // 변경된 부분
+      { date: "2019년 6월 21일", event: "이행 시작" },
       { date: "2019년 12월 31일", event: "임기 종료" }
     ],
     정책6: [
       { date: "2010년 2월 20일", event: "당선" },
-      { date: "2010년 3월 5일", event: "이행 시작" }, // 변경된 부분
+      { date: "2010년 3월 5일", event: "이행 시작" },
       { date: "2010년 12월 31일", event: "임기 종료" }
     ],
     정책7: [
@@ -130,14 +131,12 @@ const RightPanel = () => {
                         <h3>{`${policy} 공약 이행 타임라인`}</h3>
                         <div className="timeline-container">
                           <div className="timeline-line"></div>
-                          {/* 정책 타임라인 이벤트 */}
+                          {/* Render timeline items directly */}
                           {policyDates[policy].map((item, index) => (
                             <div key={index} className="timeline-item">
                               <div className="timeline-marker"></div>
                               <p className="timeline-date">{item.date}</p>
-                              <p className="timeline-text">
-                                {item.event === "이행 시작" ? `${policy} 이행 시작` : item.event}
-                              </p>
+                              <p className="timeline-text">{item.event}</p>
                             </div>
                           ))}
                         </div>
