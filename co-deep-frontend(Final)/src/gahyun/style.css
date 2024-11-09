@@ -10,14 +10,15 @@
   overflow-x: hidden;
 }
 
-/* 로고 위치 조정 */
-.navigation-bar .POLITRACK-er {
-  position: absolute;
-  margin-top: 40px;
-  margin-left: 60px;
-  top: 20px;
-  left: 20px;
-  width: 150px;
+/* 로고 */
+.navigation-bar .POLITRACKER {
+  position: fixed;
+  top: 50px;
+  left: 3vw;
+  width: 10vw;
+  max-width: 150px; 
+  min-width: 80px; 
+  height: auto; 
 }
 
 /* "객관적 정보, 주체적 판단" 슬로건 */
@@ -32,16 +33,9 @@
 }
 
 .header .p {
-  font-size: 2vw;
   font-weight: bold;
   line-height: 1.5;
-}
-
-/* 배경 일러스트 */
-.header .illustration {
-  width: 200px;
-  height: 200px;
-  margin-top: 20px;
+  font-size: clamp(70px, 2vw, 100px)
 }
 
 /* "서비스" 섹션 */
@@ -50,7 +44,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 70px;
   font-size: 2vw;
 }
 
@@ -64,7 +58,7 @@
 }
 
 .heading-subheading .div {
-  font-size: 1vw;
+  font-size: clamp(35px, 1.5vw, 42px);
   color: #333;
 }
 
@@ -76,17 +70,32 @@
   width: 100%;
   padding: 0 5vw;
   margin-top: 20px;
+  flex-direction: row;
+}
+
+/* 화면 크기가 px 이하일 때 */
+@media (max-width: 1000px) {
+  .overlap-2 {
+    flex-direction: column; /* 작은 화면에서는 세로로 정렬 */
+    gap: 20px; /* 카드 사이 간격 조절 */
+    align-items: center;
+  }
+  
+  .card, .card-2, .card-3 {
+    width: 80vw; /* 카드 크기 조정 */
+    height: auto;
+  }
 }
 
 .card, .card-2, .card-3 {
-  width: 25vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
+  width: 20vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
   height: 20vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
-  border-radius: 20px;
+  border-radius: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 2vh 2vw; /* 카드 내부 패딩도 상대적인 단위로 설정 */
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -109,9 +118,9 @@
 .label-3 {
   background-color: #ffffff;
   padding: 1vh 1.5vw; /* 상대적인 단위로 조정 */
-  border-radius: 5px;
+  border-radius: 20px;
   font-weight: bold;
-  font-size: 1.2vw;
+  font-size: clamp(40px, 1.2vw, 55px)
 }
 
 .label-4{
@@ -125,9 +134,15 @@
   font-weight: bold;
 }
 
+.link {
+  display: flex;
+  align-items: center; /* 세로 정렬을 중앙으로 맞춤 */
+  gap: 0.5vw; /* 아이콘과 텍스트 사이의 간격 */
+}
+
 .icon, .arrow-wrapper {
-  width: 4vw; /* 상대적인 단위로 아이콘 크기 설정 */
-  height: 4vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  width: 2vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  height: 2vw; /* 상대적인 단위로 아이콘 크기 설정 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,10 +150,28 @@
   border-radius: 50%;
 }
 
+.label-4 {
+  font-size: clamp(35px, 1.5vw, 42px);
+  font-weight: bold;
+  color: #ffffff;
+  transition: color 0.2s ease; /* 부드러운 색상 전환 효과 */
+}
+
+.label-5 {
+  font-size: clamp(35px, 1.5vw, 42px);
+  font-weight: bold;
+  color: #1a1a1a;
+  transition: color 0.2s ease; /* 부드러운 색상 전환 효과 */
+}
+
+.label-4:hover, .label-5:hover {
+  color: #FF5733; /* 원하는 색상으로 변경 */
+}
+
 /* 하단 정보 */
 .element-trackerskku-g {
   text-align: center;
-  font-size: 0.8vw;
+  font-size: 0.9vw;
   color: #333;
   margin-top: 50px;
 }
