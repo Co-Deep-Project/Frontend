@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "./static/css/main.82082150.css",
+    "main.js": "./static/js/main.bc4c650c.js",
+    "static/media/tokyo-magnifier-web-search-with-elements-2.png": "./static/media/tokyo-magnifier-web-search-with-elements-2.20a9b57aabdc3b331857.png",
+    "static/media/tokyo-selecting-a-value-in-the-browser-window-1.png": "./static/media/tokyo-selecting-a-value-in-the-browser-window-1.df0d67fcd21515bc7756.png",
+    "static/media/tokyo-browser-window-with-emoticon-likes-and-stars-around-2.png": "./static/media/tokyo-browser-window-with-emoticon-likes-and-stars-around-2.4c563f74a6b86e0bcef4.png",
+    "static/media/arrow-1-2.svg": "./static/media/arrow-1-2.27c3624111777cdd6808d7673f19aca3.svg",
+    "static/media/arrow-1.svg": "./static/media/arrow-1.73e5309171c93bb60f0893ca80d94b68.svg",
+    "index.html": "./index.html",
+    "static/media/frame.svg": "./static/media/frame.e5b37c76f39a5eb516f58fd5e9a22282.svg",
+    "static/media/frame-2.svg": "./static/media/frame-2.a1cd5b09e976bb2a402a7c5455eda05f.svg",
+    "main.82082150.css.map": "./static/css/main.82082150.css.map",
+    "main.bc4c650c.js.map": "./static/js/main.bc4c650c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.82082150.css",
+    "static/js/main.bc4c650c.js"
+  ]
+}

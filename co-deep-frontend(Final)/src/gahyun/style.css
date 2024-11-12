@@ -1,0 +1,145 @@
+/* 전체 배경 */
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* 로고 위치 조정 */
+.navigation-bar .POLITRACK-er {
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 60px;
+  top: 20px;
+  left: 20px;
+  width: 150px;
+}
+
+/* "객관적 정보, 주체적 판단" 슬로건 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px;
+}
+
+.header .p {
+  font-size: 2vw;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
+/* 배경 일러스트 */
+.header .illustration {
+  width: 200px;
+  height: 200px;
+  margin-top: 20px;
+}
+
+/* "서비스" 섹션 */
+.heading-subheading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2vw;
+}
+
+.heading-subheading .label {
+  background-color: #7a6bca;
+  color: #ffffff;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.heading-subheading .div {
+  font-size: 1vw;
+  color: #333;
+}
+
+/* 카드 섹션 */
+.overlap-2 {
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+  width: 100%;
+  padding: 0 5vw;
+  margin-top: 20px;
+}
+
+.card, .card-2, .card-3 {
+  width: 25vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
+  height: 15vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2vh 2vw; /* 카드 내부 패딩도 상대적인 단위로 설정 */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.card {
+  background-color: #1a1a1a;
+  color: #1a1a1a;
+}
+
+.card-2 {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.card-3 {
+  background-color: #cfc2e9;
+  color: #333;
+}
+
+/* 카드 내부 텍스트 및 링크 */
+.label-3 {
+  background-color: #ffffff;
+  padding: 1vh 1.5vw; /* 상대적인 단위로 조정 */
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.2vw;
+}
+
+.label-4{
+  font-size: 1vw;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.label-5 {
+  font-size: 1vw;
+  font-weight: bold;
+  padding: 5px 20px;
+}
+
+.icon, .arrow-wrapper {
+  width: 2vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  height: 2vw; /* 상대적인 단위로 아이콘 크기 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+/* 하단 정보 */
+.element-trackerskku-g {
+  text-align: center;
+  font-size: 0.8vw;
+  color: #333;
+  margin-top: 50px;
+}
