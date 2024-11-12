@@ -60,14 +60,13 @@ const Desktop = () => {
               <div className="icon">
                 <img className="arrow" src={arrow1} alt="Arrow" />
               </div>
-              <br></br>
               <div className="label-4">Learn more</div>
             </div>
           </div>
         </div>
         <div className="cards-section">
           <div className="card-2">
-            <div className="heading-and-link-2">
+            <div className="heading-and-link">
               <div className="heading">
                 <div className="label">
                   <div className="label-3">우리 지역 정치인</div>
@@ -82,7 +81,6 @@ const Desktop = () => {
                 <div className="arrow-wrapper">
                   <img className="arrow" src={arrow1} alt="Arrow 1" />
                 </div>
-                <br></br>
                 <div className="label-5">Learn more</div>
               </div>
             </div>
@@ -104,7 +102,6 @@ const Desktop = () => {
               <div className="arrow-wrapper">
                 <img className="arrow" src={arrow1} alt="Arrow" />
               </div>
-              <br></br>
               <div className="label-5">Learn more</div>
             </div>
           </div>

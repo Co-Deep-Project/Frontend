@@ -123,21 +123,21 @@
   font-size: clamp(38px, 1.2vw, 55px)
 }
 
-.label-4{
-  font-size: 1vw;
-  font-weight: bold;
-  color: #ffffff;
-}
-
-.label-5 {
-  font-size: 1vw;
-  font-weight: bold;
+.heading-and-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* 부모 카드의 높이를 채움 */
+  padding: 20px 0; /* 위아래 여백 조정 */
 }
 
 .link {
   display: flex;
   align-items: center; /* 세로 정렬을 중앙으로 맞춤 */
   gap: 0.5vw; /* 아이콘과 텍스트 사이의 간격 */
+  flex-direction: row;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .icon, .arrow-wrapper {
@@ -151,9 +151,9 @@
 }
 
 .label-4 {
+  color: #ffffff;
   font-size: clamp(35px, 1.5vw, 42px);
   font-weight: bold;
-  color: #ffffff;
   transition: color 0.2s ease; /* 부드러운 색상 전환 효과 */
 }
 
