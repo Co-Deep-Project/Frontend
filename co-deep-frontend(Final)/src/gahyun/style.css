@@ -45,7 +45,6 @@
   align-items: center;
   text-align: center;
   margin-bottom: 70px;
-  font-size: 20px;
 }
 
 .heading-subheading .label {
@@ -58,7 +57,8 @@
 }
 
 .heading-subheading .div {
-  font-size: clamp(43px, 1.5vw, 50px);
+  line-height: 1.5;
+  font-size: clamp(46px, 1.5vw, 50px);
   color: #333;
 }
 
