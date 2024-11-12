@@ -1,15 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import Desktop from "./gahyun/Desktop";
 
-function Home() {
-  const navigate = useNavigate();
-
+const Home = () => {
   return (
     <div>
-      <h1>Home Page</h1>
-      <button onClick={() => navigate("/seoin")}>Seoin Page로 이동</button>
+      <Desktop />
     </div>
   );
-}
+};
 
 export default Home;
