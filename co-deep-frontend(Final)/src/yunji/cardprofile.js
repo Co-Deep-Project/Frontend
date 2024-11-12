@@ -5,7 +5,7 @@ const CardProfile = () => (
     <div className="card-profile">
       <div className="profile-container">
         <div>
-        <h1 className = "profile-name">홍길동</h1>
+        <h1 className = "profile-name">곽상언</h1>
         <div className = "left">
         <p className = "profile-details">출생: 1971. 11. 18 서울특별시</p>
         <p className = "profile-details">학력: 서울대학교 법과대학 법학 사사</p>
