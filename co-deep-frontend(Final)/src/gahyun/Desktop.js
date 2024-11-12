@@ -64,7 +64,6 @@ const Desktop = () => {
               <div className="label-4">Learn more</div>
             </div>
           </div>
-          <div className="tokyo-browser-window-wrapper"></div>
         </div>
         <div className="cards-section">
           <div className="card-2">
@@ -81,13 +80,12 @@ const Desktop = () => {
               <br></br>
               <div className="link">
                 <div className="arrow-wrapper">
-                  <img className="arrow" src={arrow2} alt="Arrow 2" />
+                  <img className="arrow" src={arrow1} alt="Arrow 1" />
                 </div>
                 <br></br>
                 <div className="label-5">Learn more</div>
               </div>
             </div>
-            <div className="tokyo-magnifier-web-wrapper"></div>
           </div>
         </div>
         <div className="card-3">

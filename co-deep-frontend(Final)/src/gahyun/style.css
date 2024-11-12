@@ -45,7 +45,7 @@
   align-items: center;
   text-align: center;
   margin-bottom: 70px;
-  font-size: 2vw;
+  font-size: 20px;
 }
 
 .heading-subheading .label {
@@ -58,18 +58,18 @@
 }
 
 .heading-subheading .div {
-  font-size: clamp(35px, 1.5vw, 42px);
+  font-size: clamp(43px, 1.5vw, 50px);
   color: #333;
 }
 
 /* 카드 섹션 */
 .overlap-2 {
   display: flex;
-  gap: 80px;
+  gap: 100px;
   justify-content: center;
   width: 100%;
   padding: 0 5vw;
-  margin-top: 20px;
+  margin-top: 40px;
   flex-direction: row;
 }
 
@@ -89,7 +89,7 @@
 
 .card, .card-2, .card-3 {
   width: 20vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
-  height: 20vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
+  height: 16vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
   border-radius: 40px;
   display: flex;
   flex-direction: column;
@@ -120,7 +120,7 @@
   padding: 1vh 1.5vw; /* 상대적인 단위로 조정 */
   border-radius: 20px;
   font-weight: bold;
-  font-size: clamp(40px, 1.2vw, 55px)
+  font-size: clamp(38px, 1.2vw, 55px)
 }
 
 .label-4{
@@ -170,8 +170,10 @@
 
 /* 하단 정보 */
 .element-trackerskku-g {
+  position: fixed;
+  bottom: 80px;
   text-align: center;
-  font-size: 0.9vw;
+  font-size: 35px;
   color: #333;
   margin-top: 50px;
 }
