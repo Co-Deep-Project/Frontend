@@ -1,21 +1,21 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Gahyun from "./gahyun/gahyun";
+import Desktop from "./gahyun/Desktop";
 import Yunji from "./yunji/yunji";
+import Seoin from "./seoin/seoin";
 import Home from "./Home";
-import Seoin from "./seoin/Seoin";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
-  {
+  /* {
     path: "gahyun",
     element: <Gahyun />,
-  },
+  } */,
   {
-    path: "yunji",
+    path: "/yunji",
     element: <Yunji />,
   },
   {
