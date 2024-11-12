@@ -7,31 +7,31 @@ const RightPanel = () => {
 
   // 데이터 설정: 이행률 범위별 정책 개수
   const humanityCultureProgress = [
-    { range: "0-25%", count: 2 },
-    { range: "26-50%", count: 3 },
+    { range: "0-25%", count: 6 },
+    { range: "26-50%", count: 6 },
     { range: "51-75%", count: 4 },
-    { range: "76-100%", count: 6 }
+    { range: "76-100%", count: 7 }
   ];
 
   const worldCultureProgress = [
-    { range: "0-25%", count: 3 },
-    { range: "26-50%", count: 2 },
+    { range: "0-25%", count: 1 },
+    { range: "26-50%", count: 1 },
     { range: "51-75%", count: 3 },
-    { range: "76-100%", count: 5 }
+    { range: "76-100%", count: 3 }
   ];
 
   const futureInnovationProgress = [
-    { range: "0-25%", count: 4 },
+    { range: "0-25%", count: 3 },
     { range: "26-50%", count: 5 },
-    { range: "51-75%", count: 6 },
-    { range: "76-100%", count: 8 }
+    { range: "51-75%", count: 3 },
+    { range: "76-100%", count: 3 }
   ];
 
   const harmonyInclusionProgress = [
     { range: "0-25%", count: 3 },
-    { range: "26-50%", count: 4 },
-    { range: "51-75%", count: 5 },
-    { range: "76-100%", count: 7 }
+    { range: "26-50%", count: 0 },
+    { range: "51-75%", count: 2 },
+    { range: "76-100%", count: 8 }
   ];
 
   // 드롭다운 선택에 따라 표시할 데이터 설정
@@ -68,10 +68,10 @@ const RightPanel = () => {
       {/* 선택된 그룹에 따라 히스토그램 표시 */}
       {activeGroup && (
         <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={getCurrentProgressData()} layout="vertical" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <BarChart data={getCurrentProgressData()} layout="horizontal" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" domain={[0, 10]} />
-            <YAxis dataKey="range" type="category" width={80} />
+            <XAxis dataKey="range" type="category" />
+            <YAxis type="number" domain={[0, 10]} />
             <Tooltip />
             <Bar dataKey="count" fill="#B19CD9" name="정책 개수" />
           </BarChart>

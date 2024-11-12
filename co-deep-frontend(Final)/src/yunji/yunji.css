@@ -63,9 +63,10 @@
 .main-content {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 80px); /* 헤더 높이 제외한 영역 */
+  height: auto; /* 높이를 자동으로 설정하여 필요 이상 공간이 생기지 않도록 */
   overflow: hidden;
 }
+
 
 .left-panel,
 .right-panel {
