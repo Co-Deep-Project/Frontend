@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Desktop from "./gahyun/Desktop";
 import Yunji from "./yunji/yunji";
-import Seoin from "./seoin/Seoin";
+import Seoin from "./seoin/seoin";
 import Home from "./Home";
 
 const router = createBrowserRouter([
