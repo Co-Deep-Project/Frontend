@@ -63,19 +63,17 @@
 .main-content {
   display: flex;
   flex-direction: row;
-  height: auto; /* 높이를 자동으로 설정하여 필요 이상 공간이 생기지 않도록 */
-  overflow: hidden;
+  height: 100%; /* 높이를 100%로 설정하여 부모 높이에 맞춤 */
+  overflow: visible; /* 필요 시에만 스크롤을 보이도록 변경 */
 }
-
 
 .left-panel,
 .right-panel {
   flex: 1;
   padding: 20px;
-  overflow-y: auto;
+  overflow: visible; /* 스크롤 제거하여 모두 보이도록 설정 */
   box-sizing: border-box;
 }
-
 /* 정책 카드 스타일 */
 .action-cards {
   display: flex;

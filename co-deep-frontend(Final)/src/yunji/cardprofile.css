@@ -1,62 +1,72 @@
 .card-profile {
-    width: 700px;
-    padding: 20px;
-    height: auto; /* 높이를 auto로 조정하여 내용에 맞춤 */
-    border-radius: 10px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .profile-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row; /* 수평 배치 */
-    align-items: flex-start; /* 아이템을 컨테이너 상단에 정렬 */
-  }
-  
-  .profile-details {
-    width: 100%; /* 세부 정보 너비 설정 */
-    display: flex;
-    flex-direction: column;
-    text-align: left; /* 텍스트 왼쪽 정렬 */
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.5;
-  }
-  
-  .right {
-    width: 50%; /* 오른쪽 컨테이너 너비 설정 */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 중앙 정렬 */
-  }
-  
-  .profile-image {
-    width: 180px; 
-    height: 300px;
-    object-fit: cover;
-    margin-bottom: 20px;
-  }
-  
-  .button-container {
-    display: flex;
-    justify-content: center; /* 버튼을 중앙에 위치 */
-    gap: 10px;
-  }
-  
-  .button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color:rgb(190, 162, 218);
-    color: black;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
-  }
+  width: 700px;
+  padding: 20px;
+  height: auto;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Arial', sans-serif;
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.profile-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row; /* 데스크톱에서는 가로 배치 */
+  align-items: flex-start;
+  gap: 10px; /* 이미지와 텍스트 사이 간격 */
+}
+
+.left {
+  flex: 1; /* 남은 공간을 채우도록 설정 */
+}
+
+.right {
+  flex-shrink: 0; /* 이미지 영역의 크기 고정 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-name {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile-details {
+  margin: 5px 0;
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+.profile-image {
+  width: 180px;
+  height: 250px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgb(190, 162, 218);
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
 
   @media (max-width: 767px) {
     .card-profile {
