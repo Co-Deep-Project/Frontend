@@ -2,13 +2,11 @@ import React from "react";
 import "./style.css";
 import "./styleguide.css";
 import arrow1 from "../assets/arrow-1.svg";
-import arrow2 from "../assets/arrow-1-2.svg";
 import logo from "../assets/polilogo.png"; 
 
 const Desktop = () => {
   return (
     <div className="desktop">
-      
       {/* header section */}
       <div className="landing-page">
         <div className="navigation-bar">
@@ -16,7 +14,7 @@ const Desktop = () => {
             <img
               src={logo}
               alt="POLITRACKER 로고"
-              style={{ width: "500px", height: "auto" }}
+              style={{ width: "160px", height: "auto" }}
             />
           </div>
         </div>
@@ -47,14 +45,14 @@ const Desktop = () => {
         <div className="card">
           <div className="heading-and-link">
             <div className="heading">
-              <div className="label-wrapper">
-                <div className="label-3">나의 정치 성향</div>
-              </div>
-              <div className="label-wrapper">
-                <div className="label-3">분석하기</div>
+              <div className="label">
+                <div className="label-3">
+                  나의 정치 성향
+                  <br />
+                  분석하기
+                </div>
               </div>
             </div>
-            <br></br>
             <br></br>
             <div className="link">
               <div className="icon">
@@ -69,13 +67,13 @@ const Desktop = () => {
             <div className="heading-and-link">
               <div className="heading">
                 <div className="label">
-                  <div className="label-3">우리 지역 정치인</div>
-                </div>
-                <div className="label">
-                  <div className="label-3">트래킹하기</div>
+                  <div className="label-3">
+                    우리 지역 정치인
+                    <br />
+                    트래킹하기
+                  </div>
                 </div>
               </div>
-              <br></br>
               <br></br>
               <div className="link">
                 <div className="arrow-wrapper">
@@ -89,23 +87,22 @@ const Desktop = () => {
         <div className="card-3">
           <div className="heading-and-link">
             <div className="heading">
-              <div className="label-wrapper">
-                <div className="label-3">낯선 정치 용어</div>
-              </div>
-              <div className="label-wrapper">
-                <div className="label-3">알아보기</div>
+              <div className="label">
+                <div className="label-3">
+                  낯선 정치 용어
+                  <br />
+                  알아보기
+                </div>
               </div>
             </div>
-            <br></br>
             <br></br>
             <div className="link">
               <div className="arrow-wrapper">
                 <img className="arrow" src={arrow1} alt="Arrow" />
               </div>
-              <div className="label-5">Learn more</div>
+              <div className="label-6">Learn more</div>
             </div>
           </div>
-          <div className="illustration-2"></div>
         </div>
       </div>
 
