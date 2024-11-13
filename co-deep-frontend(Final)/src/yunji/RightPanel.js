@@ -56,7 +56,7 @@ const harmonyInclusionProgress = [
 
   return (
     <div className="right-panel">
-      <h3>정책 상태 선택</h3>
+      <h3>정책 이행률 평가</h3>
       <select onChange={handleSelectChange} value={activeGroup} className="dropdown">
         <option value="">선택하세요</option>
         <option value="인류문화의 본">인류문화의 본</option>
