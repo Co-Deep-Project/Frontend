@@ -6,33 +6,33 @@ const RightPanel = () => {
   const [activeGroup, setActiveGroup] = useState(''); // 드롭다운 선택 상태 추가
 
   // 데이터 설정: 이행률 범위별 정책 개수
-  const humanityCultureProgress = [
-    { range: "0-25%", count: 6 },
-    { range: "26-50%", count: 6 },
-    { range: "51-75%", count: 4 },
-    { range: "76-100%", count: 7 }
-  ];
+const humanityCultureProgress = [
+  { id: "hc-1", range: "0-25%", count: 6 },
+  { id: "hc-2", range: "26-50%", count: 6 },
+  { id: "hc-3", range: "51-75%", count: 4 },
+  { id: "hc-4", range: "76-100%", count: 7 }
+];
 
-  const worldCultureProgress = [
-    { range: "0-25%", count: 1 },
-    { range: "26-50%", count: 1 },
-    { range: "51-75%", count: 3 },
-    { range: "76-100%", count: 3 }
-  ];
+const worldCultureProgress = [
+  { id: "wc-1", range: "0-25%", count: 1 },
+  { id: "wc-2", range: "26-50%", count: 1 },
+  { id: "wc-3", range: "51-75%", count: 3 },
+  { id: "wc-4", range: "76-100%", count: 3 }
+];
 
-  const futureInnovationProgress = [
-    { range: "0-25%", count: 3 },
-    { range: "26-50%", count: 5 },
-    { range: "51-75%", count: 3 },
-    { range: "76-100%", count: 3 }
-  ];
+const futureInnovationProgress = [
+  { id: "fi-1", range: "0-25%", count: 3 },
+  { id: "fi-2", range: "26-50%", count: 5 },
+  { id: "fi-3", range: "51-75%", count: 3 },
+  { id: "fi-4", range: "76-100%", count: 3 }
+];
 
-  const harmonyInclusionProgress = [
-    { range: "0-25%", count: 3 },
-    { range: "26-50%", count: 0 },
-    { range: "51-75%", count: 2 },
-    { range: "76-100%", count: 8 }
-  ];
+const harmonyInclusionProgress = [
+  { id: "hi-1", range: "0-25%", count: 3 },
+  { id: "hi-2", range: "26-50%", count: 0 },
+  { id: "hi-3", range: "51-75%", count: 2 },
+  { id: "hi-4", range: "76-100%", count: 8 }
+];
 
   // 드롭다운 선택에 따라 표시할 데이터 설정
   const getCurrentProgressData = () => {
@@ -69,12 +69,12 @@ const RightPanel = () => {
       {activeGroup && (
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={getCurrentProgressData()} layout="horizontal" margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="range" type="category" />
-            <YAxis type="number" domain={[0, 10]} />
-            <Tooltip />
-            <Bar dataKey="count" fill="#B19CD9" name="정책 개수" />
-          </BarChart>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="range" type="category" />
+          <YAxis type="number" domain={[0, 10]} />
+          <Tooltip />
+          <Bar dataKey="count" fill="#B19CD9" name="정책 개수" />
+        </BarChart>
         </ResponsiveContainer>
       )}
     </div>
