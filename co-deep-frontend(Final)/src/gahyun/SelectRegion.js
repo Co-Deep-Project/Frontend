@@ -41,6 +41,9 @@ const SelectRegion = () => {
 
           // 구역에 마우스를 올렸을 때 이름 표시
           window.kakao.maps.event.addListener(polygon, 'mouseover', function (mouseEvent) {
+            polygon.setOptions({
+                fillColor : '#cfc2e9'
+            });
             customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
             customOverlay.setPosition(mouseEvent.latLng);
             customOverlay.setMap(map);
@@ -48,6 +51,7 @@ const SelectRegion = () => {
 
           // 마우스를 뗐을 때 이름 제거
           window.kakao.maps.event.addListener(polygon, 'mouseout', function () {
+            polygon.setOptions({ fillColor: '#fff' });
             customOverlay.setMap(null);
           });
 
