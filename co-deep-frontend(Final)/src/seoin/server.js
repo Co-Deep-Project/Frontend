@@ -3,12 +3,11 @@ const axios = require('axios');
 const cors = require('cors'); 
 
 const app = express();
+app.use(cors());
 const port = 3000;
 const API_KEY = '70d8db9c548f4ea0b9f7ea947fe662ab';
 const BILL_LIST_URL = 'https://open.assembly.go.kr/portal/openapi/nwbpacrgavhjryiph';
 const VOTE_URL = 'https://open.assembly.go.kr/portal/openapi/nojepdqqaweusdfbi';
-
-app.use(cors());
 
 let billIdCache = [];
 
@@ -103,12 +102,8 @@ async function fetchAllVoteDataForMember(memberName) {
         allVoteData.push(...voteData);
     }
 
-    // 최신순으로 정렬
-    allVoteData.sort((a, b) => new Date(b.VOTE_DATE) - new Date(a.VOTE_DATE));
-
-    // 전체 데이터 개수 출력
+    console.log("Total Vote Data for Member:", allVoteData);
     console.log("Total number of vote records:", allVoteData.length);
-
     return allVoteData;
 }
 
