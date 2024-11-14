@@ -1,10 +1,13 @@
 import React, {useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.css"; 
 import "./styleguide.css";
 import arrow1 from "../assets/arrow-1.svg";
 import logo from "../assets/polilogo.png"; 
 
 const Desktop = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const textArray = [
       "객관적 정보, 주체적 판단", 
@@ -30,6 +33,9 @@ const Desktop = () => {
     }
   }, []);
 
+  const handleNavigation = () => {
+    navigate("/select-region"); // 새로운 페이지 경로 설정
+  };
 
   return (
     <div className="desktop">
@@ -94,7 +100,7 @@ const Desktop = () => {
                 </div>
               </div>
               <br></br>
-              <div className="link">
+              <div className="link" onClick={handleNavigation} style={{ cursor: "pointer" }}>
                 <div className="arrow-wrapper">
                   <img className="arrow" src={arrow1} alt="Arrow 1" />
                 </div>

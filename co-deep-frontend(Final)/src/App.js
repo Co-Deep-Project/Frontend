@@ -1,7 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Desktop from "./gahyun/Desktop";
 import Yunji from "./yunji/yunji";
+import SelectRegion from "./gahyun/SelectRegion"; // 새로운 페이지 임포트
 import Seoin from "./seoin/Seoin";
 import Home from "./Home";
 
@@ -10,10 +10,6 @@ const router = createBrowserRouter([
     path: "/",
     element: <Home />,
   },
-  /* {
-    path: "gahyun",
-    element: <Gahyun />,
-  } */,
   {
     path: "/yunji",
     element: <Yunji />,
@@ -21,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "seoin",
     element: <Seoin />,
+  },
+  {
+    path: "/select-region", // 새로운 경로 추가
+    element: <SelectRegion />, // SelectRegion 컴포넌트 연결
   },
 ]);
 
