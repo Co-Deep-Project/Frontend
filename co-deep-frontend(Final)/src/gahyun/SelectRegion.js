@@ -101,7 +101,7 @@ const SelectRegion = () => {
         <h1>우리 지역 정치인 트래킹하기</h1>
         <p>아래 지도에서 조회하고 싶은 지역을 선택하세요.</p>
       </div>
-      <div id="politic-map"></div> {/* 지도를 표시할 div */}
+      <div id="politic-map"></div> 
 
       <footer className="footer">
         <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
