@@ -21,13 +21,10 @@ const SelectRegion = () => {
         const customOverlay = new window.kakao.maps.CustomOverlay({});
         const infowindow = new window.kakao.maps.InfoWindow({ removable: true });
 
-        // GeoJSON 데이터를 기반으로 폴리곤 생성
         let polygons = [];
 
-        geojson.features.forEach((feature) => {
-          const coordinates = feature.geometry.coordinates[0];
-          const name = feature.properties.name;
-
+        // 폴리곤을 표시하는 함수 정의
+        const displayArea = (coordinates, name) => {
           const path = coordinates.map((coord) => new window.kakao.maps.LatLng(coord[1], coord[0]));
 
           const polygon = new window.kakao.maps.Polygon({
@@ -60,6 +57,13 @@ const SelectRegion = () => {
             infowindow.setPosition(mouseEvent.latLng);
             infowindow.setMap(map);
           });
+        };
+
+        // GeoJSON 데이터를 기반으로 각 구역 폴리곤을 지도에 표시
+        geojson.features.forEach((feature) => {
+          const coordinates = feature.geometry.coordinates[0];
+          const name = feature.properties.SIG_KOR_NM;
+          displayArea(coordinates, name); // displayArea 함수 호출
         });
       });
     };
