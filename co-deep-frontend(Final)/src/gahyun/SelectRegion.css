@@ -37,7 +37,7 @@ h1 {
 p {
     font-size: 1rem;
     margin-top: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-align: center;
     color: #555;
 }
@@ -67,6 +67,11 @@ p {
     color: black;
 }
 
+.infowindow-content p {
+    margin-top: 9px;
+    margin-bottom: 5px;
+}
+
 .infowindow-button-container {
     display: flex;
     gap: 10px;
@@ -84,8 +89,9 @@ p {
     text-align: center;
     flex: 1;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .infowindow-button:hover {
-    background-color: #49417b;
+    background-color: #393363;
 }

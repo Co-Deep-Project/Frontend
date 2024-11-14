@@ -65,10 +65,10 @@ const SelectRegion = () => {
           window.kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
             const content = `
                 <div class="infowindow-content">
-                    <p><b>${name}</b>의 국회의원 조회</p>
+                    <p><b>${name}</b>의 정치인 조회</p>
                     <div class="infowindow-button-container">
-                        <button class="infowindow-button" onclick="window.location.href='/politician-list'">국회의원 목록<br />보기</button>
-                        <button class="infowindow-button" onclick="window.location.href='/area-details'">지역 상세 정보 보기</button>
+                        <button class="infowindow-button" onclick="window.location.href='/politician-list'">구청장 조회</button>
+                        <button class="infowindow-button" onclick="window.location.href='/area-details'">국회의원 조회</button>
                     </div>
                 </div>`;
 
