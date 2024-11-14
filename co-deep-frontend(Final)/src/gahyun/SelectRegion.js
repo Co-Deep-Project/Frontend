@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import geojson from '../lib/data/map.json';
+import './SelectRegion.css'; 
 
 const SelectRegion = () => {
   useEffect(() => {
@@ -11,14 +12,16 @@ const SelectRegion = () => {
     // 스크립트 로드 완료 후 카카오 맵 초기화
     script.onload = () => {
       window.kakao.maps.load(() => {
+        // 지도가 표시될 html 요소
         const mapContainer = document.getElementById('pollution-map');
         const mapOption = {
           center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
-          level: 9,
+          level: 9, // 지도의 확대 레벨
         };
 
         const map = new window.kakao.maps.Map(mapContainer, mapOption);
         const customOverlay = new window.kakao.maps.CustomOverlay({});
+        // 구역 클릭 시 해당 구역의 정보 표시하는 정보창 생성
         const infowindow = new window.kakao.maps.InfoWindow({ removable: true });
 
         let polygons = [];
@@ -67,7 +70,7 @@ const SelectRegion = () => {
         geojson.features.forEach((feature) => {
           const coordinates = feature.geometry.coordinates[0];
           const name = feature.properties.SIG_KOR_NM;
-          displayArea(coordinates, name); // displayArea 함수 호출
+          displayArea(coordinates, name); // displayArea 함수 호출 -> 지도에 표시됨
         });
       });
     };
@@ -76,10 +79,10 @@ const SelectRegion = () => {
   }, []);
 
   return (
-    <div>
-      <h1>정치인 조회할 지역 선택</h1>
+    <div className="container">
+      <h1>정치인을 조회할 지역 선택</h1>
       <p>여기에서 조회하고 싶은 지역을 선택하세요.</p>
-      <div id="pollution-map" style={{ width: '100%', height: '500px' }}></div> {/* 지도를 표시할 div */}
+      <div id="politic-map"></div> {/* 지도를 표시할 div */}
     </div>
   );
 };
