@@ -1,18 +1,18 @@
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
+const cors = require('cors'); 
 
 const app = express();
-app.use(cors());
-
 const port = 3000;
 const API_KEY = '70d8db9c548f4ea0b9f7ea947fe662ab';
 const BILL_LIST_URL = 'https://open.assembly.go.kr/portal/openapi/nwbpacrgavhjryiph';
 const VOTE_URL = 'https://open.assembly.go.kr/portal/openapi/nojepdqqaweusdfbi';
 
+app.use(cors());
+
 let billIdCache = [];
 
-// 모든 BILL_ID 가져오기
+// 모든 BILL_ID 가져오기 (페이지네이션 적용)
 async function fetchBillIds() {
     if (billIdCache.length > 0) {
         console.log("Using cached BILL_IDs:", billIdCache);
@@ -21,31 +21,36 @@ async function fetchBillIds() {
 
     let pIndex = 1;
     const billIds = [];
+    let hasMoreData = true;
 
     console.log("Starting to fetch BILL_IDs...");
 
     try {
-        const response = await axios.get(BILL_LIST_URL, {
-            params: {
-                Key: API_KEY,
-                Type: 'json',
-                AGE: 22,
-                pSize: 10,
-                pIndex: pIndex
-            }
-        });
-        const data = response.data;
-        console.log("API Response for Bill List:", data);
-
-        if (data.nwbpacrgavhjryiph && data.nwbpacrgavhjryiph[1].row) {
-            const rows = data.nwbpacrgavhjryiph[1].row;
-            for (let row of rows) {
-                if (row.BILL_ID) {
-                    billIds.push(row.BILL_ID);
+        while (hasMoreData) {
+            const response = await axios.get(BILL_LIST_URL, {
+                params: {
+                    Key: API_KEY,
+                    Type: 'json',
+                    AGE: 22,
+                    pSize: 10, // 페이지당 데이터 개수
+                    pIndex: pIndex // 페이지 인덱스
                 }
+            });
+            const data = response.data;
+            console.log(`API Response for Bill List (pIndex: ${pIndex}):`, data);
+
+            if (data.nwbpacrgavhjryiph && data.nwbpacrgavhjryiph[1].row) {
+                const rows = data.nwbpacrgavhjryiph[1].row;
+                for (let row of rows) {
+                    if (row.BILL_ID) {
+                        billIds.push(row.BILL_ID);
+                    }
+                }
+                pIndex++; // 다음 페이지로 이동
+            } else {
+                console.log("No more rows found in the response for BILL_IDs.");
+                hasMoreData = false; // 더 이상 데이터가 없으면 반복 종료
             }
-        } else {
-            console.log("No rows found in the response for BILL_IDs.");
         }
     } catch (error) {
         console.error("Error fetching bill list:", error.message);
@@ -98,7 +103,12 @@ async function fetchAllVoteDataForMember(memberName) {
         allVoteData.push(...voteData);
     }
 
-    console.log("Total Vote Data for Member:", allVoteData);
+    // 최신순으로 정렬
+    allVoteData.sort((a, b) => new Date(b.VOTE_DATE) - new Date(a.VOTE_DATE));
+
+    // 전체 데이터 개수 출력
+    console.log("Total number of vote records:", allVoteData.length);
+
     return allVoteData;
 }
 

@@ -87,15 +87,9 @@
 }
 
 .card, .card-2, .card-3 {
-<<<<<<< HEAD
-  width: 25vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
-  height: 15vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
-  border-radius: 20px;
-=======
   width: 19vw; /* 화면 너비의 25%로 설정하여 반응형 크기 조정 */
   height: 16vh; /* 화면 높이의 20%로 설정하여 반응형 크기 조정 */
   border-radius: 12px;
->>>>>>> bdbeee541897e7aded7db4b7181a5e206300a5e4
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -139,12 +133,6 @@
   margin-bottom: 5px;
 }
 
-<<<<<<< HEAD
-.label-5 {
-  font-size: 1vw;
-  font-weight: bold;
-  padding: 5px 20px;
-=======
 .link {
   display: flex;
   align-items: center; /* 세로 정렬을 중앙으로 맞춤 */
@@ -153,7 +141,6 @@
   margin-top: auto;
   margin-bottom: auto;
   margin-left: 3px;
->>>>>>> bdbeee541897e7aded7db4b7181a5e206300a5e4
 }
 
 .icon, .arrow-wrapper {
