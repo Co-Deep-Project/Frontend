@@ -1,10 +1,36 @@
-import React from "react";
-import "./style.css";
+import React, {useEffect} from "react";
+import "./style.css"; 
 import "./styleguide.css";
 import arrow1 from "../assets/arrow-1.svg";
 import logo from "../assets/polilogo.png"; 
 
 const Desktop = () => {
+  useEffect(() => {
+    const textArray = [
+      "객관적 정보, 주체적 판단", 
+      "청년을 위한 정치 플랫폼"
+    ];
+    const textContainer = document.getElementById("animated-text");
+
+    if (textContainer) {
+      textArray.forEach((line, lineIndex) => {
+        line.split("").forEach((letter, letterIndex) => {
+          const span = document.createElement("span");
+          span.textContent = letter === " " ? "\xa0" : letter;
+          span.style.animationDelay = `${(lineIndex * 20 + letterIndex) * 50}ms`;
+          span.classList.add("text-animated");
+          textContainer.appendChild(span);
+        });
+        // 줄바꿈을 추가
+        if (lineIndex < textArray.length - 1) {
+          const br = document.createElement("br");
+          textContainer.appendChild(br);
+        }
+      });
+    }
+  }, []);
+
+
   return (
     <div className="desktop">
       {/* header section */}
@@ -20,14 +46,7 @@ const Desktop = () => {
         </div>
 
         <header className="header">
-          <p className="p">
-            <br />
-            <br />
-            <br />
-            객관적 정보, 주체적 판단
-            <br />
-            청년을 위한 정치 플랫폼
-          </p>
+          <p id="animated-text" className="p"></p> {/* 애니메이션 텍스트 위치 */}
         </header>
       </div>
 
