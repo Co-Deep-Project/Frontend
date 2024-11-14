@@ -97,8 +97,10 @@ const SelectRegion = () => {
         <button className="home-button" onClick={() => navigate("/")}>Home</button>
       </header>
 
-      <h1>정치인을 조회할 지역 선택</h1>
-      <p>아래 지도에서 조회하고 싶은 지역을 선택하세요.</p>
+      <div className="textbox">
+        <h1>우리 지역 정치인 트래킹하기</h1>
+        <p>아래 지도에서 조회하고 싶은 지역을 선택하세요.</p>
+      </div>
       <div id="politic-map"></div> {/* 지도를 표시할 div */}
 
       <footer className="footer">
