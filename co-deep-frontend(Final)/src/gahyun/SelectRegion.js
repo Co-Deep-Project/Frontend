@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import geojson from '../lib/data/map.json';
 import './SelectRegion.css'; 
 
 const SelectRegion = () => {
+    const navigate = useNavigate();
+
   useEffect(() => {
     // 카카오 맵 스크립트 로드
     const script = document.createElement("script");
@@ -13,7 +16,7 @@ const SelectRegion = () => {
     script.onload = () => {
       window.kakao.maps.load(() => {
         // 지도가 표시될 html 요소
-        const mapContainer = document.getElementById('pollution-map');
+        const mapContainer = document.getElementById('politic-map');
         const mapOption = {
           center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
           level: 9, // 지도의 확대 레벨
@@ -60,7 +63,16 @@ const SelectRegion = () => {
 
           // 클릭 시 지역 이름 표시하는 인포윈도우
           window.kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
-            infowindow.setContent(`<div style="padding:5px; color:black;">${name}의 국회의원 조회</div>`);
+            const content = `
+                <div class="infowindow-content">
+                    <p><b>${name}</b>의 국회의원 조회</p>
+                    <div class="infowindow-button-container">
+                        <button class="infowindow-button" onclick="window.location.href='/politician-list'">국회의원 목록<br />보기</button>
+                        <button class="infowindow-button" onclick="window.location.href='/area-details'">지역 상세 정보 보기</button>
+                    </div>
+                </div>`;
+
+            infowindow.setContent(content);
             infowindow.setPosition(mouseEvent.latLng);
             infowindow.setMap(map);
           });
@@ -80,9 +92,18 @@ const SelectRegion = () => {
 
   return (
     <div className="container">
+      <header className="header">
+        <img src="/images/logo.png" alt="PoliTracker" className="logo" />
+        <button className="home-button" onClick={() => navigate("/")}>Home</button>
+      </header>
+
       <h1>정치인을 조회할 지역 선택</h1>
-      <p>여기에서 조회하고 싶은 지역을 선택하세요.</p>
+      <p>아래 지도에서 조회하고 싶은 지역을 선택하세요.</p>
       <div id="politic-map"></div> {/* 지도를 표시할 div */}
+
+      <footer className="footer">
+        <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
+      </footer>
     </div>
   );
 };
