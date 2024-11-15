@@ -50,7 +50,7 @@ const SelectRegion = () => {
             polygon.setOptions({
                 fillColor : '#cfc2e9'
             });
-            customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
+            //customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
             customOverlay.setPosition(mouseEvent.latLng);
             customOverlay.setMap(map);
           });
@@ -114,4 +114,4 @@ const SelectRegion = () => {
   );
 };
 
-export default SelectRegion;
+export default SelectRegion; 
