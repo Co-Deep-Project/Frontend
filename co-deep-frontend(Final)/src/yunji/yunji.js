@@ -21,6 +21,12 @@ const Yunji = () => {
   const handleHomeClick = () => {
     navigate('/'); // "/" 경로로 이동
   };
+  const handlePositionClick = () => {
+    navigate('/'); // "/" 경로로 이동
+  };
+  const handlePoliticianClick = () => {
+    navigate('/'); // "/" 경로로 이동
+  };
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -34,8 +40,8 @@ const Yunji = () => {
           <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
         </div>
         <div className="menu">
-          <span>구</span>
-          <span>정치인</span>
+        <button onClick={handlePositionClick}>구</button> {/* onClick 이벤트 추가 */}
+          <button onClick={handlePoliticianClick}>정치구</button> {/* onClick 이벤트 추가 */}
           <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
         </div>
       </div>
