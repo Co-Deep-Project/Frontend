@@ -5,11 +5,12 @@ import './SelectRegion.css';
 
 const SelectRegion = () => {
     const navigate = useNavigate();
+    const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
 
   useEffect(() => {
     // 카카오 맵 스크립트 로드
     const script = document.createElement("script");
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=766e5495ed72a2cf85087b9422ddfdee&autoload=false`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&autoload=false`;
     script.async = true;
 
     // 스크립트 로드 완료 후 카카오 맵 초기화
