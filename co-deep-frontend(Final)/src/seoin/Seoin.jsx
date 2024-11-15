@@ -4,16 +4,15 @@ import "./style.css";
 
 const Seoin = () => {
   const navigate = useNavigate();
-  const [votes, setVotes] = useState([]); // 전체 표결 데이터
-  const [displayVotes, setDisplayVotes] = useState([]); // 현재 페이지에 표시되는 표결 데이터
-  const [expanded, setExpanded] = useState({}); // 펼침 상태
-  const [page, setPage] = useState(1); // 페이지 상태
-  const [loading, setLoading] = useState(true); // 로딩 상태
-  const ITEMS_PER_PAGE = 3; // 페이지당 표시할 항목 수
+  const [votes, setVotes] = useState([]); 
+  const [displayVotes, setDisplayVotes] = useState([]); 
+  const [expanded, setExpanded] = useState({});
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true); 
+  const ITEMS_PER_PAGE = 3;
 
-  const memberName = "곽상언"; // 국회의원 이름
+  const memberName = "곽상언"; 
 
-  // Node.js 서버에서 표결 데이터 가져오기
   const fetchVotesFromServer = async () => {
     setLoading(true);
     try {
@@ -22,8 +21,8 @@ const Seoin = () => {
 
       if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        setVotes(data); // 전체 데이터를 가져와서 저장
-        setDisplayVotes(data.slice(0, ITEMS_PER_PAGE)); // 첫 페이지 데이터 설정
+        setVotes(data); 
+        setDisplayVotes(data.slice(0, ITEMS_PER_PAGE));
       } else {
         console.error("서버에서 JSON 형식이 아닌 응답을 받았습니다.");
       }
@@ -33,7 +32,6 @@ const Seoin = () => {
     setLoading(false);
   };
 
-  // 페이지 로드 시 초기 데이터 불러오기
   useEffect(() => {
     fetchVotesFromServer();
   }, []);
@@ -45,12 +43,11 @@ const Seoin = () => {
     }));
   };
 
-  // 추가 데이터를 불러오는 함수 (더보기 버튼 클릭 시)
   const loadMore = () => {
     const newPage = page + 1;
-    const newDisplayVotes = votes.slice(0, newPage * ITEMS_PER_PAGE); // 기존 데이터에서 추가
-    setDisplayVotes(newDisplayVotes); // 표시할 데이터 업데이트
-    setPage(newPage); // 페이지 수 증가
+    const newDisplayVotes = votes.slice(0, newPage * ITEMS_PER_PAGE); 
+    setDisplayVotes(newDisplayVotes); 
+    setPage(newPage); 
   };
 
   return (
@@ -59,6 +56,29 @@ const Seoin = () => {
         <img src="/images/logo.png" alt="PoliTracker" className="logo" />
         <button className="home-button" onClick={() => navigate("/")}>Home</button>
       </header>
+
+      <div className="card-profile">
+        <div className="profile-container">
+          <div className="left">
+            <h1 className = "profile-name">곽상언</h1>
+            <div>
+            <p className = "profile-details">- 출생: 1971. 11. 18 서울특별시</p>
+            <p className = "profile-details">- 학력: 서울대학교 법과대학 법학 석사</p>
+            <p className = "profile-details">- 소속: 대한민국 국회의원</p>
+            <p className = "profile-details">- 경력: <br />2024.05~ 제22대 국회의원 (서울 종로구/더불어민주당)<br />2024.05~ 대법원민주당 원내부대표</p>
+          </div>
+        </div>
+        <div className = "right">
+          <img src="https://search.pstatic.net/common?type=b&size=3000&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2F3676da74-ffdf-481d-b7ca-a0853d27685b.png" 
+          alt="Profile Image" className="profile-image"/>
+            <div className="button-container">
+              <a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&x_csa=%7B%22fromUi%22%3A%22kb%22%7D&pkid=1&os=168175&qvt=0&query=%EA%B3%BD%EC%83%81%EC%96%B8%20%EC%84%A0%EA%B1%B0%EC%9D%B4%EB%A0%A5" target="_blank" className="button">선거이력</a>
+              <a href="https://search.naver.com/search.naver?where=nexearch&sm=tab_etc&mra=bjky&x_csa=%7B%22fromUi%22%3A%22kb%22%7D&pkid=1&os=168175&qvt=0&query=%EA%B3%BD%EC%83%81%EC%96%B8%20%EC%B5%9C%EA%B7%BC%ED%99%9C%EB%8F%99" target="_blank" className="button">최근활동</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <main className="main-layout">
         <h1 className="main-title">의안 투표 추적</h1>
@@ -75,7 +95,7 @@ const Seoin = () => {
             <p>표결 데이터가 없습니다.</p>
           ) : (
             displayVotes.map((vote, index) => {
-              const displayNumber = votes.length - index; // 전체 데이터 개수 기반으로 최신순 번호 설정
+              const displayNumber = votes.length - index;
               return (
                 <div
                   key={index}
@@ -103,7 +123,7 @@ const Seoin = () => {
           )}
         </div>
 
-        {displayVotes.length < votes.length && ( // 아직 표시할 데이터가 남아있다면 더보기 버튼 표시
+        {displayVotes.length < votes.length && ( 
           <button className="load-more" onClick={loadMore}>더보기</button>
         )}
       </main>

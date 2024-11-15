@@ -11,7 +11,6 @@ const VOTE_URL = 'https://open.assembly.go.kr/portal/openapi/nojepdqqaweusdfbi';
 
 let billIdCache = [];
 
-// 모든 BILL_ID 가져오기 (페이지네이션 적용)
 async function fetchBillIds() {
     if (billIdCache.length > 0) {
         console.log("Using cached BILL_IDs:", billIdCache);
@@ -31,8 +30,8 @@ async function fetchBillIds() {
                     Key: API_KEY,
                     Type: 'json',
                     AGE: 22,
-                    pSize: 10, // 페이지당 데이터 개수
-                    pIndex: pIndex // 페이지 인덱스
+                    pSize: 10, 
+                    pIndex: pIndex
                 }
             });
             const data = response.data;
@@ -45,10 +44,10 @@ async function fetchBillIds() {
                         billIds.push(row.BILL_ID);
                     }
                 }
-                pIndex++; // 다음 페이지로 이동
+                pIndex++;
             } else {
                 console.log("No more rows found in the response for BILL_IDs.");
-                hasMoreData = false; // 더 이상 데이터가 없으면 반복 종료
+                hasMoreData = false; 
             }
         }
     } catch (error) {
@@ -60,7 +59,6 @@ async function fetchBillIds() {
     return billIds;
 }
 
-// 특정 국회의원의 표결 데이터를 BILL_ID로 가져오기
 async function fetchVoteDataForMember(billId, memberName) {
     try {
         const response = await axios.get(VOTE_URL, {
@@ -75,7 +73,6 @@ async function fetchVoteDataForMember(billId, memberName) {
         const data = response.data;
         console.log(`API Response for Vote Data (BILL_ID: ${billId}):`, data);
 
-        // API 응답 데이터 구조에 맞춰 조건문 수정
         if (
             data.nojepdqqaweusdfbi &&
             data.nojepdqqaweusdfbi[1] &&
@@ -92,19 +89,20 @@ async function fetchVoteDataForMember(billId, memberName) {
     }
 }
 
-// 모든 BILL_ID에 대해 병렬로 표결 데이터 가져오기
 async function fetchAllVoteDataForMember(memberName) {
     const billIds = await fetchBillIds();
-    const allVoteData = [];
 
-    for (let billId of billIds) {
-        const voteData = await fetchVoteDataForMember(billId, memberName);
-        allVoteData.push(...voteData);
-    }
+    const allVoteData = await Promise.all(
+        billIds.map((billId) => fetchVoteDataForMember(billId, memberName))
+    );
 
-    console.log("Total Vote Data for Member:", allVoteData);
-    console.log("Total number of vote records:", allVoteData.length);
-    return allVoteData;
+    const flattenedVoteData = allVoteData.flat();
+
+    flattenedVoteData.sort((a, b) => new Date(b.VOTE_DATE) - new Date(a.VOTE_DATE));
+
+    console.log("Total Vote Data for Member:", flattenedVoteData);
+    console.log("Total number of vote records:", flattenedVoteData.length);
+    return flattenedVoteData;
 }
 
 app.get('/api/vote_data', async (req, res) => {
