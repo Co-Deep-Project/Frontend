@@ -49,22 +49,22 @@ const SelectRegion = () => {
                 const displayDongAreas = (dongData) => {
                     dongData.forEach((dong) => {
                         const geometryType = dong.geometry.type;
-                
+
                         if (geometryType === "Polygon") {
                             const path = dong.geometry.coordinates[0].map(
                                 (coord) => new window.kakao.maps.LatLng(coord[1], coord[0])
                             );
-                
+
                             const polygon = new window.kakao.maps.Polygon({
                                 map: map,
                                 path: path,
                                 strokeWeight: 2,
-                                strokeColor: "#FF4500",
+                                strokeColor: "#5C5B5C", // 동 테두리색깔
                                 strokeOpacity: 0.8,
-                                fillColor: "#FFA07A",
+                                fillColor: "#CACACB", // 동 안에 색칠
                                 fillOpacity: 0.7,
                             });
-                
+
                             dongPolygons.push(polygon);
                             addDongPolygonEvents(polygon, dong);
                         } else if (geometryType === "MultiPolygon") {
@@ -72,17 +72,17 @@ const SelectRegion = () => {
                                 const path = polygonCoords[0].map(
                                     (coord) => new window.kakao.maps.LatLng(coord[1], coord[0])
                                 );
-                
+
                                 const polygon = new window.kakao.maps.Polygon({
                                     map: map,
                                     path: path,
                                     strokeWeight: 2,
-                                    strokeColor: "#FF4500",
+                                    strokeColor: "#5C5B5C",
                                     strokeOpacity: 0.8,
-                                    fillColor: "#FFA07A",
+                                    fillColor: "#CACACB",
                                     fillOpacity: 0.7,
                                 });
-                
+
                                 dongPolygons.push(polygon);
                                 addDongPolygonEvents(polygon, dong);
                             });
@@ -94,23 +94,36 @@ const SelectRegion = () => {
                 const addDongPolygonEvents = (polygon, dong) => {
                     // 마우스 오버
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
-                        polygon.setOptions({ fillColor: "#FF6347" });
-                        customOverlay.setContent(`<div style="padding:5px; color:black;">${dong.properties.DONG_KOR_NM}</div>`);
+                        polygon.setOptions({ fillColor: "#cfc2e9" });
+                        //customOverlay.setContent(`<div style="padding:5px; color:black;">${dong.properties.DONG_KOR_NM}</div>`);
                         customOverlay.setPosition(mouseEvent.latLng);
                         customOverlay.setMap(map);
                     });
 
                     // 마우스 아웃
                     window.kakao.maps.event.addListener(polygon, "mouseout", () => {
-                        polygon.setOptions({ fillColor: "#FFA07A" });
+                        polygon.setOptions({ fillColor: "#CACACB" });
                         customOverlay.setMap(null);
                     });
 
-                    // 동 클릭 시
+                    // 동 클릭 시 인포윈도우 표시
                     window.kakao.maps.event.addListener(polygon, "click", (mouseEvent) => {
-                        infowindow.setContent(`<div>${dong.properties.DONG_KOR_NM}</div>`);
+                        const content = document.createElement("div");
+                        content.className = "infowindow-content";
+                        content.innerHTML = `
+                            <p><b>${dong.properties.DONG_KOR_NM}</b>의 정치인 조회</p>
+                            <div class="infowindow-button-container">
+                                <button id="mayor-btn" class="infowindow-button">구청장 조회</button>
+                                <button id="representative-btn" class="infowindow-button">국회의원 조회</button>
+                            </div>`;
+
+                        infowindow.setContent(content);
                         infowindow.setPosition(mouseEvent.latLng);
                         infowindow.setMap(map);
+
+                        // 버튼 클릭 이벤트 추가
+                        content.querySelector("#mayor-btn").addEventListener("click", () => navigate("/yunji"));
+                        content.querySelector("#representative-btn").addEventListener("click", () => navigate("/seoin"));
                     });
                 };
 
@@ -133,7 +146,7 @@ const SelectRegion = () => {
                     // 마우스 오버 효과
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
                         polygon.setOptions({ fillColor: "#cfc2e9" });
-                        customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
+                        //customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
                         customOverlay.setPosition(mouseEvent.latLng);
                         customOverlay.setMap(map);
                     });
@@ -146,29 +159,26 @@ const SelectRegion = () => {
 
                     // 구 클릭 시 동 정보 표시
                     window.kakao.maps.event.addListener(polygon, "click", () => {
-                        // 기존 구 폴리곤 유지
                         dongPolygons.forEach((p) => p.setMap(null));
                         dongPolygons = [];
 
-                        // 해당 구의 동 데이터를 필터링
                         const dongData = districtsJson.features.filter(
                             (dong) => dong.properties.SIG_KOR_NM === name
                         );
 
                         if (dongData.length > 0) {
-                            map.setLevel(7); // 확대 레벨 변경
-                            displayDongAreas(dongData); // 동 정보 표시
+                            map.setLevel(7);
+                            displayDongAreas(dongData);
                         } else {
                             alert(`${name}의 동 정보가 없습니다.`);
                         }
                     });
                 };
 
-                // GeoJSON 데이터를 기반으로 각 구역 폴리곤을 지도에 표시
                 geojson.features.forEach((feature) => {
                     const coordinates = feature.geometry.coordinates[0];
                     const name = feature.properties.SIG_KOR_NM;
-                    displayArea(coordinates, name); // 구역 폴리곤 표시
+                    displayArea(coordinates, name);
                 });
             });
         };
@@ -201,3 +211,4 @@ const SelectRegion = () => {
 };
 
 export default SelectRegion;
+
