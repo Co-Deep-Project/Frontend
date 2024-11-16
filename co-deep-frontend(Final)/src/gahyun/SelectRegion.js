@@ -3,6 +3,23 @@ import { useNavigate } from "react-router-dom";
 import geojson from '../lib/data/map.json';
 import './SelectRegion.css'; 
 
+// 폴리곤의 중심 좌표 계산 함수
+function calculatePolygonCenter(path) {
+    let xSum = 0;
+    let ySum = 0;
+    const count = path.length;
+
+    path.forEach((latLng) => {
+        xSum += latLng.getLng();
+        ySum += latLng.getLat();
+    });
+
+    const centerLng = xSum / count;
+    const centerLat = ySum / count;
+
+    return new window.kakao.maps.LatLng(centerLat, centerLng);
+}
+
 const SelectRegion = () => {
     const navigate = useNavigate();
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
@@ -76,6 +93,14 @@ const SelectRegion = () => {
             infowindow.setContent(content);
             infowindow.setPosition(mouseEvent.latLng);
             infowindow.setMap(map);
+            
+            // 폴리곤의 중심 좌표 계산
+            const center = calculatePolygonCenter(path); // path를 중심 좌표 계산 함수에 전달
+            const targetLevel = 7; // 원하는 확대 레벨 (작을수록 더 확대됨)
+
+            // 지도를 중심 좌표로 확대
+            map.setLevel(targetLevel, { anchor: center });
+
 
             // Attach event listeners to the buttons after they are rendered
             content.querySelector("#mayor-btn").addEventListener("click", () => navigate("/yunji"));
