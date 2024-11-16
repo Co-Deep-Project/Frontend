@@ -4,6 +4,57 @@ import geojson from "../lib/data/seoul_map.json";
 import districtsJson from "../lib/data/seoul_districts.json"; // 동 정보가 포함된 JSON 파일
 import "./SelectRegion.css";
 
+/* // Polygon 중심 좌표 계산 함수 (centroid 알고리즘)
+function calculateCentroid(points) {
+    let area = 0, x = 0, y = 0;
+
+    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+        const p1 = points[i];
+        const p2 = points[j];
+        const f = p1[0] * p2[1] - p2[0] * p1[1];
+
+        area += f;
+        x += (p1[0] + p2[0]) * f;
+        y += (p1[1] + p2[1]) * f;
+    }
+
+    area /= 2;
+    x /= 6 * area;
+    y /= 6 * area;
+
+    return new window.kakao.maps.LatLng(y, x);
+} */
+
+function calculatePolygonCenter(coordinates) {
+    let xSum = 0;
+    let ySum = 0;
+    let totalPoints = 0;
+
+    // MultiPolygon인지 Polygon인지 확인 후 처리
+    if (Array.isArray(coordinates[0][0])) {
+        // MultiPolygon의 경우
+        coordinates.forEach((polygon) => {
+            polygon[0].forEach((coord) => {
+                xSum += coord[0];
+                ySum += coord[1];
+                totalPoints += 1;
+            });
+        });
+    } else {
+        // Polygon의 경우
+        coordinates[0].forEach((coord) => {
+            xSum += coord[0];
+            ySum += coord[1];
+            totalPoints += 1;
+        });
+    }
+
+    const centerLng = xSum / totalPoints;
+    const centerLat = ySum / totalPoints;
+
+    return new window.kakao.maps.LatLng(centerLat, centerLng);
+}
+
 const SelectRegion = () => {
     const navigate = useNavigate();
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
@@ -28,6 +79,7 @@ const SelectRegion = () => {
                 let regionPolygons = []; // 구 폴리곤 저장
                 let dongPolygons = []; // 동 폴리곤 저장
                 let goBackButton; // 구 다시 선택하기 버튼
+                const regionLabels = []; // 구 이름 표시용 오버레이 저장
 
                 // 동 폴리곤 표시 함수
                 const displayDongAreas = (dongData) => {
@@ -127,6 +179,9 @@ const SelectRegion = () => {
 
                     regionPolygons.push(polygon);
 
+                    // 구 중심 계산
+                    //const centroid = calculateCentroid(coordinates[0]);
+
                     // 마우스 오버 효과
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
                         polygon.setOptions({ fillColor: "#cfc2e9" });
@@ -146,6 +201,9 @@ const SelectRegion = () => {
                         // 구 폴리곤 제거
                         regionPolygons.forEach((p) => p.setMap(null));
                         regionPolygons = [];
+
+                        // 중심으로 지도 이동
+                        //map.panTo(centroid);
 
                         const dongData = districtsJson.features.filter(
                             (dong) => dong.properties.SIG_KOR_NM === name
@@ -204,7 +262,7 @@ const SelectRegion = () => {
     return (
         <div className="container">
             <header className="header">
-                <img src="/images/logo.png" alt="PoliTracker" className="logo" />
+                <img src="/images/logo.png" alt="PoliTracker" className="logo" onClick={() => navigate("/")}/>
                 <button className="home-button" onClick={() => navigate("/")}>Home</button>
             </header>
 
