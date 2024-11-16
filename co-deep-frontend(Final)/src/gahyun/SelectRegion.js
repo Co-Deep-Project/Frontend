@@ -4,23 +4,6 @@ import geojson from "../lib/data/seoul_map.json";
 import districtsJson from "../lib/data/seoul_districts.json"; // 동 정보가 포함된 JSON 파일
 import "./SelectRegion.css";
 
-// 폴리곤의 중심 좌표 계산 함수
-function calculatePolygonCenter(path) {
-    let xSum = 0;
-    let ySum = 0;
-    const count = path.length;
-
-    path.forEach((latLng) => {
-        xSum += latLng.getLng();
-        ySum += latLng.getLat();
-    });
-
-    const centerLng = xSum / count;
-    const centerLat = ySum / count;
-
-    return new window.kakao.maps.LatLng(centerLat, centerLng);
-}
-
 const SelectRegion = () => {
     const navigate = useNavigate();
     const KAKAO_API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
@@ -35,7 +18,7 @@ const SelectRegion = () => {
                 const mapContainer = document.getElementById("politic-map");
                 const mapOption = {
                     center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
-                    level: 9, // 지도의 확대 레벨
+                    level: 9, // 초기 확대 레벨
                 };
 
                 const map = new window.kakao.maps.Map(mapContainer, mapOption);
@@ -44,6 +27,7 @@ const SelectRegion = () => {
 
                 let regionPolygons = []; // 구 폴리곤 저장
                 let dongPolygons = []; // 동 폴리곤 저장
+                let goBackButton; // 구 다시 선택하기 버튼
 
                 // 동 폴리곤 표시 함수
                 const displayDongAreas = (dongData) => {
@@ -159,8 +143,9 @@ const SelectRegion = () => {
 
                     // 구 클릭 시 동 정보 표시
                     window.kakao.maps.event.addListener(polygon, "click", () => {
-                        dongPolygons.forEach((p) => p.setMap(null));
-                        dongPolygons = [];
+                        // 구 폴리곤 제거
+                        regionPolygons.forEach((p) => p.setMap(null));
+                        regionPolygons = [];
 
                         const dongData = districtsJson.features.filter(
                             (dong) => dong.properties.SIG_KOR_NM === name
@@ -169,9 +154,39 @@ const SelectRegion = () => {
                         if (dongData.length > 0) {
                             map.setLevel(7);
                             displayDongAreas(dongData);
+                            addGoBackButton();
                         } else {
                             alert(`${name}의 동 정보가 없습니다.`);
                         }
+                    });
+                };
+
+                // "구 다시 선택하기" 버튼 추가
+                const addGoBackButton = () => {
+                    if (!goBackButton) {
+                        goBackButton = document.createElement("button");
+                        goBackButton.innerText = "구 다시 선택하기";
+                        goBackButton.className = "back-button";
+                        goBackButton.onclick = () => resetToRegions();
+                        document.body.appendChild(goBackButton);
+                    }
+                };
+
+                // 구 다시 선택하기 상태로 리셋
+                const resetToRegions = () => {
+                    dongPolygons.forEach((p) => p.setMap(null));
+                    dongPolygons = [];
+
+                    infowindow.close(); // 인포윈도우 닫기
+                    map.setLevel(9); // 초기 확대 레벨로 복원
+
+                    goBackButton.remove();
+                    goBackButton = null;
+
+                    geojson.features.forEach((feature) => {
+                        const coordinates = feature.geometry.coordinates[0];
+                        const name = feature.properties.SIG_KOR_NM;
+                        displayArea(coordinates, name);
                     });
                 };
 
@@ -211,4 +226,3 @@ const SelectRegion = () => {
 };
 
 export default SelectRegion;
-
