@@ -3,57 +3,7 @@ import { useNavigate } from "react-router-dom";
 import geojson from "../lib/data/seoul_map.json";
 import districtsJson from "../lib/data/seoul_districts.json"; // 동 정보가 포함된 JSON 파일
 import "./SelectRegion.css";
-
-/* // Polygon 중심 좌표 계산 함수 (centroid 알고리즘)
-function calculateCentroid(points) {
-    let area = 0, x = 0, y = 0;
-
-    for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
-        const p1 = points[i];
-        const p2 = points[j];
-        const f = p1[0] * p2[1] - p2[0] * p1[1];
-
-        area += f;
-        x += (p1[0] + p2[0]) * f;
-        y += (p1[1] + p2[1]) * f;
-    }
-
-    area /= 2;
-    x /= 6 * area;
-    y /= 6 * area;
-
-    return new window.kakao.maps.LatLng(y, x);
-} */
-
-function calculatePolygonCenter(coordinates) {
-    let xSum = 0;
-    let ySum = 0;
-    let totalPoints = 0;
-
-    // MultiPolygon인지 Polygon인지 확인 후 처리
-    if (Array.isArray(coordinates[0][0])) {
-        // MultiPolygon의 경우
-        coordinates.forEach((polygon) => {
-            polygon[0].forEach((coord) => {
-                xSum += coord[0];
-                ySum += coord[1];
-                totalPoints += 1;
-            });
-        });
-    } else {
-        // Polygon의 경우
-        coordinates[0].forEach((coord) => {
-            xSum += coord[0];
-            ySum += coord[1];
-            totalPoints += 1;
-        });
-    }
-
-    const centerLng = xSum / totalPoints;
-    const centerLat = ySum / totalPoints;
-
-    return new window.kakao.maps.LatLng(centerLat, centerLng);
-}
+import centerData from "../lib/data/seoul_gu_centers.json";
 
 const SelectRegion = () => {
     const navigate = useNavigate();
@@ -130,7 +80,7 @@ const SelectRegion = () => {
                 const addDongPolygonEvents = (polygon, dong) => {
                     // 마우스 오버
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
-                        polygon.setOptions({ fillColor: "#cfc2e9" });
+                        polygon.setOptions({ fillColor: "#b29ddb" });
                         //customOverlay.setContent(`<div style="padding:5px; color:black;">${dong.properties.DONG_KOR_NM}</div>`);
                         customOverlay.setPosition(mouseEvent.latLng);
                         customOverlay.setMap(map);
@@ -205,6 +155,20 @@ const SelectRegion = () => {
                         // 중심으로 지도 이동
                         //map.panTo(centroid);
 
+                        // 중심 좌표 가져오기
+                        const center = centerData.centers.find((item) => item.name === name);
+                        if (center) {
+                            const centerPosition = new window.kakao.maps.LatLng(center.lat, center.lng);
+                            map.setCenter(centerPosition); // 중심으로 지도 이동
+
+                            // 지도 중심 확인 (애니메이션 후 지연을 두고 확인)
+                            setTimeout(() => {
+                                const currentCenter = map.getCenter();
+                                console.log("Current map center (LatLng):", currentCenter);
+                                console.log("Expected center position:", centerPosition);
+                            }, 500); // 애니메이션 지속 시간 이후 실행
+                        }
+
                         const dongData = districtsJson.features.filter(
                             (dong) => dong.properties.SIG_KOR_NM === name
                         );
@@ -236,6 +200,7 @@ const SelectRegion = () => {
                     dongPolygons = [];
 
                     infowindow.close(); // 인포윈도우 닫기
+                    map.setCenter(new window.kakao.maps.LatLng(37.566826, 126.9786567));
                     map.setLevel(9); // 초기 확대 레벨로 복원
 
                     goBackButton.remove();
