@@ -22,7 +22,7 @@ const Yunji = () => {
     navigate('/'); // "/" 경로로 이동
   };
   const handlePositionClick = () => {
-    navigate('/'); // "/" 경로로 이동
+    navigate('/select-region'); // "/" 경로로 이동
   };
   const handlePoliticianClick = () => {
     navigate('/'); // "/" 경로로 이동

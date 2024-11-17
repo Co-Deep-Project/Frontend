@@ -63,18 +63,22 @@ const SelectRegion = () => {
 
           // 클릭 시 지역 이름 표시하는 인포윈도우
           window.kakao.maps.event.addListener(polygon, 'click', function (mouseEvent) {
-            const content = `
-                <div class="infowindow-content">
-                    <p><b>${name}</b>의 정치인 조회</p>
-                    <div class="infowindow-button-container">
-                        <button class="infowindow-button" onclick="window.location.href='/politician-list'">구청장 조회</button>
-                        <button class="infowindow-button" onclick="window.location.href='/area-details'">국회의원 조회</button>
-                    </div>
+            const content = document.createElement("div");
+            content.className = "infowindow-content";
+            content.innerHTML = `
+                <p><b>${name}</b>의 정치인 조회</p>
+                <div class="infowindow-button-container">
+                    <button id="mayor-btn" class="infowindow-button">구청장 조회</button>
+                    <button id="representative-btn" class="infowindow-button">국회의원 조회</button>
                 </div>`;
 
             infowindow.setContent(content);
             infowindow.setPosition(mouseEvent.latLng);
             infowindow.setMap(map);
+
+            // Attach event listeners to the buttons after they are rendered
+            content.querySelector("#mayor-btn").addEventListener("click", () => navigate("/yunji"));
+            content.querySelector("#representative-btn").addEventListener("click", () => navigate("/seoin"));
           });
         };
 
