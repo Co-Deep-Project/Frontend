@@ -33,8 +33,12 @@ const Desktop = () => {
     }
   }, []);
 
-  const handleNavigation = () => {
-    navigate("/select-region"); // 새로운 페이지 경로 설정
+  const navigateToMbti = () => {
+    navigate("/mbti"); // Navigate to the MBTI page
+  };
+
+  const navigateToSelectRegion = () => {
+    navigate("/select-region"); // Navigate to the Select Region page
   };
 
   return (
@@ -79,7 +83,7 @@ const Desktop = () => {
               </div>
             </div>
             <br></br>
-            <div className="link">
+            <div className="link" onClick={navigateToMbti} style={{ cursor: "pointer" }}>
               <div className="icon">
                 <img className="arrow" src={arrow1} alt="Arrow" />
               </div>
@@ -100,7 +104,7 @@ const Desktop = () => {
                 </div>
               </div>
               <br></br>
-              <div className="link" onClick={handleNavigation} style={{ cursor: "pointer" }}>
+              <div className="link" onClick={navigateToSelectRegion} style={{ cursor: "pointer" }}>
                 <div className="arrow-wrapper">
                   <img className="arrow" src={arrow1} alt="Arrow 1" />
                 </div>
