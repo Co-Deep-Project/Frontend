@@ -1,118 +1,226 @@
-/* 전체 컨테이너 */
-.chatbot-container {
-    width: 100%;
-    min-height: 100vh;
-    background-color: #f9f9f9; /* 뉴스 섹션 배경색 */
-    padding: 20px;
-    position: relative;
-  }
-  
-  /* 뉴스 섹션 */
-  .news-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .news-header {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  /* 뉴스 카드 레이아웃 */
-  .news-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 반응형 레이아웃 */
-    gap: 20px;
-    padding: 10px;
-  }
-  
-  .news-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-  
-  .news-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .news-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .news-content {
-    padding: 15px;
-    text-align: left;
-  }
-  
-  .news-title {
-    font-size: 1.2rem;
-    color: #0078d7;
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  .news-description {
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
-  }
-  
-  /* 챗봇 버튼 */
-  .chatbot-button {
-    width: 60px;
-    height: 60px;
-    background-color: #0078d7;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  /* 챗봇 창 */
-  .chatbot-window {
-    width: 320px;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* 챗봇 헤더 */
-  .chatbot-header {
-    background-color: #0078d7;
-    color: white;
-    padding: 15px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .close-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
+/* 헤더 섹션 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  position: relative;
+  background-color: transparent;
+}
+
+.logo-container {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+.poliLogo {
+  width: 250px;
+  height: auto;
+  max-width: 100%; /* 화면 너비 초과 방지 */
+}
+
+.menu {
+  display: flex;
+  position: absolute;
+  top: 5px;
+  right: 40px; /* 위치 조정 */
+  gap: 10px;
+  align-items: center;
+}
+
+.menu span {
+  font-size: 1em;
+  color: #333;
+}
+
+.menu button {
+  font-size: 1em;
+  padding: 6px 16px;
+  border: 1px solid #333;
+  background-color: transparent;
+  color: #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* 뉴스 섹션 */
+.news-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.news-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.news-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.news-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 15px;
+}
+
+.news-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.news-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* 챗봇 버튼 */
+/* 챗봇 버튼 */
+.chatbot-button {
+  width: 60px;
+  height: 60px;
+  background-color: #0078d7;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 버튼 그림자 */
+  transition: transform 0.2s ease-in-out;
+}
+
+.chatbot-button:hover {
+  transform: scale(1.1); /* 호버 시 확대 효과 */
+  background-color: #005bb5;
+}
+
+/* 챗봇 창 */
+.chatbot-window {
+  width: 400px;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* 창 그림자 */
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+  border: 1px solid #e0e0e0; /* 테두리 */
+}
+
+/* 챗봇 헤더 */
+.chatbot-header {
+  background-color: #0078d7;
+  color: white;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.close-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* 챗봇 메시지 섹션 */
+.chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f9f9f9; /* 메시지 배경 */
+}
+
+/* 메시지 스타일 */
+.chatbot-message {
+  max-width: 70%;
+  padding: 10px 15px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.chatbot-message.user {
+  background-color: #0078d7;
+  color: white;
+  align-self: flex-end;
+}
+
+.chatbot-message.bot {
+  background-color: #e0e0e0;
+  color: #333;
+  align-self: flex-start;
+}
+
+/* 메시지 입력 섹션 */
+.chatbot-input-container {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #ffffff;
+}
+
+.chatbot-input {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.chatbot-input:focus {
+  border-color: #0078d7;
+}
+
+.send-button {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-left: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.send-button:hover {
+  background-color: #005bb5;
+}

@@ -1,0 +1,157 @@
+/* 결과 화면 */
+.result-container {
+    background: #121212;
+    color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    font-size: 1.1rem;
+    text-align: center;
+  }
+  
+  /* 핵심 문장 강조 */
+  .result-header {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #8455b3;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* 텍스트 그림자 효과 */
+  }
+  
+  /* 성향 설명 */
+  .result-description p {
+    font-size: 1.2rem;
+    line-height: 1.6; /* 행간 넓힘 */
+    text-align: center;
+    margin-bottom: 30px;
+    white-space: pre-line;
+  }
+  
+  /* 설명과 성향 간격 조정 */
+  .result-description {
+    margin-bottom: 30px;
+  }
+  
+  /* 신문 추천 섹션 */
+  .newspaper-recommendation {
+    background: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  
+  .newspaper-recommendation h3 {
+    font-size: 1.6rem; /* 제목 크기 키움 */
+    color: #8455b3;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .newspaper-recommendation p {
+    font-size: 1.1rem; /* 설명 글자 크기 증가 */
+    color: #f0f0f0;
+    line-height: 1.6;
+  }
+  
+  /* 헤드라인 리스트 */
+  .headlines-wrapper {
+    margin-top: 40px;
+  }
+  
+  .headline-title {
+    font-size: 1.5rem;
+    color: #c084fc;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .headline-item {
+    background: #2a2a2a;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-align: left;
+    transition: transform 0.3s ease;
+  }
+  
+  .headline-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .headline-item h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .headline-item p {
+    font-size: 0.95rem;
+    color: #f0f0f0;
+  }
+  
+  /* 버튼 스타일 */
+  .result-actions {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .restart-button {
+    background-color: #8455b3;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: none;
+  }
+  
+  .restart-button:hover {
+    background-color: #6d3ca6;
+  }
+  
+  /* 모바일 화면 (767px 이하) */
+  @media (max-width: 767px) {
+    .result-container {
+      padding: 20px; /* 모바일에서 패딩 줄임 */
+      max-width: 100%; /* 모바일에서는 컨테이너의 max-width를 100%로 설정 */
+    }
+  
+    .result-description p {
+      font-size: 1rem; /* 모바일에서 폰트 크기 줄임 */
+      line-height: 1.5;
+    }
+  
+    .newspaper-recommendation {
+      padding: 14px; /* 모바일에서 패딩 줄임 */
+    }
+  
+    .newspaper-recommendation h3 {
+      font-size: 1.3rem; /* 모바일에서 제목 크기 줄임 */
+    }
+  
+    .newspaper-recommendation p {
+      font-size: 0.95rem; /* 모바일에서 설명 글자 크기 줄임 */
+    }
+  
+    .restart-button {
+      padding: 12px 25px; /* 모바일에서 버튼 크기 줄임 */
+      font-size: 1.2rem; /* 모바일에서 버튼 폰트 크기 줄임 */
+    }
+  
+    .headline-item {
+      padding: 14px; /* 모바일에서 패딩 줄임 */
+    }
+  
+    .headline-item h4 {
+      font-size: 1rem; /* 모바일에서 제목 크기 줄임 */
+    }
+  
+    .headline-item p {
+      font-size: 0.9rem; /* 모바일에서 설명 크기 줄임 */
+    }
+  }
+  
