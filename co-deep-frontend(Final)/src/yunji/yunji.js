@@ -22,7 +22,7 @@ const Yunji = () => {
     navigate('/'); // "/" 경로로 이동
   };
   const handlePositionClick = () => {
-    navigate('/'); // "/" 경로로 이동
+    navigate('/select-region'); // "/" 경로로 이동
   };
   const handlePoliticianClick = () => {
     navigate('/'); // "/" 경로로 이동
@@ -41,7 +41,7 @@ const Yunji = () => {
         </div>
         <div className="menu">
         <button onClick={handlePositionClick}>구</button> {/* onClick 이벤트 추가 */}
-          <button onClick={handlePoliticianClick}>정치구</button> {/* onClick 이벤트 추가 */}
+          <button onClick={handlePoliticianClick}>정치인</button> {/* onClick 이벤트 추가 */}
           <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
         </div>
       </div>
@@ -50,6 +50,9 @@ const Yunji = () => {
         <LeftPanel handleButtonClick={handleButtonClick} />
         <RightPanel handleButtonClick={handleButtonClick} message={message} />
       </div>
+      <footer className="footer">
+        <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
+      </footer>
     </div>
   );
 };
