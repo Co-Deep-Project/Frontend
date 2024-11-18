@@ -11,6 +11,10 @@ const Mbti = () => {
     setScreen("result"); // 결과 화면으로 전환
   };
 
+  const handleRestart = () => {
+    setScreen("start"); // 시작 화면으로 돌아가기
+  };
+
   return (
     <div className="mbti-container">
       {/* 시작 화면 */}
@@ -20,7 +24,7 @@ const Mbti = () => {
       {screen === "question" && <QuestionScreen onComplete={handleComplete} />}
 
       {/* 결과 화면 */}
-      {screen === "result" && <ResultScreen />}
+      {screen === "result" && <ResultScreen onRestart={handleRestart} />}
     </div>
   );
 };

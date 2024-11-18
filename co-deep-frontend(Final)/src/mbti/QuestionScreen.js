@@ -136,7 +136,11 @@ const QuestionScreen = ({ onComplete }) => {
           </button>
 
           {/* 다음 버튼 */}
-          <button className="next-button" onClick={handleNext}>
+          <button
+            className="next-button"
+            onClick={handleNext}
+            disabled={selectedAnswer === null} // 선택된 답변이 없을 경우 비활성화
+          >
             다음
           </button>
         </div>

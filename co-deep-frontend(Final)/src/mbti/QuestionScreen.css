@@ -153,8 +153,9 @@
 }
 
 .next-button:disabled {
-  background: #a0a0a0; /* 비활성화된 버튼 색상 */
-  cursor: not-allowed;
+  background: #555; /* 비활성화된 버튼 색상 */
+  cursor: not-allowed; /* 클릭 불가 표시 */
+  opacity: 0.6;
 }
 
 /* 파동 효과 */
