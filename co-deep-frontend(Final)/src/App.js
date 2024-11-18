@@ -5,6 +5,7 @@ import SelectRegion from "./gahyun/SelectRegion"; // 새로운 페이지 임포�
 import Mbti from "./gahyun/Mbti";
 import Seoin from "./seoin/Seoin";
 import Home from "./Home";
+import Chatbot from "./chatbot/Chatbot";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     path: "/mbti", // 새로운 경로 추가
     element: <Mbti />, // SelectRegion 컴포넌트 연결
   },
+  {
+    path: "/chatbot",
+    element: <Chatbot />,
+  }
 ]);
 
 function App() {
