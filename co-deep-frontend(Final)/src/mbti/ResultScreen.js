@@ -10,7 +10,7 @@ const ResultScreen = ({ onRestart }) => {
           "당신은 사회 정의와 평등을 위한 활동에 적극적이며, 사회적 변화에 대한 열정을 가지고 있습니다.",
         recommendedNewspaper: "한겨레 신문",
         newspaperDescription:
-          "한겨레 신문은 진보적 성향을 가진 독자들에게 사회적 문제, 인권, 환경 등의 다양한 이슈에 대한 깊이 있는 분석과 논평을 제공합니다. 한겨레는 사회적 책임과 정의를 중시하며, 사회 운동과 관련된 중요 뉴스를 빠짐없이 다룹니다. 또한, 여러 사회적 문제에 대한 대안을 제시하고 독자들에게 더 나은 사회를 위한 실천적 방법을 고민하게 만듭니다.",
+          "한겨레 신문은 사회적 책임과 정의를 중시하며, 사회 운동과 관련된 중요 뉴스를 다루고, 여러 사회적 문제에 대한 대안을 제시해줍니다"
       },
     {
       label: "중도",
@@ -43,19 +43,25 @@ const ResultScreen = ({ onRestart }) => {
   // 성향 결정 (이 부분은 실제로는 사용자의 선택에 따라 결정됨)
   const userTrait = politicalTraits[0]; // 예시로 "진보적" 성향을 선택한 경우
 
+
   const handleHeadlineClick = (headline) => {
     setSelectedHeadline(headline);
   };
 
   return (
     <div className="result-container">
+      <h1>테스트가 완료되었습니다!</h1>
       <header className="result-header">
-        <h1>테스트가 완료되었습니다!</h1>
-        <p>당신의 정치 성향은 <strong>{userTrait.label}</strong>입니다.</p>
+        <p className = "header2">당신의 정치 성향은 <strong>{userTrait.label}</strong>입니다.</p>
+        <p>당신에게 추천하는 신문은 <strong>{userTrait.recommendedNewspaper}</strong>입니다.</p>
       </header>
 
       <div className="result-description">
         <p>{userTrait.description}</p>
+      </div>
+
+      <div className = "newspaper-description">
+        <p>{userTrait.newspaperDescription}</p>
       </div>
 
       <div className="news-headlines">
@@ -68,7 +74,6 @@ const ResultScreen = ({ onRestart }) => {
               onClick={() => handleHeadlineClick(news)}
             >
               <h4>{news.title}</h4>
-              <p>{news.description}</p>
             </div>
           ))}
         </div>

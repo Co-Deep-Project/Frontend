@@ -65,10 +65,12 @@ const QuestionScreen = ({ onComplete }) => {
 
   const totalQuestions = questions.length; // 전체 질문 수
   const [currentQuestion, setCurrentQuestion] = useState(0); // 현재 질문 인덱스
+  const [selectedAnswer, setSelectedAnswer] = useState(null); // 선택된 답변
 
   const handleNext = () => {
     if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1); // 다음 질문으로 이동
+      setSelectedAnswer(null); // 다음 질문으로 넘어갈 때 선택 초기화
     } else {
       alert("테스트가 끝났습니다!"); // 테스트 종료 알림
       onComplete(); // 부모 컴포넌트로 결과 화면 전환 요청
@@ -78,7 +80,12 @@ const QuestionScreen = ({ onComplete }) => {
   const handlePrevious = () => {
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1); // 이전 질문으로 이동
+      setSelectedAnswer(null); // 이전 질문으로 갈 때 선택 초기화
     }
+  };
+
+  const handleAnswerClick = (index) => {
+    setSelectedAnswer(index); // 선택된 답변 인덱스 저장
   };
 
   return (
@@ -107,7 +114,11 @@ const QuestionScreen = ({ onComplete }) => {
         {/* 답변 */}
         <div className="answerBox">
           {questions[currentQuestion].answers.map((answer, index) => (
-            <button key={index} className="answer-button">
+            <button
+              key={index}
+              className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
+              onClick={() => handleAnswerClick(index)}
+            >
               {answer}
             </button>
           ))}
@@ -116,7 +127,11 @@ const QuestionScreen = ({ onComplete }) => {
         {/* 버튼들 컨테이너 */}
         <div className="button-container">
           {/* 이전 버튼 */}
-          <button className="next-button" onClick={handlePrevious} disabled={currentQuestion === 0}>
+          <button
+            className="next-button"
+            onClick={handlePrevious}
+            disabled={currentQuestion === 0}
+          >
             이전
           </button>
 
