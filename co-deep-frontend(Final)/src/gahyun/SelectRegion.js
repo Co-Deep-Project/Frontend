@@ -94,6 +94,8 @@ const SelectRegion = () => {
 
                     // 동 클릭 시 인포윈도우 표시
                     window.kakao.maps.event.addListener(polygon, "click", (mouseEvent) => {
+                        const districtName = dong.properties.SIG_KOR_NM; // 구 이름 가져오기
+
                         const content = document.createElement("div");
                         content.className = "infowindow-content";
                         content.innerHTML = `
@@ -108,8 +110,21 @@ const SelectRegion = () => {
                         infowindow.setMap(map);
 
                         // 버튼 클릭 이벤트 추가
-                        content.querySelector("#mayor-btn").addEventListener("click", () => navigate("/yunji"));
-                        content.querySelector("#representative-btn").addEventListener("click", () => navigate("/seoin"));
+                        content.querySelector("#mayor-btn").addEventListener("click", () => {
+                            if (districtName !== "종로구") {
+                                alert("서비스 준비중입니다."); // '종로구' 외 지역은 경고창 띄움
+                                return;
+                            }
+                            navigate("/yunji"); // '종로구'일 경우에만 페이지 이동
+                        });
+
+                        content.querySelector("#representative-btn").addEventListener("click", () => {
+                            if (districtName !== "종로구") {
+                                alert("서비스 준비중입니다."); // '종로구' 외 지역은 경고창 띄움
+                                return;
+                            }
+                            navigate("/seoin"); // '종로구'일 경우에만 페이지 이동
+                        });
                     });
                 };
 
