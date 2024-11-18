@@ -1,42 +1,36 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Chatbot.css";
-import logo from "../yunji/assets/polilogo.png";
-
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false); // 챗봇 열림/닫힘 상태
   const [messages, setMessages] = useState([]); // 챗봇 메시지 상태
   const [inputValue, setInputValue] = useState(""); // 채팅 입력 상태
   const [news, setNews] = useState([]); // 뉴스 데이터 상태
-  const navigate = useNavigate();
 
   const toggleChatbot = () => setIsOpen(!isOpen); // 챗봇 열기/닫기
-
-  const handleHomeClick = () => navigate("/"); // Home 경로로 이동
-  const handlePositionClick = () => navigate("/select-region"); // "구" 경로로 이동
-  const handlePoliticianClick = () => navigate("/politician"); // "정치인" 경로로 이동
 
   // Mock 뉴스 데이터
   useEffect(() => {
     setNews([
       {
         id: 1,
-        title: "정치 뉴스: 최신 선거 정보",
+        title: "뉴스 1: 최신 선거 정보",
         description: "다음 선거에 관한 주요 뉴스를 확인하세요.",
-        image: "https://via.placeholder.com/300x200",
       },
       {
         id: 2,
-        title: "경제 뉴스: 새로운 법안 발의",
+        title: "뉴스 2: 새로운 법안 발의",
         description: "최근 경제 법안 발의와 그 영향.",
-        image: "https://via.placeholder.com/300x200",
       },
       {
         id: 3,
-        title: "사회 뉴스: 청년 취업 지원 프로그램",
+        title: "뉴스 3: 청년 취업 지원 프로그램",
         description: "청년층 대상 취업 지원 프로그램 확대 소식.",
-        image: "https://via.placeholder.com/300x200",
+      },
+      {
+        id: 4,
+        title: "뉴스 4: 트래커스꾸 창업 성공",
+        description: "성균관대학교 코딥 프로젝트에서 뭉친 트래커스꾸가 개발한 politracker 대성공하다",
       },
     ]);
   }, []);
@@ -59,38 +53,25 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      {/* 헤더 섹션 */}
-      <div className="header">
-        <div className="logo-container">
-          <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
-        </div>
-        <div className="menu">
-          <button onClick={handlePositionClick}>구</button>
-          <button onClick={handlePoliticianClick}>정치인</button>
-          <button onClick={handleHomeClick}>Home</button>
-        </div>
-      </div>
-
       {/* 뉴스 섹션 */}
       <div className="news-container">
-        <h1 className="news-header">최신 뉴스</h1>
-        <div className="news-cards">
-          {news.map((item) => (
-            <div key={item.id} className="news-card">
-              <img src={item.image} alt={item.title} className="news-image" />
-              <div className="news-content">
-                <h2 className="news-title">{item.title}</h2>
-                <p className="news-description">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+  <h1 className="news-header">최신 뉴스</h1>
+  <div className="news-cards">
+    {news.map((item) => (
+      <div key={item.id} className="news-card">
+        <h2 className="news-title">{item.title}</h2>
+        <p className="news-description">{item.description}</p>
+        <a href="#!" className="news-button">더 보기</a> {/* 링크 추가 */}
       </div>
+    ))}
+  </div>
+</div>
+
 
       {/* 챗봇 버튼 */}
       {!isOpen && (
         <div className="chatbot-button" onClick={toggleChatbot}>
-   
+          💬
         </div>
       )}
 
@@ -99,6 +80,9 @@ const Chatbot = () => {
         <div className="chatbot-window">
           <div className="chatbot-header">
             <span>POLITRACKER Chatbot</span>
+            <button className="close-button" onClick={toggleChatbot}>
+              ✖
+            </button>
           </div>
           <div className="chatbot-messages">
             {messages.map((message, index) => (

@@ -1,105 +1,89 @@
-/* 헤더 섹션 */
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  position: relative;
-  background-color: transparent;
-}
-
-.logo-container {
-  position: absolute;
-  top: 5px;
-  left: 20px;
-}
-
-.poliLogo {
-  width: 250px;
-  height: auto;
-  max-width: 100%; /* 화면 너비 초과 방지 */
-}
-
-.menu {
-  display: flex;
-  position: absolute;
-  top: 5px;
-  right: 40px; /* 위치 조정 */
-  gap: 10px;
-  align-items: center;
-}
-
-.menu span {
-  font-size: 1em;
-  color: #333;
-}
-
-.menu button {
-  font-size: 1em;
-  padding: 6px 16px;
-  border: 1px solid #333;
-  background-color: transparent;
-  color: #333;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-/* 뉴스 섹션 */
+/* 전체 컨테이너 */
 .news-container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 20px auto;
   text-align: center;
+  padding: 20px;
 }
 
-.news-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  padding: 10px;
+/* 뉴스 제목 */
+.news-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
 }
 
+/* 뉴스 카드 */
 .news-card {
-  background-color: white;
+  background: #ffffff; /* 흰 배경 */
+  border: 1px solid #ddd; /* 연한 테두리 */
   border-radius: 12px;
+  padding: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  cursor: pointer; /* 클릭 가능 마우스 포인터 */
 }
 
 .news-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* 살짝 올라감 */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #f3f4ff; /* 연한 라벤더 호버 배경 */
 }
 
-.news-image {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.news-content {
-  padding: 15px;
-}
-
+/* 뉴스 제목 */
 .news-title {
   font-size: 1.2rem;
   font-weight: bold;
+  color: #333; /* 진한 검은색 */
   margin-bottom: 10px;
 }
 
+/* 뉴스 설명 */
 .news-description {
-  font-size: 1rem;
-  color: #555;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #666; /* 중간 회색 */
+  line-height: 1.6;
 }
+
+/* 더 보기 버튼 */
+.news-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  color: #4c3f5e;
+  border: 1px solid #4c3f5e;
+  border-radius: 8px;
+  background: transparent;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.news-button:hover {
+  background-color: #4c3f5e;
+  color: white;
+  border-color: #4c3f5e;
+}
+
+/* 뉴스 레이아웃 */
+.news-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 반응형 */
+  gap: 20px;
+  padding: 20px;
+}
+
+
 
 /* 챗봇 버튼 */
 /* 챗봇 버튼 */
 .chatbot-button {
   width: 60px;
   height: 60px;
-  background-color: #0078d7;
+  background-color: #4c3f5e;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -116,7 +100,7 @@
 
 .chatbot-button:hover {
   transform: scale(1.1); /* 호버 시 확대 효과 */
-  background-color: #005bb5;
+  background-color: #4c3f5e;
 }
 
 /* 챗봇 창 */
@@ -136,23 +120,34 @@
   border: 1px solid #e0e0e0; /* 테두리 */
 }
 
+
 /* 챗봇 헤더 */
 .chatbot-header {
-  background-color: #0078d7;
-  color: white;
-  padding: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
+  background-color: #4c3f5e;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px 10px 0 0;
 }
 
-.close-icon {
-  width: 20px;
-  height: 20px;
+/* 닫기 버튼 */
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
   cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
 }
+
+.close-button:hover {
+  transform: scale(1.1);
+  color: #ff6b6b;
+}
+
 
 /* 챗봇 메시지 섹션 */
 .chatbot-messages {
@@ -176,7 +171,7 @@
 }
 
 .chatbot-message.user {
-  background-color: #0078d7;
+  background-color: #4c3f5e;
   color: white;
   align-self: flex-end;
 }
@@ -206,11 +201,11 @@
 }
 
 .chatbot-input:focus {
-  border-color: #0078d7;
+  border-color: #4c3f5e;
 }
 
 .send-button {
-  background-color: #0078d7;
+  background-color: #4c3f5e;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -222,5 +217,5 @@
 }
 
 .send-button:hover {
-  background-color: #005bb5;
+  background-color: #4c3f5e;
 }
