@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Yunji from "./yunji/yunji";
 import SelectRegion from "./gahyun/SelectRegion"; // 새로운 페이지 임포트
-import Mbti from "./gahyun/Mbti";
+import Mbti from "./mbti/Mbti";
 import Seoin from "./seoin/Seoin";
 import Home from "./Home";
 import Chatbot from "./chatbot/Chatbot";
