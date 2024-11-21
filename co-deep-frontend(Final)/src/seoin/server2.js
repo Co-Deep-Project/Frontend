@@ -6,7 +6,7 @@ const app = express();
 app.use(cors());
 
 const PORT = 3002;
-const API_KEY = '70d8db9c548f4ea0b9f7ea947fe662ab';
+const API_KEY = process.env.API_KEY;
 const MEMBER_NAME = '곽상언';
 
 
