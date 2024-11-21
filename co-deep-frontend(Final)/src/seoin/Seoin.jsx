@@ -76,14 +76,24 @@ const Seoin = () => {
 
   return (
     <div className="desktop">
-      <header className="tracking-header">
-        <img src="/images/logo.png" alt="PoliTracker" className="logo" />
-        <button className="home-button" onClick={() => navigate("/")}>
-          Home
-        </button>
+      <header id="tracking-header">
+        <img
+          id="logo"
+          src="/images/logo.png"
+          alt="PoliTracker"
+          onClick={() => navigate("/")}
+        />
+        <div id="button-container">
+          <button id="region-button" onClick={() => navigate("/select-region")}>
+            구
+          </button>
+          <button id="home-button" onClick={() => navigate("/")}>
+            Home
+          </button>
+        </div>
       </header>
 
-      {/* Profile Section */}
+
       <div className="card-profile">
         <div className="profile-container">
           <div className="left">
@@ -208,9 +218,6 @@ const Seoin = () => {
                 </div>
               );
             })
-          )}
-          {page * ITEMS_PER_PAGE < votes.length && (
-            <button className="load-more" onClick={loadMore}>더보기</button>
           )}
         </div>
 
