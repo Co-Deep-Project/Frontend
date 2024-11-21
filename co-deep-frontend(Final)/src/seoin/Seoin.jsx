@@ -18,7 +18,7 @@ const Seoin = () => {
   const fetchVotesFromServer = async () => {
     setVotesLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/api/vote_data?name=${memberName}`);
+      const response = await fetch(`http://localhost:3001/api/vote_data?name=${memberName}`);
       const data = await response.json();
       setVotes(data);
       if (activeTab === "votes") {
@@ -33,7 +33,7 @@ const Seoin = () => {
   const fetchBillsFromServer = async () => {
     setBillsLoading(true);
     try {
-      const response = await fetch("http://localhost:4000/api/bills");
+      const response = await fetch("http://localhost:3002/api/bills");
       const data = await response.json();
       // 최신순 정렬
       const sortedBills = data.sort((a, b) => new Date(b.propose_date) - new Date(a.propose_date));
@@ -92,7 +92,6 @@ const Seoin = () => {
           </button>
         </div>
       </header>
-
 
       <div className="card-profile">
         <div className="profile-container">
