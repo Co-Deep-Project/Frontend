@@ -83,6 +83,7 @@ const Seoin = () => {
         </button>
       </header>
 
+      {/* Profile Section */}
       <div className="card-profile">
         <div className="profile-container">
           <div className="left">
@@ -207,6 +208,9 @@ const Seoin = () => {
                 </div>
               );
             })
+          )}
+          {page * ITEMS_PER_PAGE < votes.length && (
+            <button className="load-more" onClick={loadMore}>더보기</button>
           )}
         </div>
 

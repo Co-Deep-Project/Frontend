@@ -54,7 +54,15 @@
   cursor: pointer;
   transition: background-color 0.3s;
 }
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  line-height: 1.35;
+}
 
+.footer p {
+  font-size: 13px;
+}
 .menu button:hover {
   background-color: #e0e0e0;
 }
