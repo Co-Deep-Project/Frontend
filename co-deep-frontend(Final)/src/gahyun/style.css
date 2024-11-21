@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 110px;
   overflow-x: hidden;
 }
 
@@ -49,7 +50,7 @@
 .heading-subheading .div {
   line-height: 1.5;
   font-size: clamp(16px, 1vw, 20px);
-  color: #333;
+  color: #1a1a1a;
 }
 
 /* "서비스" 섹션 */
@@ -74,6 +75,18 @@
 
 /* 화면 크기가 px 이하일 때 */
 @media (max-width: 767px) {
+  /* "객관적 정보, 주체적 판단" 슬로건 */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    right: 3vw;
+}
+
   .overlap-2 {
     flex-direction: row; /* 작은 화면에서는 세로로 정렬 */
     gap: 25px; /* 카드 사이 간격 조절 */
@@ -185,9 +198,25 @@
 /* 하단 정보 */
 .element-trackerskku-g {
   position: fixed;
-  bottom: 40px;
+  bottom: 35px;
   text-align: center;
+  line-height: 1.35;
   font-size: 14px;
   color: #333;
   margin-top: 10px;
+}
+
+/* 텍스트 애니메이션 */
+.text-animated {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.25s forwards ease-in-out;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
