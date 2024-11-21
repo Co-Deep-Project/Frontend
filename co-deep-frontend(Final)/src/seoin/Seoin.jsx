@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./style.css";
+import "./seoin_style.css";
 
 const Seoin = () => {
   const navigate = useNavigate();
