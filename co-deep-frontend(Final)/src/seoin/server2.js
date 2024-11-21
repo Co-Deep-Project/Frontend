@@ -3,11 +3,13 @@ import fetch from 'node-fetch';
 import cors from 'cors';
 
 const app = express();
-const PORT = 4000;
+app.use(cors());
+
+const PORT = 3002;
 const API_KEY = '70d8db9c548f4ea0b9f7ea947fe662ab';
 const MEMBER_NAME = '곽상언';
 
-app.use(cors());
+
 
 async function fetchBillsProposedByMember(memberName, apiKey) {
   const url = 'https://open.assembly.go.kr/portal/openapi/nzmimeepazxkubdpn';
@@ -40,7 +42,7 @@ async function fetchBillsProposedByMember(memberName, apiKey) {
     } else {
       console.error("API Response Error: Unexpected structure or missing data.");
     }
-
+    
     console.log(`Total number of bills records : ${bills.length}`);
 
     return bills;
