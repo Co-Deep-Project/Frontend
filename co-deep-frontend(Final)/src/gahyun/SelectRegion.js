@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import geojson from "../lib/data/seoul_map.json";
-import districtsJson from "../lib/data/seoul_districts.json"; // 동 정보가 포함된 JSON 파일
+import districtsJson from "../lib/data/seoul_districts.json";
 import "./SelectRegion.css";
 import centerData from "../lib/data/seoul_gu_centers.json";
 
@@ -14,9 +14,15 @@ const SelectRegion = () => {
         script.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_API_KEY}&autoload=false`;
         script.async = true;
 
+        let goBackButton; // "구 다시 선택하기" 버튼을 전역 변수로 선언
+
         script.onload = () => {
             window.kakao.maps.load(() => {
                 const mapContainer = document.getElementById("politic-map");
+                if (!mapContainer) {
+                    console.error("Map container not found!");
+                    return;
+                }
                 const mapOption = {
                     center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
                     level: 9, // 초기 확대 레벨
@@ -28,8 +34,6 @@ const SelectRegion = () => {
 
                 let regionPolygons = []; // 구 폴리곤 저장
                 let dongPolygons = []; // 동 폴리곤 저장
-                let goBackButton; // 구 다시 선택하기 버튼
-                const regionLabels = []; // 구 이름 표시용 오버레이 저장
 
                 // 동 폴리곤 표시 함수
                 const displayDongAreas = (dongData) => {
@@ -45,9 +49,9 @@ const SelectRegion = () => {
                                 map: map,
                                 path: path,
                                 strokeWeight: 2,
-                                strokeColor: "#5C5B5C", // 동 테두리색깔
+                                strokeColor: "#5C5B5C",
                                 strokeOpacity: 0.8,
-                                fillColor: "#CACACB", // 동 안에 색칠
+                                fillColor: "#CACACB",
                                 fillOpacity: 0.7,
                             });
 
@@ -78,22 +82,20 @@ const SelectRegion = () => {
 
                 // 동 폴리곤 이벤트 추가 함수
                 const addDongPolygonEvents = (polygon, dong) => {
-                    // 마우스 오버
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
                         polygon.setOptions({ fillColor: "#b29ddb" });
-                        //customOverlay.setContent(`<div style="padding:5px; color:black;">${dong.properties.DONG_KOR_NM}</div>`);
                         customOverlay.setPosition(mouseEvent.latLng);
                         customOverlay.setMap(map);
                     });
 
-                    // 마우스 아웃
                     window.kakao.maps.event.addListener(polygon, "mouseout", () => {
                         polygon.setOptions({ fillColor: "#CACACB" });
                         customOverlay.setMap(null);
                     });
 
-                    // 동 클릭 시 인포윈도우 표시
                     window.kakao.maps.event.addListener(polygon, "click", (mouseEvent) => {
+                        const districtName = dong.properties.SIG_KOR_NM;
+
                         const content = document.createElement("div");
                         content.className = "infowindow-content";
                         content.innerHTML = `
@@ -107,14 +109,31 @@ const SelectRegion = () => {
                         infowindow.setPosition(mouseEvent.latLng);
                         infowindow.setMap(map);
 
-                        // 버튼 클릭 이벤트 추가
-                        content.querySelector("#mayor-btn").addEventListener("click", () => navigate("/yunji"));
-                        content.querySelector("#representative-btn").addEventListener("click", () => navigate("/seoin"));
+                        content.querySelector("#mayor-btn").addEventListener("click", () => {
+                            if (districtName !== "종로구") {
+                                alert("서비스 준비중입니다.");
+                                return;
+                            }
+                            navigate("/yunji");
+                        });
+
+                        content.querySelector("#representative-btn").addEventListener("click", () => {
+                            if (districtName !== "종로구") {
+                                alert("서비스 준비중입니다.");
+                                return;
+                            }
+                            navigate("/seoin");
+                        });
                     });
                 };
 
                 // 구 폴리곤 표시 함수
                 const displayArea = (coordinates, name) => {
+                    if (!coordinates || coordinates.length === 0) {
+                        console.error(`Invalid coordinates for region: ${name}`);
+                        return;
+                    }
+
                     const path = coordinates.map((coord) => new window.kakao.maps.LatLng(coord[1], coord[0]));
 
                     const polygon = new window.kakao.maps.Polygon({
@@ -129,44 +148,25 @@ const SelectRegion = () => {
 
                     regionPolygons.push(polygon);
 
-                    // 구 중심 계산
-                    //const centroid = calculateCentroid(coordinates[0]);
-
-                    // 마우스 오버 효과
                     window.kakao.maps.event.addListener(polygon, "mouseover", (mouseEvent) => {
                         polygon.setOptions({ fillColor: "#cfc2e9" });
-                        //customOverlay.setContent(`<div style="padding:5px; color:black;">${name}</div>`);
                         customOverlay.setPosition(mouseEvent.latLng);
                         customOverlay.setMap(map);
                     });
 
-                    // 마우스 아웃 효과
                     window.kakao.maps.event.addListener(polygon, "mouseout", () => {
                         polygon.setOptions({ fillColor: "#fff" });
                         customOverlay.setMap(null);
                     });
 
-                    // 구 클릭 시 동 정보 표시
                     window.kakao.maps.event.addListener(polygon, "click", () => {
-                        // 구 폴리곤 제거
                         regionPolygons.forEach((p) => p.setMap(null));
                         regionPolygons = [];
 
-                        // 중심으로 지도 이동
-                        //map.panTo(centroid);
-
-                        // 중심 좌표 가져오기
                         const center = centerData.centers.find((item) => item.name === name);
                         if (center) {
                             const centerPosition = new window.kakao.maps.LatLng(center.lat, center.lng);
-                            map.setCenter(centerPosition); // 중심으로 지도 이동
-
-                            // 지도 중심 확인 (애니메이션 후 지연을 두고 확인)
-                            setTimeout(() => {
-                                const currentCenter = map.getCenter();
-                                console.log("Current map center (LatLng):", currentCenter);
-                                console.log("Expected center position:", centerPosition);
-                            }, 500); // 애니메이션 지속 시간 이후 실행
+                            map.setCenter(centerPosition);
                         }
 
                         const dongData = districtsJson.features.filter(
@@ -185,13 +185,15 @@ const SelectRegion = () => {
 
                 // "구 다시 선택하기" 버튼 추가
                 const addGoBackButton = () => {
-                    if (!goBackButton) {
-                        goBackButton = document.createElement("button");
-                        goBackButton.innerText = "구 다시 선택하기";
-                        goBackButton.className = "back-button";
-                        goBackButton.onclick = () => resetToRegions();
-                        document.body.appendChild(goBackButton);
+                    if (goBackButton) {
+                        return;
                     }
+
+                    goBackButton = document.createElement("button");
+                    goBackButton.innerText = "구 다시 선택하기";
+                    goBackButton.className = "back-button";
+                    goBackButton.onclick = () => resetToRegions();
+                    document.body.appendChild(goBackButton);
                 };
 
                 // 구 다시 선택하기 상태로 리셋
@@ -199,16 +201,25 @@ const SelectRegion = () => {
                     dongPolygons.forEach((p) => p.setMap(null));
                     dongPolygons = [];
 
-                    infowindow.close(); // 인포윈도우 닫기
-                    map.setCenter(new window.kakao.maps.LatLng(37.566826, 126.9786567));
-                    map.setLevel(9); // 초기 확대 레벨로 복원
+                    infowindow.close();
 
-                    goBackButton.remove();
-                    goBackButton = null;
+                    map.setCenter(new window.kakao.maps.LatLng(37.566826, 126.9786567));
+                    map.setLevel(9);
+
+                    if (goBackButton) {
+                        goBackButton.remove();
+                        goBackButton = null;
+                    }
 
                     geojson.features.forEach((feature) => {
                         const coordinates = feature.geometry.coordinates[0];
                         const name = feature.properties.SIG_KOR_NM;
+
+                        if (!coordinates || coordinates.length === 0) {
+                            console.error(`Invalid coordinates for region: ${name}`);
+                            return;
+                        }
+
                         displayArea(coordinates, name);
                     });
                 };
@@ -222,12 +233,19 @@ const SelectRegion = () => {
         };
 
         document.head.appendChild(script);
+
+        // Cleanup function: 다른 페이지로 이동할 때 "구 다시 선택하기" 버튼 제거
+        return () => {
+            if (goBackButton) {
+                goBackButton.remove();
+            }
+        };
     }, [navigate]);
 
     return (
         <div className="container">
             <header className="header">
-                <img src="/images/logo.png" alt="PoliTracker" className="logo" onClick={() => navigate("/")}/>
+                <img src="/images/logo.png" alt="PoliTracker" className="logo" onClick={() => navigate("/")} />
                 <button className="home-button" onClick={() => navigate("/")}>Home</button>
             </header>
 

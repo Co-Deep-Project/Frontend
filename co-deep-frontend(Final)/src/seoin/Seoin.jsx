@@ -84,8 +84,13 @@ const Seoin = () => {
           onClick={() => navigate("/")}
         />
         <div id="button-container">
-          <button id="region-button" onClick={() => navigate("/select-region")}>
-            구
+          <button
+              id="region-button"
+              onClick={() => {
+                navigate("/select-region", { replace: true });
+              }}
+          >
+            구 다시 선택하기
           </button>
           <button id="home-button" onClick={() => navigate("/")}>
             Home
