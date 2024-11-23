@@ -45,14 +45,13 @@
 }
 
 .menu button {
-  font-size: 1em;
-  padding: 6px 16px;
-  border: 1px solid #333;
-  background-color: transparent;
-  color: #333;
+  border: 1px solid black; 
+  padding: 10px 15px; 
+  background-color: white;
+  cursor: pointer; 
+  font-size: 14px; 
   border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s; 
 }
 .footer {
   text-align: center;

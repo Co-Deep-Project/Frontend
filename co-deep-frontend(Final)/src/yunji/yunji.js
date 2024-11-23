@@ -40,7 +40,13 @@ const Yunji = () => {
           <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
         </div>
         <div className="menu">
-        <button onClick={handlePositionClick}>구</button> {/* onClick 이벤트 추가 */}
+            <button
+                  id="region-button"
+                  onClick={() => {
+                    navigate("/select-region", { replace: true });
+                  }}
+            >
+            구 다시 선택하기</button> {/* onClick 이벤트 추가 */}
           <button onClick={handlePoliticianClick}>정치인</button> {/* onClick 이벤트 추가 */}
           <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
         </div>
