@@ -4,8 +4,8 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-const port = 3000;
-const API_KEY = '...';
+const port = 3001;
+const API_KEY = process.env.API_KEY;
 const BILL_LIST_URL = 'https://open.assembly.go.kr/portal/openapi/nwbpacrgavhjryiph';
 const VOTE_URL = 'https://open.assembly.go.kr/portal/openapi/nojepdqqaweusdfbi';
 
