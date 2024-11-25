@@ -4,8 +4,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh; /* 뷰포트 높이를 100%로 설정하여 항상 전체 화면 크기 유지 */
-  background: #121212; /* 검은색 배경 */
-  color: #ffffff;
+  background: white; /* 검은색 배경 */
+  color: black;
   text-align: center;
   font-family: "Noto Sans KR", sans-serif;
   overflow: hidden; /* 스크롤바 숨기기 */
@@ -29,18 +29,26 @@
 .main-heading {
   font-size: 3.2rem;
   font-weight: bold;
-  color: #ffffff;
+  color: black;
   margin-bottom: 15px;
   text-align: center;
   overflow:hidden;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   letter-spacing: 2px; /* 글자 간격 넓히기 */
 }
+.main-heading::after {
+  content: '|';
+  opacity: 1;
+  animation: blink 0.7s infinite;
+}
+
+
 
 /* 서브 텍스트 */
 .sub-heading {
   font-size: 1.4rem;
-  color: #cccccc;
+  color: black;
+  font-weight: bold;
   margin-bottom: 20px; /* 서브텍스트와 버튼 사이의 간격 */
   letter-spacing: 1px; /* 글자 간격 넓히기 */
   line-height: 1.5; /* 줄 간격 넓히기 */

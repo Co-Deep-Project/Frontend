@@ -4,32 +4,31 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
-  color: #ffffff;
+  background: white; /* 전체 배경을 흰색으로 설정 */
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
   position: relative;
+  padding: 20px;
 }
 
 /* 중앙 컨테이너 크기 및 텍스트 크기 조정 */
 .question-box {
-  width: 90%; /* 반응형 디자인을 위한 너비 조정 */
+  width: 100%; /* 전체 너비 사용 */
   max-width: 500px; /* 최대 너비 제한 */
-  background: white; /* 배경색 통일 */
+  background: #f8f8f8; /* 밝은 회색 배경으로 변경 */
   border-radius: 20px; /* 모서리 둥글게 */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 -5px 15px rgba(255, 255, 255, 0.05);
-  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 더 섬세한 그림자 */
+  padding: 30px; /* 내부 여백 조정 */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto; /* 내용이 많아질 경우 스크롤 가능 */
+  align-items: center; /* 자식 요소들 중앙 정렬 */
+  margin-top: 10px;
 }
 
 /* 진행률 표시 */
 .progress-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 5px; /* 텍스트와 진행 바 간격 조정 */
+  width: 100%; /* 전체 너비 사용 */
+  margin-bottom: 20px; /* 아래 여백 */
 }
 
 .progress-text {
@@ -45,7 +44,7 @@
   background-color: #292929;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .status-bar-fill {

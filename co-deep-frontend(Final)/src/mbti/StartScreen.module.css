@@ -1,0 +1,12 @@
+.highlight {
+    background: linear-gradient(90deg, #4a4a4a, #2b2b2b); /* 톤다운 블랙 그라디언트 */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* 텍스트에 그라디언트 적용 */
+}
+
+  .title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: -20px; /* Welcome 텍스트를 위로 올림 */
+  }
