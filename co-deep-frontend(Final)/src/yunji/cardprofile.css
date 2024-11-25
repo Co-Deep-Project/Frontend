@@ -1,7 +1,6 @@
 .card-profile {
   width: 700px;
-  padding: 20px;
-  padding-top: 50px;
+  padding: 30px;
   height: auto;
   border-radius: 10px;
   background: white;
@@ -10,9 +9,7 @@
   flex-direction: column;
   align-items: center;
   font-family: 'Arial', sans-serif;
-  margin: 0 auto; /* 중앙 정렬 */
 }
-
 .profile-container {
   width: 100%;
   display: flex;

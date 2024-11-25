@@ -1,18 +1,15 @@
 /* 전체 화면 컨테이너 */
 .start-screen {
-  font-family: "Noto Sans KR", sans-serif;
-  width: 500px; /* ResultScreen과 동일한 너비 */
-  height: 900px; /* ResultScreen과 동일한 높이 */
   display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 뷰포트 높이를 100%로 설정하여 항상 전체 화면 크기 유지 */
   background: #121212; /* 검은색 배경 */
   color: #ffffff;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto; /* 중앙 정렬 */
-  animation: backgroundAnimation 15s linear infinite; /* 배경 애니메이션 효과 */
+  font-family: "Noto Sans KR", sans-serif;
+  overflow: hidden; /* 스크롤바 숨기기 */
+  margin: 0 auto;
 }
 
 /* 배경 애니메이션 효과 */
@@ -34,6 +31,8 @@
   font-weight: bold;
   color: #ffffff;
   margin-bottom: 15px;
+  text-align: center;
+  overflow:hidden;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   letter-spacing: 2px; /* 글자 간격 넓히기 */
 }

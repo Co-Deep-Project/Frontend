@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./ResultScreen.css"; // 스타일링을 위한 CSS 파일 임포트
+import Lion from "./assets/Lion.webp";
+
 
 const ResultScreen = ({ onRestart }) => {
   // 예시 정치 성향과 뉴스 헤드라인
@@ -50,7 +52,8 @@ const ResultScreen = ({ onRestart }) => {
 
   return (
     <div className="result-container">
-      <h1>테스트가 완료되었습니다!</h1>
+      <div className="character-display" style={{ backgroundImage: `url(${Lion})` }}>
+        </div>
       <header className="result-header">
         <p className = "header2">당신의 정치 성향은 <strong>{userTrait.label}</strong>입니다.</p>
         <p>당신에게 추천하는 신문은 <strong>{userTrait.recommendedNewspaper}</strong>입니다.</p>

@@ -1,23 +1,33 @@
 /* 전체 결과 화면 */
 .result-container {
-  background: #121212; /* 검은 배경 */
-  color: #fff; /* 텍스트 색상 */
-  padding: 30px;
-  border-radius: 15px;
-  width: 500px;
-  max-height: auto;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6); /* 그림자 추가 */
-  font-family: 'Poppins', sans-serif;
+  background: #ffffff; /* 밝은 배경으로 변경 */
+  padding: 20px;
+  border-radius: 12px; /* 모서리 둥글게 */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1); /* 그림자 부드럽게 */
   text-align: center;
+  font-family: 'Poppins', sans-serif;
+  max-width: 600px; /* 최대 너비 설정 */
+  margin: 40px auto; /* 자동 마진으로 중앙 정렬 */
+  color:black;
 }
+
 
 /* 헤더 영역 */
 .result-header {
-  background: #8455b3; /* 연한 보라색 배경 */
-  color: #fff; /* 흰색 텍스트 */
-  padding: 20px;
-  border-radius: 12px;
+  color: #333;
+  margin: 20px 0;
+}
+
+.result-description {
   margin-bottom: 20px;
+  padding: 15px;
+  background: #b9a5df; /* 좀 더 연한 배경색 */
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  word-break:keep-all;
+  color: black;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .result-header h1 {
@@ -31,26 +41,17 @@
   margin-top: 10px;
 }
 
-/* 성향 설명 섹션 */
-.result-description {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #ece5f9; /* 연한 라벤더 배경 */
-  border-radius: 10px;
-  font-size: 1rem;
-  color: #333;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* 신문 추천 설명 */
 .newspaper-description {
   margin-bottom: 20px;
   padding: 15px;
-  background: #f9f6ff; /* 좀 더 연한 배경색 */
+  background: #b9a5df; /* 좀 더 연한 배경색 */
   border-radius: 10px;
   font-size: 1rem;
-  color: #444;
+  word-break:keep-all;
+  font-weight: bold;
+  color: black;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -61,12 +62,12 @@
 
 .news-headlines h3 {
   font-size: 1.2rem;
-  color: #eee;
+  color: black;
   margin-bottom: 15px;
 }
 
 .headlines-list .headline {
-  background: #333;
+  background: #8455b3;
   padding: 5px;
   border-radius: 8px;
   margin-bottom: 10px;
@@ -100,6 +101,27 @@
   transition: background 0.3s ease;
 }
 
-.result-actions .restart-button:hover {
+
+
+.character-display {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 200px; /* 이미지 높이 설정 */
+}
+
+
+
+.result-actions button {
+  background-color: #8455b3;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.result-actions button:hover {
   background-color: #6d3ca6;
 }
