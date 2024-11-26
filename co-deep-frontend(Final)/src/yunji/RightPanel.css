@@ -1,6 +1,8 @@
 .right-panel {
   width: 90%;
   max-width: 600px;
+    max-height: 800px; /* 적절한 높이로 조절 */
+    overflow-y: auto; /* 세로 스크롤바 적용 */
   margin: 0 auto;
   padding: 0; /* 상단 패딩을 완전히 제거하여 위로 밀어 올림 */
   text-align: center;
@@ -9,7 +11,6 @@
   align-items: center;
   height: auto; /* 기본적으로 높이 자동 조정 */
   box-sizing: border-box;
-  overflow-y: hidden; /* 기본적으로 스크롤 숨김 */
 }
 .panel-title {
   font-size: 1.2em;
@@ -23,7 +24,7 @@
   padding: 8px 12px; /* 드롭다운 높이를 줄이기 위해 패딩 감소 */
   font-size: 1em;
   margin-bottom: 10px; /* 드롭다운과 그래프 사이의 여백을 줄임 */
-  border: 2px solid #B39DDB;
+  border: 2px solid #b39ddb;
   border-radius: 8px;
   background-color: #F3E5F5;
   color: #333;
@@ -38,13 +39,8 @@
 }
 
 .dropdown:hover {
-  background-color: #E1BEE7;
-  border-color: #9575CD;
-}
-
-.dropdown:focus {
-  border-color: #8977a7;
-  box-shadow: 0px 0px 5px rgba(149, 117, 205, 0.5);
+  background-color: #d1c4e9;
+  border-color: #9575cd;
 }
 
 /* 히스토그램 스타일 */
@@ -69,16 +65,14 @@
   }
 }
 /* 전체 평균 이행률 카드 */
-.overall-average-card {
-  width: 80%;
-  max-width: 300px;
-  margin: 10px auto 20px; /* 상단 여백 */
-  padding: 15px;
-  background: #f1e4fc;
-  border: 2px solid #b39ddb;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+.overall-average-card, .average-progress-card {
+  background-color: #ffffff; /* 밝은 배경색 */
+  border: 1px solid #ddd; /* 더 미묘한 경계선 */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 더 가벼운 그림자 */
+  border-radius: 8px; /* 모서리 둥글게 */
+  padding: 20px; /* 넉넉한 내부 여백 */
+  margin: 10px 0; /* 위아래 마진 조정 */
+  transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 
 .overall-average-card p {
@@ -93,18 +87,7 @@
   color: #4527a0;
 }
 
-/* 평균 이행률 카드 */
-.average-progress-card {
-  width: 80%;
-  max-width: 300px;
-  margin: 10px auto;
-  padding: 15px;
-  background: #f1e4fc;
-  border: 2px solid #b39ddb;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 
 .average-progress-card p {
   font-size: 1em;
@@ -136,4 +119,53 @@
 .styled-link:hover {
   color: #4527a0; /* 호버 시 보라색 텍스트 */
   border-bottom: 2px solid #4527a0; /* 호버 시 보라색 밑줄 */
+}
+
+/* 게시판 스타일 */
+.policy-list {
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 15px 20px;
+  background-color: #f9f6fc;
+  border: 2px solid #d1c4e9;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.policy-list h3 {
+  font-size: 1.2em;
+  color: #6a1b9a;
+  margin-bottom: 15px;
+  text-align: center;
+  border-bottom: 2px solid #d1c4e9;
+  padding-bottom: 5px;
+}
+
+.policy-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.policy-list li {
+  font-size: 1em;
+  color: #4527a0;
+  margin: 5px 0;
+  padding: 8px 10px;
+  background-color: #ede7f6;
+  border: 1px solid #b39ddb;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.policy-list li:hover {
+  background-color: #d1c4e9;
+  border-color: #9575cd;
+}
+
+.bar-style{
+  background-color: #ede7f6;
+  border: 1px solid #b39ddb;
 }

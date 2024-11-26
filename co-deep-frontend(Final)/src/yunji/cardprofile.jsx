@@ -1,5 +1,5 @@
 import React from 'react';
-import './cardprofile.css';
+import styles from './cardprofile.module.css'
 
 const CardProfile = () => (
     <div className="card-profile">
@@ -15,10 +15,10 @@ const CardProfile = () => (
       </div>
       <div className = "right">
         <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.namu.wiki%2Fi%2FibyqO-nOgXG_SOgebV9TqQlj2aCsSe2IH5DJQr6vxZmu9jcC2rm1xbqAFy_WDUvl2NdXYRRWNdNM9IvPwg-TCw.webp&type=sc960_832" 
-        alt="Profile Image" className="profile-image"/>
+        alt="Profile Image" className={styles.picture}/>
           <div className="button-container">
-            <a href="https://blog.naver.com/cmoonhun" target="_blank" className="button">블로그</a>
-            <a href="https://www.youtube.com/channel/UCe-M7_274sPEOkd20gYnH4g" target="_blank" className="button">유튜브</a>
+            <a href="https://blog.naver.com/cmoonhun" target="_blank" className={styles.button}>블로그</a>
+            <a href="https://www.youtube.com/channel/UCe-M7_274sPEOkd20gYnH4g" target="_blank" className={styles.button}>유튜브</a>
           </div>
         </div>
       </div>

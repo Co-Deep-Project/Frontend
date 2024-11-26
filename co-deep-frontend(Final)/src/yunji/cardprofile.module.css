@@ -41,7 +41,7 @@
   line-height: 1.5;
 }
 
-.profile-image {
+.picture {
   width: 180px;
   height: 250px;
   object-fit: cover;
@@ -57,13 +57,20 @@
 .button {
   padding: 10px 20px;
   border-radius: 5px;
-  background-color: rgb(190, 162, 218);
-  color: black;
+  color:  #4527a0;
   font-weight: bold;
-  border: none;
+  background-color: #ede7f6;
+  border: 1px solid #b39ddb;
   cursor: pointer;
   text-decoration: none;
   text-align: center;
+  transition: all 0.3s ease;
+}
+
+
+.button:hover {
+  background-color: #d1c4e9;
+  border-color: #9575cd;
 }
 
   @media (max-width: 767px) {
