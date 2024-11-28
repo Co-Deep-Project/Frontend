@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LabelList } from "recharts";
 import "./RightPanel.css";
 import ReactTooltip from "recharts/lib/component/Tooltip";
+import styles from './RightPanel.module.css'
 
 const RightPanel = () => {
   const [activeGroup, setActiveGroup] = useState("");
@@ -151,7 +152,9 @@ const RightPanel = () => {
           <p>전체 평균 이행률</p>
           <h2>{overallAverage}%</h2>
         </div>
-          <p className="evaluation-note">본 평가는 이행률 데이터가 명시된 정책들만을 대상으로 산출되었습니다.</p>
+        <div className = {styles.evaluation}>
+          <p>본 평가는 이행률 데이터가 명시된 정책들만을 대상으로 산출되었습니다.</p>
+          </div>
           </div>
       )}
 
@@ -185,8 +188,10 @@ const RightPanel = () => {
             <p>{activeGroup}의 평균 이행률</p>
             <h2>{selectedGroupAverage}%</h2>
           </div>
-          <p className="evaluation-note">본 평가는 이행률 데이터가 명시된 정책들만을 대상으로 산출되었습니다.</p>
-          <p className = "evaluation-note">세부적인 정책 명이 궁금하시다면, 그래프를 눌러보세요</p>
+          <div className = {styles.evaluation}>
+          <p>본 평가는 이행률 데이터가 명시된 정책들만을 대상으로 산출되었습니다.</p>
+          <p>세부적인 정책 명이 궁금하시다면, 그래프를 눌러보세요</p>
+          </div>
           </div>
 
           <ResponsiveContainer width="100%" height={300}>
