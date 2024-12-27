@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // useNavigate 추가
+import { useNavigate } from "react-router-dom";
 import "./QuestionScreen.css";
 
 const QuestionScreen = ({ onComplete }) => {
+  const navigate = useNavigate();
+
   const questions = [
     {
       question: "1. 어느 농민이 '나의 생계가 너무 어려워요'라고 말했어요. 이에 대해 왕은 어떻게 해야 할까요?",
@@ -121,7 +123,21 @@ const QuestionScreen = ({ onComplete }) => {
   const [socialProgressive, setSocialProgressive] = useState(0);
   const [socialConservative, setSocialConservative] = useState(0);
 
-
+  const handleComplete = () => {
+    const results = {
+      economicProgressive,
+      economicConservative,
+      diplomaticProgressive,
+      diplomaticConservative,
+      socialProgressive,
+      socialConservative
+    };
+  
+    console.log("Results before saving:", results); // 디버깅을 위해 결과를 콘솔에 출력
+    localStorage.setItem('results', JSON.stringify(results));
+    navigate('/result');
+  };
+  
   const handleNext = () => {
     if (selectedAnswer === null) {
       alert("선지를 선택해주세요!");
@@ -158,8 +174,7 @@ const QuestionScreen = ({ onComplete }) => {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null); // 다음 질문으로 넘어갈 때 선택 초기화
     } else {
-      alert("테스트가 끝났습니다!");
-      onComplete();
+      handleComplete(); // 모든 질문이 완료되었을 때 실행
     }
   };
 
@@ -173,6 +188,8 @@ const QuestionScreen = ({ onComplete }) => {
   const handleAnswerClick = (index) => {
     setSelectedAnswer(index); // 선택된 답변 인덱스 저장
   };
+
+  
 
   return (
     <div className="mbti-container">
