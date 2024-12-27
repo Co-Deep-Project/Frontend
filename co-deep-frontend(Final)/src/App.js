@@ -6,6 +6,7 @@ import Mbti from "./mbti/Mbti";
 import Seoin from "./seoin/Seoin";
 import Home from "./Home";
 import Chatbot from "./chatbot/Chatbot";
+import Game from "./game/game";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/chatbot",
     element: <Chatbot />,
+  },
+  {
+    path: "/game",
+    element: <Game />
   }
 ]);
 

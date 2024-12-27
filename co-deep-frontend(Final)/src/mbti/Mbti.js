@@ -15,10 +15,14 @@ const Mbti = () => {
     setScreen("start"); // 시작 화면으로 돌아가기
   };
 
+  const handleStart = () => {
+    setScreen("question"); // 질문 화면으로 전환
+  };
+
   return (
     <div className="mbti-container">
       {/* 시작 화면 */}
-      {screen === "start" && <StartScreen onNext={() => setScreen("question")} />}
+      {screen === "start" && <StartScreen onStart={handleStart} />}
 
       {/* 질문 화면 */}
       {screen === "question" && <QuestionScreen onComplete={handleComplete} />}

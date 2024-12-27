@@ -1,0 +1,25 @@
+.book {
+    width: 100px;
+    height: 150px;
+    background: brown;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    transform-origin: left center;
+  }
+  
+  .cover {
+    width: 100%;
+    height: 100%;
+    background: teal;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotateY(0deg);
+  }
+  
+  .book:hover .cover {
+    transform: rotateY(-145deg);
+  }
+  
