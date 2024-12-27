@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle, #0f0f0f, #181818 80%);
+  background-color: white;
   color: #ffffff;
   text-align: center;
   position: relative;
