@@ -1,7 +1,7 @@
 /* 전체 결과 화면 */
 .result-container {
-  background: #121212; /* 검은 배경 */
-  color: #fff; /* 텍스트 색상 */
+  background: white; /* 검은 배경 */
+  color: black; /* 텍스트 색상 */
   padding: 30px;
   border-radius: 15px;
   width: 500px;

@@ -114,8 +114,13 @@ const QuestionScreen = ({ onComplete }) => {
   const totalQuestions = questions.length; // 전체 질문 수
   const [currentQuestion, setCurrentQuestion] = useState(0); // 현재 질문 인덱스
   const [selectedAnswer, setSelectedAnswer] = useState(null); // 선택된 답변
-  const [progressiveCount, setProgressiveCount] = useState(0);
-  const [conservativeCount, setConservativeCount] = useState(0);
+  const [economicProgressive, setEconomicProgressive] = useState(0);
+  const [economicConservative, setEconomicConservative] = useState(0);
+  const [diplomaticProgressive, setDiplomaticProgressive] = useState(0);
+  const [diplomaticConservative, setDiplomaticConservative] = useState(0);
+  const [socialProgressive, setSocialProgressive] = useState(0);
+  const [socialConservative, setSocialConservative] = useState(0);
+
 
   const handleNext = () => {
     if (selectedAnswer === null) {
@@ -123,13 +128,30 @@ const QuestionScreen = ({ onComplete }) => {
       return;
     }
 
-    // 선택된 답변이 첫 번째면 진보, 두 번째면 보수 카운트 증가
-    if (selectedAnswer === 0) {
-      setProgressiveCount(progressiveCount + 1);
-      console.log(`Progressive count: ${progressiveCount + 1}`);
+    if (currentQuestion < 5) {
+      if (selectedAnswer === 0) {
+        setEconomicProgressive(economicProgressive + 1);
+        console.log("economicProgressive");
+      } else {
+        setEconomicConservative(economicConservative + 1);
+        console.log("economicConservative");
+      }
+    } else if (currentQuestion < 10) {
+      if (selectedAnswer === 0) {
+        setDiplomaticProgressive(diplomaticProgressive + 1);
+        console.log("diplomaticProgressive");
+      } else {
+        setDiplomaticConservative(diplomaticConservative + 1);
+        console.log("diplomaticConservative");
+      }
     } else {
-      setConservativeCount(conservativeCount + 1);
-      console.log(`Conservative count: ${conservativeCount + 1}`);
+      if (selectedAnswer === 0) {
+        setSocialProgressive(socialProgressive + 1);
+        console.log("socialProgressive");
+      } else {
+        setSocialConservative(socialConservative + 1);
+        console.log("socialConservative");
+      }
     }
 
     if (currentQuestion < totalQuestions - 1) {
