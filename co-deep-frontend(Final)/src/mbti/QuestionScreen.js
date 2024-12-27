@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./QuestionScreen.css";
 
 const QuestionScreen = ({ onComplete }) => {
-  const navigate = useNavigate();
 
   const questions = [
     {
@@ -174,7 +172,6 @@ const QuestionScreen = ({ onComplete }) => {
     setSelectedAnswer(index); // 선택된 답변 인덱스 저장
   };
 
-  
   const handleComplete = () => {
     const results = {
       economicProgressive,
@@ -184,11 +181,11 @@ const QuestionScreen = ({ onComplete }) => {
       socialProgressive,
       socialConservative
     };
-
-    console.log("Results before saving:", results);  // 결과 확인
+    console.log("Results before saving:", results);
     localStorage.setItem('results', JSON.stringify(results));
-    navigate('/result');
+    onComplete();
   };
+  
 
   return (
     <div className="mbti-container">

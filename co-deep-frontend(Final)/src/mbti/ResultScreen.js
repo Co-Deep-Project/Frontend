@@ -1,8 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 
-const ResultScreen = () => {
-  const navigate = useNavigate();
+const ResultScreen = ({ onRestart }) => {
   const results = JSON.parse(localStorage.getItem('results')) || {};
   const {
     economicProgressive,
@@ -48,7 +46,7 @@ const ResultScreen = () => {
     <div className="result-screen">
       <h1>당신의 역사적 인물은 {character}입니다</h1>
       <img src={image} alt={`역사적 인물 ${character}`} style={{ width: '300px', height: 'auto' }} />
-      <button className = "finishBtn" onClick={() => navigate('/start')}>다시 테스트하기</button>
+      <button className="finishBtn" onClick={onRestart}>다시 테스트하기</button>
     </div>
   );
 };
