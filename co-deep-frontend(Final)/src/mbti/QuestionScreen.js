@@ -122,21 +122,6 @@ const QuestionScreen = ({ onComplete }) => {
   const [diplomaticConservative, setDiplomaticConservative] = useState(0);
   const [socialProgressive, setSocialProgressive] = useState(0);
   const [socialConservative, setSocialConservative] = useState(0);
-
-  const handleComplete = () => {
-    const results = {
-      economicProgressive,
-      economicConservative,
-      diplomaticProgressive,
-      diplomaticConservative,
-      socialProgressive,
-      socialConservative
-    };
-  
-    console.log("Results before saving:", results); // 디버깅을 위해 결과를 콘솔에 출력
-    localStorage.setItem('results', JSON.stringify(results));
-    navigate('/result');
-  };
   
   const handleNext = () => {
     if (selectedAnswer === null) {
@@ -190,6 +175,20 @@ const QuestionScreen = ({ onComplete }) => {
   };
 
   
+  const handleComplete = () => {
+    const results = {
+      economicProgressive,
+      economicConservative,
+      diplomaticProgressive,
+      diplomaticConservative,
+      socialProgressive,
+      socialConservative
+    };
+
+    console.log("Results before saving:", results);  // 결과 확인
+    localStorage.setItem('results', JSON.stringify(results));
+    navigate('/result');
+  };
 
   return (
     <div className="mbti-container">
