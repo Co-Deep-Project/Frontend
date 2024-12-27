@@ -118,30 +118,40 @@ const QuestionScreen = ({ onComplete }) => {
   const [conservativeCount, setConservativeCount] = useState(0);
 
   const handleNext = () => {
+    if (selectedAnswer === null) {
+      alert("선지를 선택해주세요!");
+      return;
+    }
+
+    // 선택된 답변이 첫 번째면 진보, 두 번째면 보수 카운트 증가
+    if (selectedAnswer === 0) {
+      setProgressiveCount(progressiveCount + 1);
+      console.log(`Progressive count: ${progressiveCount + 1}`);
+    } else {
+      setConservativeCount(conservativeCount + 1);
+      console.log(`Conservative count: ${conservativeCount + 1}`);
+    }
+
     if (currentQuestion < totalQuestions - 1) {
-      setCurrentQuestion(currentQuestion + 1); // 다음 질문으로 이동
+      setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswer(null); // 다음 질문으로 넘어갈 때 선택 초기화
     } else {
-      alert("테스트가 끝났습니다!"); // 테스트 종료 알림
-      onComplete(); // 부모 컴포넌트로 결과 화면 전환 요청
+      alert("테스트가 끝났습니다!");
+      onComplete();
     }
   };
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1); // 이전 질문으로 이동
+      setCurrentQuestion(currentQuestion - 1);
       setSelectedAnswer(null); // 이전 질문으로 갈 때 선택 초기화
     }
   };
-  const handleAnswerClick = (answerIndex) => {
-    setSelectedAnswer(answerIndex);
-    const answerType = questions[currentQuestion].answers[answerIndex].type;
-    if (answerType === "progressive") {
-      setProgressiveCount(progressiveCount + 1);
-    } else {
-      setConservativeCount(conservativeCount + 1);
-    }
+
+  const handleAnswerClick = (index) => {
+    setSelectedAnswer(index); // 선택된 답변 인덱스 저장
   };
+
   return (
     <div className="mbti-container">
       <div className="question-box">
