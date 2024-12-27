@@ -18,7 +18,7 @@ function StartScreen({ onStart }) {
         }
         if (currentChar === fullText.length) {
           clearInterval(typeWriter);
-          setTyping(false); // 타이핑이 끝나면 typing 상태를 false로 설정
+          setTyping(false);
         }
       }, 50);
       return () => clearInterval(typeWriter);
@@ -26,25 +26,34 @@ function StartScreen({ onStart }) {
   }, [typing, showStory]);
 
   const handleButtonClick = () => {
+    console.log("Book clicked!");
     setShowStory(true);
     setTyping(true);
   };
 
   const handleLookClick = () => {
-    setShowStory(false); // 스토리 상자를 닫음
-    setShowLookAround(true); // 둘러보기 모드 활성화
+    setShowStory(false);
+    setShowLookAround(true);
   };
 
   const handleCloseStory = () => {
-    setShowStory(false); // 스토리 상자를 닫음
-    onStart(); // 여기서 onStart를 호출하여 다음 화면으로 진행하도록 함
+    setShowStory(false);
+    onStart();
   };
+  useEffect(() => {
+    console.log("Show Story updated:", showStory);
+  }, [showStory]);
 
   return (
     <div className="start-screen">
       {showLookAround ? (
         <div className="look-around-container">
-          <img src="/images/book.jpg" alt="Book on Chair" className="book-on-chair"/>
+          <img
+            src="/images/book.jpg"
+            alt="Book on Chair"
+            className="book-on-chair"
+            onClick={handleButtonClick} // 책 클릭 이벤트 핸들러
+          />
         </div>
       ) : (
         <div className="content">
