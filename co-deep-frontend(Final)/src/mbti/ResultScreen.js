@@ -29,9 +29,9 @@ const ResultScreen = () => {
   } = results;
 
 
-  const finalEconomic = economicProgressive > economicConservative ? "Progressive" : "Conservative";
-  const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "Progressive" : "Conservative";
-  const finalSocial = socialProgressive > socialConservative ? "Progressive" : "Conservative";
+  const finalEconomic = economicProgressive > economicConservative ? "진보" : "보수";
+  const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "진보" : "보수수";
+  const finalSocial = socialProgressive > socialConservative ? "진보" : "보수";
   let character = "세종대왕";
   let image = "/images/세종대왕.jpg";
   let description = [
