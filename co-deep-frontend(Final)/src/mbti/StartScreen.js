@@ -10,12 +10,15 @@ const StartScreen = () => {
   const navigate = useNavigate(); // 컴포넌트 내부에서 useNavigate 호출
 
   const onNext = () => {
-    navigate('/question'); // '/question' 경로로 이동 처리
+    navigate('/question'); 
   }
 
   const handleHomeClick = () => {
-    navigate('/'); // 'Home' 버튼을 누를 때 루트로 이동 처리, 가정: 추가된 기능
-  }
+    if (window.confirm("진행 중인 작업이 저장되지 않습니다. 그래도 나가시겠습니까?")) {
+      navigate('/'); // 사용자가 '확인'을 클릭하면 홈 페이지로 이동
+    }
+    // 사용자가 '취소'를 클릭하면 현재 페이지에 머무름
+  };
 
   return (
     <div className="header">
