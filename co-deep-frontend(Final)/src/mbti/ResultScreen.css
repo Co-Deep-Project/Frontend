@@ -33,16 +33,60 @@
 }
 
 /* 설명 섹션 */
-.result-description {
-  font-size: 1.2rem;
-  color: #333;
-  background: #ece5f9; /* 연한 라벤더 배경 */
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  text-align: center;
+/* 설명 섹션 */
+.description-container {
+  font-size: 1.1rem; /* 글자 크기 */
+  color: #4a4a4a; /* 차분한 텍스트 색상 */
+  background: #f9f6ff; /* 부드러운 연보라색 배경 */
+  border-radius: 12px; /* 둥근 모서리 */
+  padding: 20px 30px; /* 충분한 내부 여백 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 부드러운 그림자 */
+  margin-bottom: 20px; /* 버튼과의 간격 */
+  text-align: justify; /* 텍스트 양쪽 정렬 */
+  line-height: 1.8; /* 줄 간격 */
+  max-width: 600px; /* 최대 너비 제한 */
+  font-family: 'Georgia', serif; /* 고급스러운 폰트 사용 */
+  word-break: keep-all; /* 단어가 깨지지 않도록 설정 */
 }
+
+/* 텍스트 강조 */
+.description-container span {
+  color: #8455b3; /* 보라색으로 강조 */
+  font-weight: bold; /* 강조된 텍스트 굵게 */
+}
+
+.result-description {
+  font-size: 1rem; /* 글자 크기 */
+  color: #4a4a4a; /* 텍스트 색상: 차분한 회색 */
+  background: linear-gradient(135deg, #f7f3fc, #ece5f9); /* 부드러운 그라데이션 배경 */
+  border-radius: 15px; /* 둥근 모서리 */
+  padding: 20px; /* 충분한 내부 여백 */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
+  margin-bottom: 30px; /* 아래 간격 */
+  text-align: left; /* 왼쪽 정렬 */
+  line-height: 1.8; /* 줄 간격 */
+  max-width: 600px; /* 최대 너비 제한 */
+  word-break: keep-all; /* 단어가 깨지지 않도록 설정 */
+}
+
+/* 설명 글머리 기호 */
+.result-description ul {
+  list-style-type: disc; /* 기본 글머리 기호 */
+  padding-left: 20px; /* 글머리와 텍스트 간격 */
+}
+
+.result-description li {
+  margin-bottom: 12px; /* 각 항목 사이 간격 */
+  font-weight: 400; /* 글씨 굵기 */
+  color: #333; /* 조금 더 어두운 색상 */
+}
+
+/* 강조 텍스트 */
+.result-description li span {
+  color: #8455b3; /* 보라색으로 강조 */
+  font-weight: 600; /* 강조된 텍스트 굵게 */
+}
+
 
 /* 버튼 스타일 */
 .restart-button {
