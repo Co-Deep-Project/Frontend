@@ -198,7 +198,7 @@ return (
           {currentQuestion >= totalQuestions ? (
               <div className="complete-message">
                   테스트가 끝났습니다
-                  <button onClick={handleGoToResults}>결과 보러가기</button>
+                  <button className = "seeResult" onClick={handleGoToResults}>결과 보러가기</button>
               </div>
           ) : (
               <>
