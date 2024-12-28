@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   background: white; /* 전체 배경은 흰색 */
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 /* 전체 결과 화면 */
 .result-screen {
@@ -11,7 +11,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   padding: 20px;
 }
 
@@ -37,8 +37,7 @@ body {
   margin-bottom: 20px;
 }
 
-/* 설명 섹션 */
-/* 설명 섹션 */
+
 .description-container {
   font-size: 1.1rem; /* 글자 크기 */
   color: #4a4a4a; /* 차분한 텍스트 색상 */
@@ -50,7 +49,7 @@ body {
   text-align: justify; /* 텍스트 양쪽 정렬 */
   line-height: 1.8; /* 줄 간격 */
   max-width: 600px; /* 최대 너비 제한 */
-  font-family: 'Georgia', serif; /* 고급스러운 폰트 사용 */
+  font-family: Arial, Helvetica, sans-serif; /* 고급스러운 폰트 사용 */
   word-break: keep-all; /* 단어가 깨지지 않도록 설정 */
 }
 
@@ -95,7 +94,7 @@ body {
 
 /* 버튼 스타일 */
 .restart-button {
-  background-color: #8455b3; /* 보라색 배경 */
+  background-color: #cfc2e9; /* 보라색 배경 */
   color: white; /* 흰색 텍스트 */
   padding: 10px 20px;
   border-radius: 10px;
@@ -107,15 +106,12 @@ body {
   transition: background-color 0.3s, transform 0.2s;
 }
 
-.restart-button:hover {
-  background-color: #6d3ca6; /* 보다 진한 보라색 */
-  transform: scale(1.05);
-}
+
 
 
 .finishBtn {
-    background: #8455b3;
-    color: #ffffff;
+    background: #cfc2e9;
+    color: black;
     font-size: 1.2rem;
     padding: 10px 20px;
     border: none;
@@ -123,7 +119,10 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
+.finishBtn:hover {
+  background-color: #b8a6d9;; /* 보다 진한 보라색 */
+  transform: scale(1.05);
+}
 .character-image {
   width: 250px; /* 이미지 크기 수정 */
   height: auto;
