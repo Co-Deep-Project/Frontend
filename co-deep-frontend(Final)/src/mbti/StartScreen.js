@@ -56,6 +56,9 @@ const StartScreen = () => {
           </button>
         </div>
       </div>
+      <footer className="footer">
+        <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
+      </footer>
     </div>
   );
 };

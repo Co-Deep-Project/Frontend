@@ -89,6 +89,16 @@
   z-index: -1;
 }
 
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.35;
+}
+
+.footer p {
+  font-size: 13px;
+}
+
 /* 배경 애니메이션 효과 */
 @keyframes moveBackground {
   from {

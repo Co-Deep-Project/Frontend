@@ -132,7 +132,15 @@ body {
 }
 
 
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  line-height: 1.35;
+}
 
+.footer p {
+  font-size: 13px;
+}
 
 .finishBtn {
     background: #cfc2e9;
