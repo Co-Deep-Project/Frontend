@@ -92,14 +92,13 @@
   padding: 20px 30px;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(132, 85, 179, 0.4), 0 0 10px rgba(192, 132, 252, 0.6);
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
 .answer-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(132, 85, 179, 0.6), 0 0 20px rgba(192, 132, 252, 0.8);
+  background-color: #b8a6d9;
 }
 
 .answer-button:active {
@@ -109,8 +108,7 @@
 /* 선택된 버튼의 스타일 */
 .answer-button.selected {
   background: #b8a6d9;; /* 선택된 버튼의 배경 색상을 더 어두운 색으로 변경 */
-  color: white; /* 선택된 버튼의 텍스트 색상을 유지 */
-  box-shadow: 0 0 20px rgba(115, 30, 211, 0.75); /* 선택 효과 강조 */
+  color: black;
 }
 
 
@@ -159,6 +157,10 @@
   cursor: pointer;
   transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
+.prev-button:hover {
+  background-color: #b8a6d9;
+  transform: translateY(-2px); 
+}
 
 .next-button:hover {
   background: #b8a6d9; /* hover 상태에서 조금 더 어두운 색상 */
@@ -177,10 +179,6 @@
   opacity: 0.6;
 }
 
-/* 클릭된 버튼만 색상 변경 */
-.answer-button.selected {
-  background: #731ed3;
-}
 
 .complete-message {
   font-family: 'Arial', sans-serif; /* 폰트 설정 */

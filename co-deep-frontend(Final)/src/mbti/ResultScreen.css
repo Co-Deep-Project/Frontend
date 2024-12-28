@@ -58,6 +58,31 @@ body {
   color: #8455b3; /* 보라색으로 강조 */
   font-weight: bold; /* 강조된 텍스트 굵게 */
 }
+/* 글머리 기호 대체 */
+/* 글머리 기호 대체 */
+.description-container ul {
+  list-style-type: none; /* 기본 글머리 기호 제거 */
+  padding: 0; /* 여백 제거 */
+  margin: 0;
+}
+
+.description-container li {
+  margin-bottom: 18px; /* 항목 간 간격 */
+  font-weight: 400; /* 글씨 굵기 */
+  color: #333; /* 텍스트 색상 */
+  position: relative; /* 아이콘 위치를 위해 부모 설정 */
+  padding-left: 30px; /* 아이콘과 텍스트 간격 */
+  line-height: 1.8; /* 줄 간격 */
+}
+
+.description-container li::before {
+  content: "★"; /* 검정색 별 기호 추가 */
+  color: #666; /* 연한 검정색 */
+  font-size: 1rem; /* 별 크기 */
+  position: absolute; /* 텍스트 왼쪽에 배치 */
+  left: 0; /* 왼쪽으로 정렬 */
+  top: 5px; /* 텍스트와 수평 조정 */
+}
 
 .result-description {
   font-size: 1rem; /* 글자 크기 */
@@ -120,7 +145,7 @@ body {
     transition: background-color 0.3s ease;
 }
 .finishBtn:hover {
-  background-color: #b8a6d9;; /* 보다 진한 보라색 */
+  background-color: #b8a6d9; /* 보다 진한 보라색 */
   transform: scale(1.05);
 }
 .character-image {
