@@ -119,7 +119,7 @@ const ResultScreen = () => {
     <div>
     <div className="header">
     <div className="logo-container">
-      <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} />
+      <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className = "poliLogo" />
     </div>
     <div className="menu">
       <button onClick={handleHomeClick}>Home</button>
