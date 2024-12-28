@@ -174,19 +174,22 @@ const QuestionScreen = ({ onComplete }) => {
       setSelectedAnswer(index);
   };
 
-  const handleComplete = () => {
-      console.log("Results before saving:", scores);
+  useEffect(() => {
+    if (currentQuestion >= totalQuestions) {
+      console.log("Result before saving:", scores);
       localStorage.setItem('results', JSON.stringify(scores));
-      onComplete();
-  };
+      onComplete && onComplete(); // onComplete이 함수로 정의되어 있을 때만 호출
+    }
+  }, [currentQuestion, scores]); // scores와 currentQuestion 변경을 감지
+
   const handleGoToResults = () => {
     navigate('/result'); // 결과 페이지로 이동
 };
 
 return (
   <div className="header">
-      <div className="logo-container">
-          <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
+ <div className="logo-container">
+          <img src={logo} alt="PoliTracker Logo" onClick = {handleHomeClick} className="poliLogo" />
       </div>
       <div className="menu">
           <button onClick={handleHomeClick}>Home</button>
@@ -194,7 +197,7 @@ return (
       <div className="question-box">
           {currentQuestion >= totalQuestions ? (
               <div className="complete-message">
-                  테스트가 끝났습니다다
+                  테스트가 끝났습니다
                   <button onClick={handleGoToResults}>결과 보러가기</button>
               </div>
           ) : (
