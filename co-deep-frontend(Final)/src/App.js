@@ -7,6 +7,9 @@ import Seoin from "./seoin/Seoin";
 import Home from "./Home";
 import Chatbot from "./chatbot/Chatbot";
 import Game from "./game/game";
+import ResultScreen from "./mbti/ResultScreen";
+import StartScreen from "./mbti/StartScreen";
+import QuestionScreen from "./mbti/QuestionScreen";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +39,18 @@ const router = createBrowserRouter([
   {
     path: "/game",
     element: <Game />
+  },
+  {
+    path: "/result",
+    element: <ResultScreen />
+  },
+  {
+    path: "/start",
+    element: <StartScreen />
+  },
+  {
+    path: "/question",
+    element: <QuestionScreen />
   }
 ]);
 

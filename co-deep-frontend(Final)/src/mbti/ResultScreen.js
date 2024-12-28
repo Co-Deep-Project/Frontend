@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './ResultScreen.css'; // CSS 파일을 사용하여 스타일 추가
 
-const ResultScreen = ({ onRestart }) => {
+const ResultScreen = () => {
+  const navigate = useNavigate();
+
+  const onRestart = () => {
+    navigate('/start'); // "/start" 경로로 네비게이트
+  };
+
   const results = JSON.parse(localStorage.getItem('results')) || {};
   const {
     economicProgressive,

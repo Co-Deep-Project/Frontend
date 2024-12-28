@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./QuestionScreen.css";
 import logo from '../assets/polilogo.png';
 import { useNavigate } from 'react-router-dom';
@@ -120,130 +120,126 @@ const QuestionScreen = ({ onComplete }) => {
     }
   ];
 
-  const totalQuestions = questions.length; // 전체 질문 수
-  const [currentQuestion, setCurrentQuestion] = useState(0); // 현재 질문 인덱스
-  const [selectedAnswer, setSelectedAnswer] = useState(null); // 선택된 답변
-  const [economicProgressive, setEconomicProgressive] = useState(0);
-  const [economicConservative, setEconomicConservative] = useState(0);
-  const [diplomaticProgressive, setDiplomaticProgressive] = useState(0);
-  const [diplomaticConservative, setDiplomaticConservative] = useState(0);
-  const [socialProgressive, setSocialProgressive] = useState(0);
-  const [socialConservative, setSocialConservative] = useState(0);
-  
+  const totalQuestions = questions.length;
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [scores, setScores] = useState({
+      economicProgressive: 0,
+      economicConservative: 0,
+      diplomaticProgressive: 0,
+      diplomaticConservative: 0,
+      socialProgressive: 0,
+      socialConservative: 0
+  });
+
+  useEffect(() => {
+      if (currentQuestion >= totalQuestions && selectedAnswer !== null) {
+          handleComplete(); // 마지막 질문 처리가 완료된 후 결과를 처리합니다.
+      }
+  }, [currentQuestion, selectedAnswer]);
+
   const handleNext = () => {
-    if (selectedAnswer === null) {
-      alert("선지를 선택해주세요!");
-      return;
-    }
+      if (selectedAnswer === null) {
+          alert("선지를 선택해주세요!");
+          return;
+      }
 
-    if (currentQuestion < 5) {
-      if (selectedAnswer === 0) {
-        setEconomicProgressive(economicProgressive + 1);
-        console.log("economicProgressive");
-      } else {
-        setEconomicConservative(economicConservative + 1);
-        console.log("economicConservative");
-      }
-    } else if (currentQuestion < 10) {
-      if (selectedAnswer === 0) {
-        setDiplomaticProgressive(diplomaticProgressive + 1);
-        console.log("diplomaticProgressive");
-      } else {
-        setDiplomaticConservative(diplomaticConservative + 1);
-        console.log("diplomaticConservative");
-      }
-    } else {
-      if (selectedAnswer === 0) {
-        setSocialProgressive(socialProgressive + 1);
-        console.log("socialProgressive");
-      } else {
-        setSocialConservative(socialConservative + 1);
-        console.log("socialConservative");
-      }
-    }
+      const newScores = { ...scores };
+      const scoreType = currentQuestion < 5 ? 'economic' :
+                        currentQuestion < 10 ? 'diplomatic' : 'social';
+      const resultType = selectedAnswer === 0 ? 'Progressive' : 'Conservative';
+      newScores[scoreType + resultType] += 1;
 
-    if (currentQuestion < totalQuestions - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      setSelectedAnswer(null); // 다음 질문으로 넘어갈 때 선택 초기화
-    } else {
-      handleComplete(); // 모든 질문이 완료되었을 때 실행
-    }
+      console.log(`Updating scores: ${scoreType}${resultType} = ${newScores[scoreType + resultType]}`);
+
+      setScores(newScores);
+      setSelectedAnswer(null);
+
+      if (currentQuestion < totalQuestions - 1) {
+          setCurrentQuestion(currentQuestion + 1);
+      } else {
+          // 마지막 질문이면 점수 업데이트 후 상태 변경을 감지하여 handleComplete를 호출
+          setCurrentQuestion(currentQuestion + 1); 
+      }
   };
 
   const handlePrevious = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-      setSelectedAnswer(null); // 이전 질문으로 갈 때 선택 초기화
-    }
+      if (currentQuestion > 0) {
+          setCurrentQuestion(currentQuestion - 1);
+          setSelectedAnswer(null);
+      }
   };
 
   const handleAnswerClick = (index) => {
-    setSelectedAnswer(index); // 선택된 답변 인덱스 저장
+      setSelectedAnswer(index);
   };
 
   const handleComplete = () => {
-    const results = {
-      economicProgressive,
-      economicConservative,
-      diplomaticProgressive,
-      diplomaticConservative,
-      socialProgressive,
-      socialConservative
-    };
-    console.log("Results before saving:", results);
-    localStorage.setItem('results', JSON.stringify(results));
-    onComplete();
+      console.log("Results before saving:", scores);
+      localStorage.setItem('results', JSON.stringify(scores));
+      onComplete();
   };
-  
+  const handleGoToResults = () => {
+    navigate('/result'); // 결과 페이지로 이동
+};
 
-  return (
-    <div className="header">
-    <div className="logo-container">
-      <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
-    </div>
-    <div className="menu">
-          <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
-          </div>
-      <div className="question-box">
-        <div className="progress-wrapper">
-          <p className="progress-text">{currentQuestion + 1} / {questions.length}</p>
-          <div className="status-bar">
-            <div className="status-bar-fill" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
-          </div>
-        </div>
-        <div className="qBox">
-          <h2>{questions[currentQuestion].question}</h2>
-        </div>
-        <div className="answerBox">
-  {questions[currentQuestion].answers.map((answer, index) => (
-    <button
-      key={index}
-      className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
-      onClick={() => handleAnswerClick(index)}
-    >
-      {answer} {/* 직접 문자열을 렌더링하도록 변경 */}
-    </button>
-  ))}
-</div>
-        <div className="button-container">
-          <button
-            className="prev-button"
-            onClick={handlePrevious}
-            disabled={currentQuestion === 0}
-          >
-            이전
-          </button>
-          <button
-            className="next-button"
-            onClick={handleNext}
-            disabled={selectedAnswer === null}
-          >
-            다음
-          </button>
-        </div>
+return (
+  <div className="header">
+      <div className="logo-container">
+          <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
       </div>
-    </div>
-  );
+      <div className="menu">
+          <button onClick={handleHomeClick}>Home</button>
+      </div>
+      <div className="question-box">
+          {currentQuestion >= totalQuestions ? (
+              <div className="complete-message">
+                  테스트가 끝났습니다다
+                  <button onClick={handleGoToResults}>결과 보러가기</button>
+              </div>
+          ) : (
+              <>
+                  <div className="progress-wrapper">
+                      <p className="progress-text">{currentQuestion + 1} / {totalQuestions}</p>
+                      <div className="status-bar">
+                          <div className="status-bar-fill" style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}></div>
+                      </div>
+                  </div>
+                  <div className="qBox">
+                      <h2>{questions[currentQuestion].question}</h2>
+                  </div>
+                  <div className="answerBox">
+                      {questions[currentQuestion].answers.map((answer, index) => (
+                          <button
+                              key={index}
+                              className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
+                              onClick={() => handleAnswerClick(index)}
+                          >
+                              {answer}
+                          </button>
+                      ))}
+                  </div>
+                  <div className="button-container">
+                      <button
+                          className="prev-button"
+                          onClick={handlePrevious}
+                          disabled={currentQuestion === 0}
+                      >
+                          이전
+                      </button>
+                      <button
+                          className="next-button"
+                          onClick={handleNext}
+                          disabled={selectedAnswer === null}
+                      >
+                          다음
+                      </button>
+                  </div>
+              </>
+          )}
+      </div>
+  </div>
+);
 };
 
 export default QuestionScreen;
