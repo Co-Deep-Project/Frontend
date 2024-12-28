@@ -1,4 +1,5 @@
 import React from 'react';
+import './ResultScreen.css'; // CSS 파일을 사용하여 스타일 추가
 
 const ResultScreen = ({ onRestart }) => {
   const results = JSON.parse(localStorage.getItem('results')) || {};
@@ -11,41 +12,27 @@ const ResultScreen = ({ onRestart }) => {
     socialConservative
   } = results;
 
-  // 로직은 동일하게 유지
   const finalEconomic = economicProgressive > economicConservative ? "Progressive" : "Conservative";
   const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "Progressive" : "Conservative";
   const finalSocial = socialProgressive > socialConservative ? "Progressive" : "Conservative";
   let character = "세종대왕";
   let image = "/images/세종대왕.jpg";
+  let backgroundClass = "default-background";
 
-  // 인물 결정 로직
   if (finalEconomic === "Progressive" && finalDiplomatic === "Progressive" && finalSocial === "Conservative") {
     character = "김유신";
     image = "/images/김유신.jpg";
+    backgroundClass = "warrior-background";
   } else if (finalEconomic === "Conservative" && finalDiplomatic === "Progressive" && finalSocial === "Conservative") {
     character = "황희";
     image = "/images/황희.jpg";
-  } else if (finalEconomic === "Progressive" && finalDiplomatic === "Conservative" && finalSocial === "Conservative") {
-    character = "흥선대원군";
-    image = "/images/흥선대원군.jpg";
-  } else if (finalEconomic === "Conservative" && finalDiplomatic === "Conservative" && finalSocial === "Conservative") {
-    character = "송시열";
-    image = "/images/송시열.jpg";
-  } else if (finalEconomic === "Conservative" && finalDiplomatic === "Progressive" && finalSocial === "Progressive") {
-    character = "이순신";
-    image = "/images/이순신.jpg";
-  } else if (finalEconomic === "Progressive" && finalDiplomatic === "Conservative" && finalSocial === "Progressive") {
-    character = "정몽주";
-    image = "/images/정몽주.jpg";
-  } else if (finalEconomic === "Conservative" && finalDiplomatic === "Conservative" && finalSocial === "Progressive") {
-    character = "안중근";
-    image = "/images/안중근.jpg";
+    backgroundClass = "scholar-background";
   }
 
   return (
-    <div className="result-screen">
+    <div className={`result-screen ${backgroundClass}`}>
       <h1>당신의 역사적 인물은 {character}입니다</h1>
-      <img src={image} alt={`역사적 인물 ${character}`} style={{ width: '300px', height: 'auto' }} />
+      <img src={image} alt={`역사적 인물 ${character}`} className="character-image" />
       <button className="finishBtn" onClick={onRestart}>다시 테스트하기</button>
     </div>
   );

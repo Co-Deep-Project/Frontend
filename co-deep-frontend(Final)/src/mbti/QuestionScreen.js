@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import "./QuestionScreen.css";
+import logo from '../assets/polilogo.png';
+import { useNavigate } from 'react-router-dom';
 
 const QuestionScreen = ({ onComplete }) => {
-
+    const navigate = useNavigate();
+    const handleHomeClick = () => {
+      if (window.confirm("진행 중인 작업이 저장되지 않습니다. 그래도 나가시겠습니까?")) {
+        navigate('/'); // 사용자가 '확인'을 클릭하면 홈 페이지로 이동
+      }
+      // 사용자가 '취소'를 클릭하면 현재 페이지에 머무름
+    };
+    
   const questions = [
     {
       question: "1. 어느 농민이 '나의 생계가 너무 어려워요'라고 말했어요. 이에 대해 왕은 어떻게 해야 할까요?",
@@ -188,7 +197,13 @@ const QuestionScreen = ({ onComplete }) => {
   
 
   return (
-    <div className="mbti-container">
+    <div className="header">
+    <div className="logo-container">
+      <img src={logo} alt="PoliTracker Logo" className="poliLogo" />
+    </div>
+    <div className="menu">
+          <button onClick={handleHomeClick}>Home</button> {/* onClick 이벤트 추가 */}
+          </div>
       <div className="question-box">
         <div className="progress-wrapper">
           <p className="progress-text">{currentQuestion + 1} / {questions.length}</p>

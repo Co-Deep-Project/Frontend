@@ -126,6 +126,19 @@
   transition: background-color 0.3s ease;
 }
 
+.logo-container {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+.poliLogo {
+  width: 250px;
+  height: auto;
+  max-width: 100%; /* 화면 너비 초과 방지 */
+}
+
+
 .prev-button {
   background: #8455b3;
   color: #ffffff;
