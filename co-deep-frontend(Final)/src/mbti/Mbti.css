@@ -1,13 +1,11 @@
-/* 전체 컨테이너 */
+/* 상위 컨테이너에서 화면 중앙 배치 */
 .mbti-container {
-  font-family: "Noto Sans KR", sans-serif;
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  color:black;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  justify-content: center; /* 수평 중앙 배치 */
+  align-items: center; /* 수직 중앙 배치 */
+  min-height: 100vh; /* 화면 전체 높이 */
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
 }
