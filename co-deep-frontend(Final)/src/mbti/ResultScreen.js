@@ -30,7 +30,7 @@ const ResultScreen = () => {
 
 
   const finalEconomic = economicProgressive > economicConservative ? "진보" : "보수";
-  const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "진보" : "보수수";
+  const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "진보" : "보수";
   const finalSocial = socialProgressive > socialConservative ? "진보" : "보수";
   let character = "세종대왕";
   let image = "/images/세종대왕.jpg";

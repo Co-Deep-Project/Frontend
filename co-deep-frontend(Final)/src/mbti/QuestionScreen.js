@@ -21,38 +21,38 @@ const QuestionScreen = ({ onComplete }) => {
       ],
     },
     {
-      question: "2. 사람들이 집을 사고 싶어하지만, 땅값이 너무 비싸요. 이에 대해 임금은 어떻게 해야 할까요?",
+      question: "2. 사람들이 집을 사고 싶어하지만, 땅값이 너무 비싸요. 이에 대해 왕은 어떻게 해야 할까요?",
       answers: [
         "왕이 땅값을 낮추기 위해 노력하고, 백성들이 집을 쉽게 얻을 수 있도록 해야 한다고 생각해요.",
         "왕은 땅값에 간섭하지 않고, 자연스럽게 시장에 맡겨야 한다고 믿어요."
       ],
     },
     {
-      question: "3. 귀족들과 가난한 농민들 사이의 격차가 점점 커지고 있습니다. 이에 대해 임금은 어떻게 해야 할까요?",
+      question: "3. 귀족들과 가난한 농민들 사이의 격차가 점점 커지고 있습니다. 이에 대해 왕은 어떻게 해야 할까요?",
       answers: [
         "왕이 귀족들에게 더 많은 세금을 거둬 가난한 농민들을 돕는 데 사용해야 한다고 생각해요.",
         "귀족과 농민 사이의 차이는 자연스러운 것이며, 왕이 이를 따로 조정할 필요는 없다고 믿어요."
       ],
     },
     {
-      question: "4. 많은 백성들이 일거리를 찾지 못해 힘들어하고 있습니다. 이에 대해 임금은 어떻게 해야 할까요?",
+      question: "4. 많은 백성들이 일거리를 찾지 못해 힘들어하고 있습니다. 이에 대해 왕은 어떻게 해야 할까요?",
       answers: [
         "왕이 직접 나서서 농업이나 토목 사업 등을 시작해 백성들에게 일할 기회를 만들어야 한다고 생각해요.",
         "왕은 백성들이 스스로 생업을 찾아 해결하도록 두고, 필요한 최소한의 여건만 마련해야 한다고 믿어요."
       ],
     },
     {
-      question: "5. 임금은 상인들을 도와야 할까요?",
+      question: "5. 왕은 상인들을 도와야 할까요?",
       answers: [
-        "임금은 상인들의 거래가 공정하게 이루어지도록 관리하고, 국가의 이익을 위해 상인들이 번성할 수 있도록 도와야 해요.",
-        "임금은 상인들의 일에 간섭하지 말고, 상인들이 자유롭게 무역을 하고 활동할 수 있도록 해야 돼요."
+        "왕은 상인들의 거래가 공정하게 이루어지도록 관리하고, 국가의 이익을 위해 상인들이 번성할 수 있도록 도와야 해요.",
+        "왕은 상인들의 일에 간섭하지 말고, 상인들이 자유롭게 무역을 하고 활동할 수 있도록 해야 돼요."
       ],
     },
     {
       question: "6. 신라, 고구려, 백제가 나뉘어 서로 대립하고 있습니다. 이를 해결하기 위해 왕은 어떻게 해야 할까요?",
       answers: [
         "모든 나라를 하나로 통일하여 백성들이 평화롭게 살 수 있도록 노력해야 해요.",
-        "각 나라는 독립적으로 존재해야 하며, 굳이 통일을 위해 힘쓸 필요는 없다고 생각해요."
+        "각 나라는 독립적으로 존재해야 하며, 통일을 위해 힘쓸 필요는 없다고 생각해요."
       ],
     },
     {
@@ -63,7 +63,7 @@ const QuestionScreen = ({ onComplete }) => {
       ],
     },
     {
-      question: "8. 최근 나라의 산림이 자주 훼손되고 있습니다. 임금은 이를 어떻게 해결할까요?",
+      question: "8. 최근 나라의 산림이 자주 훼손되고 있습니다. 왕은 이를 어떻게 해결할까요?",
       answers: [
         "산림 보호는 매우 중요하기 때문에, 이를 위한 강력한 정책을 지금 당장 시행해야 해요.",
         "지나친 규제는 농민들에게 부담을 줄 수 있으므로, 너무 엄격한 규제는 피해야 해요."
@@ -72,7 +72,7 @@ const QuestionScreen = ({ onComplete }) => {
     {
       question: "9. 당나라가 전쟁으로 피폐해지거나, 일본이 가뭄에 시달릴 경우, 어떻게 해야 할까요?",
       answers: [
-        "다른 나라가 어려움에 처했을 때, 우리나라가 힘을 합쳐 돕는 것이 중요하므로, 지원을 아끼지 말고 돕는 것이 옳아요.",
+        "다른 나라가 어려움에 처했을 때, 우리나라가 힘을 합쳐 돕는 것이 중요하므로, 돕는 것이 옳아요.",
         "우리나라 백성들도 어려운 시기이기 때문에, 우리나라에 더 많은 신경을 써야 해요."
       ],
     },
@@ -86,8 +86,8 @@ const QuestionScreen = ({ onComplete }) => {
     {
       question: "11. 지방에 사는 자손들에게 교육 기회를 더 많이 제공해야 할까요?",
       answers: [
-        "지방의 자손들도 수도나 큰 고을의 자손들과 똑같이 배워야 합니다. 그래서 왕이나 관리들이 더 많은 교육 기회를 제공해야 해요.",
-        "지방 자손들에게도 도움이 필요하지만, 수도의 자손들이 더 많은 혜택을 받지 않으면 안 됩니다. 모두에게 똑같은 기회를 제공하는 것은 어려운 일입니다."
+        "지방의 자손들도 수도나 큰 고을의 자손들과 똑같이 배워야 합니다. 그러므로 왕이나 관리들은 지방에 사는 자손들에게 더 많은 교육 기회를 제공해야 해요.",
+        "지방 자손들에게도 도움이 필요하지만, 수도나 큰 고을의 자손들이 양보하는 것은 역차별이 될 수 있습니다. 지방에 사는 자손들에게 교육 기회를 더 많이 제공하는 것은 옳지 않습니다."
       ],
     },
     {
@@ -105,7 +105,7 @@ const QuestionScreen = ({ onComplete }) => {
       ],
     },
     {
-      question: "14. 하인의 근무 시간과 임금을 누가 정해야 할까요?",
+      question: "14. 하인의 근무 시간과 왕을 누가 정해야 할까요?",
       answers: [
         "나라가 규제하여 하인들의 권리를 보호하고, 그들의 삶을 보장해야 해요.",
         "주인이 자유롭게 운영할 수 있어야 해요."
@@ -121,131 +121,113 @@ const QuestionScreen = ({ onComplete }) => {
   ];
 
   const totalQuestions = questions.length;
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [scores, setScores] = useState({
-      economicProgressive: 0,
-      economicConservative: 0,
-      diplomaticProgressive: 0,
-      diplomaticConservative: 0,
-      socialProgressive: 0,
-      socialConservative: 0
-  });
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+    const [scores, setScores] = useState({
+        economicProgressive: 0,
+        economicConservative: 0,
+        diplomaticProgressive: 0,
+        diplomaticConservative: 0,
+        socialProgressive: 0,
+        socialConservative: 0
+    });
 
-  useEffect(() => {
-      if (currentQuestion >= totalQuestions && selectedAnswer !== null) {
-          handleComplete(); // 마지막 질문 처리가 완료된 후 결과를 처리합니다.
-      }
-  }, [currentQuestion, selectedAnswer]);
+    const handleNext = () => {
+        if (selectedAnswer === null) {
+            alert("선지를 선택해주세요!");
+            return;
+        }
 
-  const handleNext = () => {
-      if (selectedAnswer === null) {
-          alert("선지를 선택해주세요!");
-          return;
-      }
+        const newScores = { ...scores };
+        const scoreType = currentQuestion < 5 ? 'economic' :
+            currentQuestion < 10 ? 'diplomatic' : 'social';
+        const resultType = selectedAnswer === 0 ? 'Progressive' : 'Conservative';
+        newScores[scoreType + resultType] += 1;
 
-      const newScores = { ...scores };
-      const scoreType = currentQuestion < 5 ? 'economic' :
-                        currentQuestion < 10 ? 'diplomatic' : 'social';
-      const resultType = selectedAnswer === 0 ? 'Progressive' : 'Conservative';
-      newScores[scoreType + resultType] += 1;
+        setScores(newScores);
+        setSelectedAnswer(null);
 
-      console.log(`Updating scores: ${scoreType}${resultType} = ${newScores[scoreType + resultType]}`);
+        if (currentQuestion < totalQuestions - 1) {
+            setCurrentQuestion(currentQuestion + 1);
+        } else {
+            // 마지막 질문이면 완료 안내를 표시
+            if (window.confirm("테스트가 끝났습니다. 결과를 보러 가시겠습니까?")) {
+                handleGoToResults(); // 결과 페이지로 이동
+            }
+        }
+    };
 
-      setScores(newScores);
-      setSelectedAnswer(null);
+    const handlePrevious = () => {
+        if (currentQuestion > 0) {
+            setCurrentQuestion(currentQuestion - 1);
+            setSelectedAnswer(null);
+        }
+    };
 
-      if (currentQuestion < totalQuestions - 1) {
-          setCurrentQuestion(currentQuestion + 1);
-      } else {
-          // 마지막 질문이면 점수 업데이트 후 상태 변경을 감지하여 handleComplete를 호출
-          setCurrentQuestion(currentQuestion + 1); 
-      }
-  };
+    const handleAnswerClick = (index) => {
+        setSelectedAnswer(index);
+    };
 
-  const handlePrevious = () => {
-      if (currentQuestion > 0) {
-          setCurrentQuestion(currentQuestion - 1);
-          setSelectedAnswer(null);
-      }
-  };
+    const handleGoToResults = () => {
+        console.log("Result before saving:", scores);
+        localStorage.setItem('results', JSON.stringify(scores));
+        onComplete && onComplete(); // onComplete이 함수로 정의되어 있을 때만 호출
+        navigate('/result'); // 결과 페이지로 이동
+    };
 
-  const handleAnswerClick = (index) => {
-      setSelectedAnswer(index);
-  };
-
-  useEffect(() => {
-    if (currentQuestion >= totalQuestions) {
-      console.log("Result before saving:", scores);
-      localStorage.setItem('results', JSON.stringify(scores));
-      onComplete && onComplete(); // onComplete이 함수로 정의되어 있을 때만 호출
-    }
-  }, [currentQuestion, scores]); // scores와 currentQuestion 변경을 감지
-
-  const handleGoToResults = () => {
-    navigate('/result'); // 결과 페이지로 이동
-};
-
-return (
-  <div className="header">
- <div className="logo-container">
-          <img src={logo} alt="PoliTracker Logo" onClick = {handleHomeClick} className="poliLogo" />
-      </div>
-      <div className="menu">
-          <button onClick={handleHomeClick}>Home</button>
-      </div>
-      <div className="question-box">
-          {currentQuestion >= totalQuestions ? (
-              <div className="complete-message">
-                  테스트가 끝났습니다
-                  <button className = "seeResult" onClick={handleGoToResults}>결과 보러가기</button>
-              </div>
-          ) : (
-              <>
-                  <div className="progress-wrapper">
-                      <p className="progress-text">{currentQuestion + 1} / {totalQuestions}</p>
-                      <div className="status-bar">
-                          <div className="status-bar-fill" style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}></div>
-                      </div>
-                  </div>
-                  <div className="qBox">
-                      <h2>{questions[currentQuestion].question}</h2>
-                  </div>
-                  <div className="answerBox">
-                      {questions[currentQuestion].answers.map((answer, index) => (
-                          <button
-                              key={index}
-                              className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
-                              onClick={() => handleAnswerClick(index)}
-                          >
-                              {answer}
-                          </button>
-                      ))}
-                  </div>
-                  <div className="button-container">
-                      <button
-                          className="prev-button"
-                          onClick={handlePrevious}
-                          disabled={currentQuestion === 0}
-                      >
-                          이전
-                      </button>
-                      <button
-                          className="next-button"
-                          onClick={handleNext}
-                          disabled={selectedAnswer === null}
-                      >
-                          다음
-                      </button>
-                  </div>
-              </>
-          )}
-      </div>
-      <footer className="footer">
-        <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
-      </footer>
-  </div>
-);
+    return (
+        <div className="header">
+            <div className="logo-container">
+                <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
+            </div>
+            <div className="menu">
+                <button onClick={handleHomeClick}>Home</button>
+            </div>
+            <div className="question-box">
+                <>
+                    <div className="progress-wrapper">
+                        <p className="progress-text">{currentQuestion + 1} / {totalQuestions}</p>
+                        <div className="status-bar">
+                            <div className="status-bar-fill" style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}></div>
+                        </div>
+                    </div>
+                    <div className="qBox">
+                        <h2>{questions[currentQuestion].question}</h2>
+                    </div>
+                    <div className="answerBox">
+                        {questions[currentQuestion].answers.map((answer, index) => (
+                            <button
+                                key={index}
+                                className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
+                                onClick={() => handleAnswerClick(index)}
+                            >
+                                {answer}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="button-container">
+                        <button
+                            className="prev-button"
+                            onClick={handlePrevious}
+                            disabled={currentQuestion === 0}
+                        >
+                            이전
+                        </button>
+                        <button
+                            className="next-button"
+                            onClick={handleNext}
+                            disabled={selectedAnswer === null}
+                        >
+                            다음
+                        </button>
+                    </div>
+                </>
+            </div>
+            <footer className="footer">
+                <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
+            </footer>
+        </div>
+    );
 };
 
 export default QuestionScreen;
