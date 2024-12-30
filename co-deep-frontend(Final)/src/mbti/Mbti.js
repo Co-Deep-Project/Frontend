@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import StartScreen from "./StartScreen"; // 시작 화면 컴포넌트
 import QuestionScreen from "./QuestionScreen"; // 질문 화면 컴포넌트
 import ResultScreen from "./ResultScreen"; // 결과 화면 컴포넌트
-import "./Mbti.css";
 
 const Mbti = () => {
   const [screen, setScreen] = useState("start");

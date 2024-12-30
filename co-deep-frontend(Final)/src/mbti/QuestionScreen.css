@@ -27,7 +27,22 @@
   margin-right: 240px;
   position: relative;
 }
+.mbti-container, .question-box {
+  position: relative;  /* 위치를 부모 요소를 기준으로 설정 */
+  width: 80%;          /* 화면의 너비에 따라 크기 조정 */
+  max-width: 600px;    /* 최대 너비 제한 */
+  margin: 20px auto;   /* 상하 20px 여백과 좌우 자동으로 중앙 정렬 */
+  padding: 10px;       /* 내부 여백 */
+  border: 1px solid #ccc; /* 경계선 설정 */
+  background-color: #f9f9f9; /* 배경색 */
+}
 
+/* 추가적으로, 반응형 디자인을 위해 미디어 쿼리를 사용할 수 있습니다 */
+@media (max-width: 768px) {
+  .mbti-container, .question-box {
+    width: 95%;        /* 화면이 작을 때는 너비를 조금 더 늘림 */
+  }
+}
 
 
 /* 진행률 표시 */
