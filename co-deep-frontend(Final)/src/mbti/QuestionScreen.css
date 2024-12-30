@@ -3,18 +3,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 70px; /* header 높이 + 추가 여백 */
   min-height: 100vh;
-  background: white; /* 전체 배경을 흰색으로 설정 */
+  background: white;
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
   position: relative;
-  padding: 20px;
+  overflow-y: visible;
 }
-
-/* 중앙 컨테이너 크기 및 정렬 */
 .question-box {
-  width: 100%; /* 부모 요소의 너비를 유지 */
-  max-width: 600px; /* 적절한 너비 제한 */
+  width: 100%;
+  max-width: 600px;
   background: #f8f8f8;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -22,20 +20,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* 수직 및 수평 중앙 정렬 */
-  margin: 50px auto; /* 가로 중앙 및 적절한 여백 추가 */
-  margin-right: 240px;
+  justify-content: center;
+  margin: 0 auto; /* 상하 여백 없이 가운데 정렬 */
   position: relative;
+  margin-top: 70px; /* header 아래로 위치 조정 */
 }
-.mbti-container, .question-box {
-  position: relative;  /* 위치를 부모 요소를 기준으로 설정 */
-  width: 80%;          /* 화면의 너비에 따라 크기 조정 */
-  max-width: 600px;    /* 최대 너비 제한 */
-  margin: 20px auto;   /* 상하 20px 여백과 좌우 자동으로 중앙 정렬 */
-  padding: 10px;       /* 내부 여백 */
-  border: 1px solid #ccc; /* 경계선 설정 */
-  background-color: #f9f9f9; /* 배경색 */
-}
+
 
 /* 추가적으로, 반응형 디자인을 위해 미디어 쿼리를 사용할 수 있습니다 */
 @media (max-width: 768px) {
@@ -50,6 +40,8 @@
   width: 100%; /* 전체 너비 사용 */
   margin-bottom: 20px; /* 아래 여백 */
 }
+
+
 
 .progress-text {
   font-size: 1rem;
