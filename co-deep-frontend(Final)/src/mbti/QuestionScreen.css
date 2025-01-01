@@ -103,7 +103,7 @@
 
 .answer-button:hover {
   transform: translateY(-3px);
-  background-color: #b8a6d9;
+  background-color: #9c84c6;
 }
 
 .answer-button:active {
@@ -111,7 +111,7 @@
 }
 
 .answer-button.selected {
-  background: #b8a6d9;;
+  background: #9c84c6;
   color: black;
 }
 
@@ -163,12 +163,12 @@
   transition: all 0.3s ease; /* 부드러운 전환 효과 */
 }
 .prev-button:hover {
-  background-color: #b8a6d9;
+  background-color: #9c84c6;
   transform: translateY(-2px); 
 }
 
 .next-button:hover {
-  background: #b8a6d9; /* hover 상태에서 조금 더 어두운 색상 */
+  background: #9c84c6; /* hover 상태에서 조금 더 어두운 색상 */
   transform: translateY(-2px); /* 약간 위로 올라가는 효과 */
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); /* 부드러운 그림자 */
 }
