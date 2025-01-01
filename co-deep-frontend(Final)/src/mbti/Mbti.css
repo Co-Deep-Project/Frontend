@@ -1,14 +1,15 @@
-/* 상위 컨테이너에서 화면 중앙 배치 */
+/* 전체 화면 컨테이너 */
 .mbti-container {
-    display: flex;
-    justify-content: center; /* 수평 중앙 배치 */
-    align-items: center; /* 수직 중앙 배치 */
-    min-height: 100vh; /* 화면 전체 높이 */
-    background: white;
-    font-family: 'Poppins', sans-serif;
-    padding: 20px;
-    box-sizing: border-box; /* 패딩 포함 크기 계산 */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 70px; /* header 높이 + 추가 여백 */
+  min-height: 100vh;
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  overflow: auto;
+}
 
   .body {
     overflow-y: auto;

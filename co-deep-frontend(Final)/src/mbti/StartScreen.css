@@ -1,10 +1,10 @@
 .start-screen {
   display: flex;
   flex-direction: column; /* 세로 정렬 */
-  justify-content: flex-start; /* 수직 방향으로 위쪽에 정렬 */
+  justify-content: center; /* 수직 방향으로 중앙 정렬 */
   align-items: center; /* 수평 방향으로 중앙 정렬 */
   height: 100vh; /* 화면 높이를 100%로 설정 */
-  padding-top: 10%; /* 위쪽에 여백 추가 */
+  padding: 0; /* 패딩 제거 */
   background: white; /* 배경색 */
   color: black;
   font-family: "Noto Sans KR", sans-serif;
@@ -20,10 +20,11 @@
   font-weight: bold;
   color: black;
   margin-bottom: 15px;
-  text-align: left; /* 텍스트를 왼쪽 정렬 */
+  text-align: center; /* 텍스트를 중앙 정렬 */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   letter-spacing: 2px; /* 글자 간격 넓히기 */
 }
+
 
 /* 서브 텍스트 */
 .sub-heading {
@@ -33,9 +34,7 @@
   margin-bottom: 20px; /* 서브텍스트와 버튼 사이의 간격 */
   letter-spacing: 1px; /* 글자 간격 넓히기 */
   line-height: 1.5; /* 줄 간격 넓히기 */
-  text-align: center; /* 텍스트를 왼쪽 정렬 */
-  margin-bottom: 20px;
-
+  text-align: center; /* 텍스트를 중앙 정렬 */
 }
 
 /* 시작 버튼 */
@@ -50,7 +49,6 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 5px 15px rgba(192, 132, 252, 0.4);
-  align-self: flex-start; /* 버튼을 왼쪽으로 정렬 */
   margin-top: 20px; /* 버튼 위에 여백 추가 */
 }
 
@@ -58,7 +56,6 @@
   font-size: 3rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  margin-top: -20px; /* Welcome 텍스트를 위로 올림 */
 }
 
 .start-button:hover {
@@ -84,7 +81,7 @@
 
 .start-footer {
   position: absolute; /* footer를 고정 */
-  bottom: 20%; /* 화면 하단에서 5% 위로 이동 */
+  bottom: 5%; /* 화면 하단에서 약간 위로 이동 */
   width: 100%; /* 너비를 전체로 설정 */
   text-align: center;
   line-height: 1.35;
@@ -94,6 +91,14 @@
 .start-footer p {
   font-size: 13px;
 }
+
+.start-highlight {
+  background: linear-gradient(90deg, #4a4a4a, #2b2b2b); /* 톤다운 블랙 그라디언트 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* 텍스트에 그라디언트 적용 */
+}
+
+
 
 /* 배경 애니메이션 효과 */
 @keyframes moveBackground {

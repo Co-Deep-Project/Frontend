@@ -1,15 +1,4 @@
-/* 전체 화면 컨테이너 */
-.mbti-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 70px; /* header 높이 + 추가 여백 */
-  min-height: 100vh;
-  background: white;
-  font-family: 'Poppins', sans-serif;
-  position: relative;
-  overflow: auto;
-}
+
 .question-header {
   position: fixed;
   width: 100%;
@@ -43,7 +32,7 @@
 }
 
 
-/* 추가적으로, 반응형 디자인을 위해 미디어 쿼리를 사용할 수 있습니다 */
+
 @media (max-width: 768px) {
   .mbti-container, .question-box {
     width: 95%;        /* 화면이 작을 때는 너비를 조금 더 늘림 */
@@ -51,10 +40,10 @@
 }
 
 
-/* 진행률 표시 */
+/* 진행률 */
 .progress-wrapper {
-  width: 100%; /* 전체 너비 사용 */
-  margin-bottom: 20px; /* 아래 여백 */
+  width: 100%; 
+  margin-bottom: 20px; 
 }
 
 
@@ -102,6 +91,7 @@
   word-break:keep-all;
 }
 
+/*버튼 */
 .answerBox {
   display: flex;
   flex-direction: column;
@@ -110,7 +100,7 @@
 
 .answer-button {
   background: #cfc2e9;
-  color: black; /* 텍스트 색상을 흰색으로 변경하여 가시성 향상 */
+  color: black; 
   font-size: 1.2rem;
   padding: 20px 30px;
   border: none;
@@ -128,9 +118,8 @@
   transform: scale(0.98);
 }
 
-/* 선택된 버튼의 스타일 */
 .answer-button.selected {
-  background: #b8a6d9;; /* 선택된 버튼의 배경 색상을 더 어두운 색으로 변경 */
+  background: #b8a6d9;;
   color: black;
 }
 

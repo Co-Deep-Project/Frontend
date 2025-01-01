@@ -1,7 +1,6 @@
 import React from "react";
 import "./StartScreen.css"; // 시작 화면 스타일링
 import { motion } from "framer-motion";
-import styles from "./StartScreen.module.css";
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
 import logo from '../assets/polilogo.png';
@@ -37,7 +36,7 @@ const StartScreen = () => {
           >
             <h1 className="start-title">
               {" "}
-              <span className={styles.highlight}>
+              <span className="start-highlight">
                 <Typewriter
                   words={["정치 성향 테스트에 오신 것을 환영합니다", "Welcome!!"]}
                   loop={Infinity}

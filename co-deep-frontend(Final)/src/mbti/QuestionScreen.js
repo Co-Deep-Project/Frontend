@@ -131,38 +131,78 @@ const QuestionScreen = ({ onComplete }) => {
         socialProgressive: 0,
         socialConservative: 0
     });
-
+    const [answers, setAnswers] = useState(Array(totalQuestions).fill(null)); // 각 질문의 선택값 기록
     const handleNext = () => {
-        if (selectedAnswer === null) {
-            alert("선지를 선택해주세요!");
-            return;
+      if (selectedAnswer === null) {
+          alert("선지를 선택해주세요!");
+          return;
+      }
+  
+      // 현재 질문의 점수 유형 계산
+      const scoreType = currentQuestion < 5 ? "economic" :
+          currentQuestion < 10 ? "diplomatic" : "social";
+      const resultType = selectedAnswer === 0 ? "Progressive" : "Conservative";
+  
+      // 점수 추가
+      const newScores = { ...scores };
+      newScores[scoreType + resultType] += 1;
+  
+      setScores(newScores);
+  
+      // 선택값 기록
+      setAnswers((prevAnswers) => {
+          const updatedAnswers = [...prevAnswers];
+          updatedAnswers[currentQuestion] = selectedAnswer;
+          return updatedAnswers;
+      });
+  
+      setSelectedAnswer(null);
+  
+      if (currentQuestion < totalQuestions - 1) {
+          setCurrentQuestion(currentQuestion + 1);
+      } else {
+          if (window.confirm("테스트가 끝났습니다. 결과를 보러 가시겠습니까?")) {
+              handleGoToResults();
+          }
+      }
+  
+      console.log("현재 점수 상태:", newScores);
+  };
+  
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+        // 이전 질문의 선택값 가져오기
+        const prevAnswer = answers[currentQuestion - 1];
+        if (prevAnswer !== null) {
+            // 이전 질문의 점수 유형 계산
+            const scoreType = currentQuestion - 1 < 5 ? "economic" :
+                currentQuestion - 1 < 10 ? "diplomatic" : "social";
+            const resultType = prevAnswer === 0 ? "Progressive" : "Conservative";
+
+            // 점수 차감
+            const newScores = { ...scores };
+            newScores[scoreType + resultType] -= 1;
+
+            setScores(newScores);
+
+            console.log(`질문 ${currentQuestion}의 선택이 점수에서 제거되었습니다.`);
+            console.log("현재 점수 상태:", newScores);
         }
 
-        const newScores = { ...scores };
-        const scoreType = currentQuestion < 5 ? 'economic' :
-            currentQuestion < 10 ? 'diplomatic' : 'social';
-        const resultType = selectedAnswer === 0 ? 'Progressive' : 'Conservative';
-        newScores[scoreType + resultType] += 1;
+        // 이전 질문의 선택값 초기화
+        setAnswers((prevAnswers) => {
+            const updatedAnswers = [...prevAnswers];
+            updatedAnswers[currentQuestion - 1] = null; // 이전 선택 제거
+            return updatedAnswers;
+        });
 
-        setScores(newScores);
         setSelectedAnswer(null);
+        setCurrentQuestion(currentQuestion - 1);
+    }
+};
 
-        if (currentQuestion < totalQuestions - 1) {
-            setCurrentQuestion(currentQuestion + 1);
-        } else {
-            // 마지막 질문이면 완료 안내를 표시
-            if (window.confirm("테스트가 끝났습니다. 결과를 보러 가시겠습니까?")) {
-                handleGoToResults(); // 결과 페이지로 이동
-            }
-        }
-    };
-
-    const handlePrevious = () => {
-        if (currentQuestion > 0) {
-            setCurrentQuestion(currentQuestion - 1);
-            setSelectedAnswer(null);
-        }
-    };
+  
+  
 
     const handleAnswerClick = (index) => {
         setSelectedAnswer(index);
