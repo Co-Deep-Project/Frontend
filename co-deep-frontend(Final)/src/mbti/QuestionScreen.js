@@ -132,6 +132,8 @@ const QuestionScreen = ({ onComplete }) => {
         socialConservative: 0
     });
     const [answers, setAnswers] = useState(Array(totalQuestions).fill(null)); // 각 질문의 선택값 기록
+
+    
     const handleNext = () => {
       if (selectedAnswer === null) {
           alert("선지를 선택해주세요!");
@@ -167,6 +169,16 @@ const QuestionScreen = ({ onComplete }) => {
       }
   
       console.log("현재 점수 상태:", newScores);
+
+        // 마지막 질문일 경우 `localStorage`에 저장 후 이동
+  if (currentQuestion === totalQuestions - 1) {
+    localStorage.setItem('results', JSON.stringify(newScores));
+    setTimeout(() => navigate('/result'), 100); // 저장 후 약간의 지연을 두고 이동
+  } else {
+    setCurrentQuestion(currentQuestion + 1);
+  }
+
+  setSelectedAnswer(null);
   };
   
   const handlePrevious = () => {

@@ -17,7 +17,15 @@ const ResultScreen = () => {
     // 사용자가 '취소'를 클릭하면 현재 페이지에 머무름
   };
 
-  const results = JSON.parse(localStorage.getItem('results')) || {};
+  const results = JSON.parse(localStorage.getItem('results')) || {
+    economicProgressive: 0,
+    economicConservative: 0,
+    diplomaticProgressive: 0,
+    diplomaticConservative: 0,
+    socialProgressive: 0,
+    socialConservative: 0,
+  };
+  
   console.log("Retrieved Results:", results);
   const {
     economicProgressive,
@@ -28,20 +36,30 @@ const ResultScreen = () => {
     socialConservative
   } = results;
 
-
+  const totalProgressive = results.economicProgressive + results.diplomaticProgressive + results.socialProgressive;
+  const totalConservative = results.economicConservative + results.diplomaticConservative + results.socialConservative;
   const finalEconomic = economicProgressive > economicConservative ? "진보" : "보수";
   const finalDiplomatic = diplomaticProgressive > diplomaticConservative ? "진보" : "보수";
   const finalSocial = socialProgressive > socialConservative ? "진보" : "보수";
   let character = "세종대왕";
   let image = "/images/세종대왕.jpg";
   let description = [
-    "“과학과 기술로 경제를 발전시켜야 해!” 경제 개혁을 위해 새로운 방법을 시도해요.",
-    "“협력이 중요해!” 외교적으로는 평화와 협력을 중시합니다.",
-    "“전통과 변화를 균형 있게!” 전통을 존중하면서도 변화가 필요하다고 생각해요.",
+    
+  ];
+  if (
+    (totalProgressive === 7 && totalConservative === 8) || 
+    (totalProgressive === 8 && totalConservative === 7)
+  ) {
+  character = "세종대왕";
+  image = "/images/세종대왕.jpg";
+  description = [
+"과학과 기술로 경제를 발전시켜야 해!” 경제 개혁을 위해 새로운 방법을 시도해요.",
+    "협력이 중요해!” 외교적으로는 평화와 협력을 중시합니다.",
+    "전통과 변화를 균형 있게!” 전통을 존중하면서도 변화가 필요하다고 생각해요.",
     "세종대왕은 경제, 외교, 사회 모든 면에서 균형을 이룬 인물이었어요. 당신도 세상을 더 나은 방향으로 이끌 수 있는 균형 잡힌 리더예요!"
   ];
-
-  if (finalEconomic === "진보" && finalDiplomatic === "진보" && finalSocial === "진보") {
+}
+  else if (finalEconomic === "진보" && finalDiplomatic === "진보" && finalSocial === "진보") {
     character = "정약용";
     image = "/images/정약용.jpg";
     description = [
@@ -114,6 +132,15 @@ const ResultScreen = () => {
       "송시열은 성리학을 기반으로 한 보수적인 경제, 외교, 사회적 입장을 고수한 인물이에요."
     ];
   }
+    // 결과가 없을 때 기본값 설정
+    if (!character || !image || !description) {
+      return (
+        <div className="result-screen">
+          <h1>결과를 가져오는 데 문제가 발생했습니다.</h1>
+          <button onClick={onRestart}>다시 테스트하기</button>
+        </div>
+      );
+    }
 
   return (
     <div>
