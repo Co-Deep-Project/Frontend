@@ -249,18 +249,19 @@ const QuestionScreen = ({ onComplete }) => {
                         <button
                             className="prev-button"
                             onClick={handlePrevious}
-                            disabled={currentQuestion === 0}
+                            disabled={currentQuestion === 0} // 1번에서는 항상 비활성화
                         >
                             이전
                         </button>
                         <button
                             className="next-button"
-                            onClick={handleNext}
-                            disabled={selectedAnswer === null}
+                            onClick={handleNext} // 답변이 선택되지 않으면 alert 발생
                         >
                             다음
                         </button>
                     </div>
+
+
                 </>
             </div>
             <footer className="footer">

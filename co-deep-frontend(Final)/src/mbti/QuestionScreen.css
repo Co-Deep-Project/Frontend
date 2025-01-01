@@ -152,6 +152,7 @@
   left: 20px;
 }
 
+
 .poliLogo {
   width: 250px;
   height: auto;
@@ -183,6 +184,11 @@
 .next-button:active {
   transform: scale(0.95);
   
+}
+.prev-button:disabled {
+  background: #555;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 .next-button:disabled {
