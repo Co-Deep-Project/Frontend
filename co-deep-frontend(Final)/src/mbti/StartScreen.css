@@ -9,7 +9,7 @@
   background: white; /* 배경색 */
   color: black;
   font-family: "Noto Sans KR", sans-serif;
-  overflow: hidden; /* 스크롤바 숨기기 */
+  overflow: auto; 
   margin: 0 auto;
 }
 
@@ -48,6 +48,13 @@
   transition: all 0.3s ease-in-out;
   box-shadow: 0 5px 15px rgba(192, 132, 252, 0.4);
   align-self: flex-start; /* 버튼을 왼쪽으로 정렬 */
+}
+
+.start-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: -20px; /* Welcome 텍스트를 위로 올림 */
 }
 
 .start-button:hover {

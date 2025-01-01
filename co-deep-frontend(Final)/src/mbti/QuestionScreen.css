@@ -8,7 +8,13 @@
   background: white;
   font-family: 'Poppins', sans-serif;
   position: relative;
-  overflow-y: visible;
+  overflow: auto;
+}
+.question-header {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
 }
 .question-box {
   width: 100%;
@@ -23,6 +29,7 @@
   justify-content: center;
   margin: 0 auto; /* 상하 여백 없이 가운데 정렬 */
   position: relative;
+  overflow: auto;
   margin-top: 70px; /* header 아래로 위치 조정 */
 }
 

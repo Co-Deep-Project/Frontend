@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./QuestionScreen.css";
-import styles from "./QuestionScreen.module.css"
 import logo from '../assets/polilogo.png';
 import { useNavigate } from 'react-router-dom';
 
@@ -177,7 +176,7 @@ const QuestionScreen = ({ onComplete }) => {
     };
 
     return (
-        <div className={styles.header}>
+        <div className="question-header">
             <div className="logo-container">
                 <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
             </div>

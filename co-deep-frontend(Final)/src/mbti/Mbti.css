@@ -9,3 +9,7 @@
     padding: 20px;
     box-sizing: border-box; /* 패딩 포함 크기 계산 */
   }
+
+  .body {
+    overflow-y: auto;
+  }

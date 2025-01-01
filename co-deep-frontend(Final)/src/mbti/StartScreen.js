@@ -35,7 +35,7 @@ const StartScreen = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            <h1 className={styles.title}>
+            <h1 className="start-title">
               {" "}
               <span className={styles.highlight}>
                 <Typewriter

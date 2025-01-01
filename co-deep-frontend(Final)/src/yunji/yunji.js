@@ -35,7 +35,7 @@ const Yunji = () => {
 
   return (
     <div className="app">
-      <div className="header">
+      <div className="yunji-header">
         <div className="logo-container">
           <img src={logo} alt="PoliTracker Logo" className="poliLogo" onClick={handleHomeClick}/>
         </div>
