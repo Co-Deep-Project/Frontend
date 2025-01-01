@@ -201,9 +201,6 @@ const QuestionScreen = ({ onComplete }) => {
     }
 };
 
-  
-  
-
     const handleAnswerClick = (index) => {
         setSelectedAnswer(index);
     };
@@ -216,6 +213,7 @@ const QuestionScreen = ({ onComplete }) => {
     };
 
     return (
+      <div>
         <div className="question-header">
             <div className="logo-container">
                 <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
@@ -255,7 +253,7 @@ const QuestionScreen = ({ onComplete }) => {
                         </button>
                         <button
                             className="next-button"
-                            onClick={handleNext} // 답변이 선택되지 않으면 alert 발생
+                            onClick={handleNext} 
                         >
                             다음
                         </button>
@@ -267,6 +265,7 @@ const QuestionScreen = ({ onComplete }) => {
             <footer className="footer">
                 <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
             </footer>
+        </div>
         </div>
     );
 };
