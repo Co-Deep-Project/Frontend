@@ -1,12 +1,12 @@
-
 .question-header {
-  position: relative;
+  position: relative; /* fixed 대신 relative로 변경 */
   width: 100%;
   height: 60px;
   z-index: 1000;
 }
 
 .question-box {
+  margin-top: 20px !important;
   width: 100%;
   max-width: 600px;
   background: #f8f8f8;
@@ -17,11 +17,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; /* 상하 여백 없이 가운데 정렬 */
-  position: relative;
+  margin: 0 auto;
   overflow: auto;
-  margin-top: 70px; /* header 아래로 위치 조정 */
 }
+
 
 
 
@@ -99,6 +98,7 @@
   border-radius: 10px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+  word-break: keep-all;
 }
 
 .answer-button:hover {

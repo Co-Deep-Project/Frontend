@@ -213,60 +213,66 @@ const QuestionScreen = ({ onComplete }) => {
     };
 
     return (
-      <div>
+      <>
         <div className="question-header">
-            <div className="logo-container">
-                <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
-            </div>
-            <div className="menu">
-                <button onClick={handleHomeClick}>Home</button>
-            </div>
-            <div className="question-box">
-                <>
-                    <div className="progress-wrapper">
-                        <p className="progress-text">{currentQuestion + 1} / {totalQuestions}</p>
-                        <div className="status-bar">
-                            <div className="status-bar-fill" style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}></div>
-                        </div>
-                    </div>
-                    <div className="qBox">
-                        <h2>{questions[currentQuestion].question}</h2>
-                    </div>
-                    <div className="answerBox">
-                        {questions[currentQuestion].answers.map((answer, index) => (
-                            <button
-                                key={index}
-                                className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
-                                onClick={() => handleAnswerClick(index)}
-                            >
-                                {answer}
-                            </button>
-                        ))}
-                    </div>
-                    <div className="button-container">
-                        <button
-                            className="prev-button"
-                            onClick={handlePrevious}
-                            disabled={currentQuestion === 0} // 1번에서는 항상 비활성화
-                        >
-                            이전
-                        </button>
-                        <button
-                            className="next-button"
-                            onClick={handleNext} 
-                        >
-                            다음
-                        </button>
-                    </div>
-
-
-                </>
-            </div>
-            <footer className="footer">
-                <p>성균관대학교 트래커스꾸<br />서울특별시 종로구 성균관로 25-2<br />trackerskku@g.skku.edu</p>
-            </footer>
+          <div className="logo-container">
+            <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
+          </div>
+          <div className="menu">
+            <button onClick={handleHomeClick}>Home</button>
+          </div>
         </div>
+    
+        <div className="question-box">
+          <>
+            <div className="progress-wrapper">
+              <p className="progress-text">{currentQuestion + 1} / {totalQuestions}</p>
+              <div className="status-bar">
+                <div
+                  className="status-bar-fill"
+                  style={{ width: `${((currentQuestion + 1) / totalQuestions) * 100}%` }}
+                ></div>
+              </div>
+            </div>
+            <div className="qBox">
+              <h2>{questions[currentQuestion].question}</h2>
+            </div>
+            <div className="answerBox">
+              {questions[currentQuestion].answers.map((answer, index) => (
+                <button
+                  key={index}
+                  className={`answer-button ${selectedAnswer === index ? "selected" : ""}`}
+                  onClick={() => handleAnswerClick(index)}
+                >
+                  {answer}
+                </button>
+              ))}
+            </div>
+            <div className="button-container">
+              <button
+                className="prev-button"
+                onClick={handlePrevious}
+                disabled={currentQuestion === 0} // 1번에서는 항상 비활성화
+              >
+                이전
+              </button>
+              <button className="next-button" onClick={handleNext}>
+                다음
+              </button>
+            </div>
+          </>
         </div>
+    
+        <footer className="footer">
+          <p>
+            성균관대학교 트래커스꾸
+            <br />
+            서울특별시 종로구 성균관로 25-2
+            <br />
+            trackerskku@g.skku.edu
+          </p>
+        </footer>
+      </>
     );
 };
 
