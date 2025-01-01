@@ -21,7 +21,9 @@
   overflow: auto;
 }
 
-
+.home-button {
+  height: auto;
+}
 
 
 @media (max-width: 768px) {

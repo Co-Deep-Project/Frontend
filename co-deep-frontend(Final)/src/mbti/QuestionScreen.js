@@ -219,7 +219,7 @@ const QuestionScreen = ({ onComplete }) => {
             <img src={logo} alt="PoliTracker Logo" onClick={handleHomeClick} className="poliLogo" />
           </div>
           <div className="menu">
-            <button onClick={handleHomeClick}>Home</button>
+            <button onClick={handleHomeClick} className = "home-button">Home</button>
           </div>
         </div>
     
