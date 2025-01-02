@@ -29,6 +29,15 @@ session_context = {
     "conversation_history": []
 }
 
+# 키워드 추출 함수
+def extract_keyword(user_query):
+    # 불용어 정의
+    stopwords = ["뉴스", "알려줘", "다른", "좀", "검색해줘", "말해줘"]
+    words = user_query.split()
+    # 불용어를 제외한 단어만 키워드로 추출
+    filtered_words = [word for word in words if word not in stopwords]
+    return " ".join(filtered_words)
+
 # 네이버 뉴스 검색 함수
 def search_news(query, display=50, sort='sim'):
     url = "https://openapi.naver.com/v1/search/news.json"
@@ -41,9 +50,13 @@ def search_news(query, display=50, sort='sim'):
         response = requests.get(url, headers=headers, params=params, timeout=10)
         if response.status_code == 200:
             news_items = response.json().get("items", [])
-            # 중복 제거: 뉴스 제목을 유사도로 비교
+            # 필터링: 제목 또는 내용에 키워드 포함 여부 확인
+            filtered_news = [
+                item for item in news_items
+                if query in item["title"] or query in item.get("description", "")
+            ]
             unique_news = []
-            for item in news_items:
+            for item in filtered_news:
                 title = item["title"].replace("<b>", "").replace("</b>", "")
                 # 유사도 비교를 통해 중복 뉴스 제거
                 if not any(fuzz.ratio(title, existing["headline"]) > 30 for existing in unique_news):
@@ -122,13 +135,18 @@ def chat():
 
     # 뉴스 검색 요청 처리
     if "뉴스" in user_query:
-        keyword = user_query.replace("뉴스", "").strip()
+        keyword = extract_keyword(user_query)
+        print(f"User query: {user_query}, Extracted keyword: {keyword}")
         if not keyword:
             return jsonify({"response": "검색 키워드를 입력해 주세요!"})
         news_results = search_news(keyword)
+        print(f"Search results for '{keyword}': {news_results}")
         if not news_results:
             return jsonify({"response": f"'{keyword}'에 대한 뉴스를 찾을 수 없습니다."})
-        formatted_news = "\n".join([f"제목: {news['headline']}\n링크: {news['url']}" for news in news_results])
+        formatted_news = "\n".join([
+            f"제목: {news['headline']}\n링크: {news['url']}" 
+            for news in news_results
+        ])
         session_context["last_topic"] = "뉴스"
         session_context["conversation_history"].append({"user_query": user_query, "bot_response": formatted_news})
         return jsonify({"response": formatted_news})
@@ -142,3 +160,4 @@ def chat():
 # 서버 실행
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
+
