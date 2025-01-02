@@ -17,15 +17,15 @@ const Chatbot = () => {
         const response = await axios.post("http://127.0.0.1:5001/news", {
           query: "종로구",
         });
-  
-        setNews(uniqueNews);
+        console.log("Fetched news:", response.data); // Flask에서 반환된 데이터 확인
+        setNews(response.data); // uniqueNews가 아니라 response.data를 사용
       } catch (error) {
         console.error("Error fetching news:", error.response || error.message);
       }
     };
   
     fetchNews();
-  }, []);
+  }, []);  
   
 
   // 사용자 입력 처리 및 백엔드와 통신
