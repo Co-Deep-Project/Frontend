@@ -80,7 +80,13 @@ def generate_response(prompt):
 # 루트 경로
 @app.route('/', methods=['GET'])
 def home():
-    return "Flask server is running!", 200
+    intro_message = """
+        안녕하세요! 폴리트래커 챗봇입니다. 😊
+        다음과 같은 기능을 제공합니다:
+        1. 뉴스 검색: 특정 지역이나 주제에 대한 뉴스를 검색.
+        2. 일반 질문: 다양한 주제에 대한 정보 제공.
+    """
+    return intro_message, 200
 
 # 뉴스 검색 엔드포인트
 @app.route('/news', methods=['POST'])
